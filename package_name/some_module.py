@@ -1,15 +1,12 @@
-def hello_world(name):
-    """Summary line.
-
-    Extended description of function.
+def hello_world(name, kasper=46):
+    """This function does...
 
     Args:
-        arg1 (int): Description of arg1
-        arg2 (str): Description of arg2
+        name (str): Some name
+        kasper (int, optional): Age of person. Defaults to 46.
 
     Returns:
-        bool: Description of return value
-
+        None: Nothing..
     """
     print("Hello "+name)
     return None

@@ -20,6 +20,12 @@ to
 sys.path.insert(0, os.path.abspath('../../'))
 ```
 
+Set theme:
+
+```python
+html_theme = 'sphinx_rtd_theme'
+```
+
 Enable these extensions:
 
 ```python
