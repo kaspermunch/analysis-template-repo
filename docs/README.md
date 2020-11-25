@@ -6,27 +6,47 @@ In docs run:
 
     sphinx-quickstart
 
-In the conf.py file, uncomment and edit the three lines as follows:
+Choose `'y'` when prompted for separate source and buld directories.
+
+In `source/conf.py`, change
+
 ```python
-import os
-import sys
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../../'))
 ```
 
-Run this to explore the module looking for docstring and genrated a document file (rst format by default).
+to 
 
-    sphinx-apidoc -f -o . ../package_name
+```python
+sys.path.insert(0, os.path.abspath('../../'))
+```
 
-Modify the _doc/source/index.rst to add the module to the index:
+Enable these extensions:
+
+```python
+extensions = ['sphinx.ext.autodoc',
+              'sphinx.ext.napoleon'
+]
+```
+
+Run this in `docs` to generate rst files from API doc strings:
+
+    sphinx-apidoc -f -o source ../package_name
+
+Modify `index.rst` to your liking. Add other rst files to the toc tree. Remember to honor indentation and put a line between the directive and the rst base names.:
+
+
 ```rst
-Contents:
-
 .. toctree::
    :maxdepth: 2
+   :caption: Contents:
+
    modules
-   MyClass
 ```
 
-Generate the documentation
+Generate html documentation:
 
-    make html # or pdf or epub or ...
+```bash
+make html
+```
+
+Sign into https://readthedocs.org/ and add the GitHub repo.
