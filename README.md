@@ -4,6 +4,10 @@ Template repository
 
 ## pypi and conda
 
-  bash pypi.sh
-  
-  bash conda.sh [-c channel -c channel ...]
+```
+bash pypi.sh
+```
+
+```
+bash conda.sh [-c channel -c channel ...]
+```
