@@ -1,7 +1,7 @@
 # Template repository
 
 
-# Conda environment
+## Conda environment
 
 Add channels first to make the appear in the exported environment:
 ```
@@ -21,7 +21,7 @@ conda env export --from-history > binder/environment.yml
 ```
 
 
-## pypi and conda
+## Create PyPi and Conda packages
 
 ```
 bash pypi.sh
