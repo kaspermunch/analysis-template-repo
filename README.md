@@ -17,7 +17,7 @@ conda create -n <name> jupyterlab pandas seaborn ...
 
 Export it to the binder folder:
 ```
-conda env export > binder/environment.yml
+conda env export --from-history > binder/environment.yml
 ```
 
 
