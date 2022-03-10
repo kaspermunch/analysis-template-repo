@@ -1,6 +1,6 @@
 ## Repo structure
 
-Either use as library repo with with `<package_name>` and `docs` dirs. Or as data analysis repo with `scripts`, `steps`, `results`, `figures` dirs.
+Either use as library repo with with `<package_name>` and `docs` (and maybe `notebook`) dirs. Or as data analysis repo with `scripts`, `notebooks`, `data`, `steps`, `results`, `figures`dirs.
 
 ## Conda environment
 
