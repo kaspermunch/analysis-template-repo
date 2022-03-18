@@ -4,6 +4,12 @@ Either use as library repo with with `<package_name>` and `docs` (and maybe `not
 
 ## Conda environment
 
+Create empty environment:
+
+```
+conda create -n <name>
+```
+
 Add channels first to make the appear in the exported environment:
 Add any channels first to make the appear in the exported environment (you can always add more later):
 ```
