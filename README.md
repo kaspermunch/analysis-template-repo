@@ -10,6 +10,11 @@ Create empty environment:
 conda create -n <name>
 ```
 
+Activate environment
+```
+conda activate <name>
+```
+
 Add channels first to make the appear in the exported environment:
 Add any channels first to make the appear in the exported environment (you can always add more later):
 ```
@@ -20,11 +25,10 @@ conda config --env --append channels gwforg
 conda config --env --append channels kaspermunch
 ```
 
-Create environment:
-Create environment with subset of packages:
+Install a subset of packages:
 ```
-conda create -n <name> jupyterlab pandas seaborn ...
-conda create -n <name> gwf jupyterlab pandas seaborn ipympl statsmodels bioconda pyfaidx tskit ete3 scikit-allel samtools bamtools vcftools
+conda install jupyterlab pandas seaborn ...
+conda install gwf jupyterlab pandas seaborn ipympl statsmodels bioconda pyfaidx tskit ete3 scikit-allel samtools bamtools vcftools
 ```
 
 Export it to the binder folder:
