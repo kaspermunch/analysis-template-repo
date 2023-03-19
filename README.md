@@ -68,3 +68,5 @@ bash pypi.sh
 ```
 bash conda.sh [-c channel -c channel ...]
 ```
+
+<script src="https://gist.github.com/kaspermunch/1131f20216648bd55bb20f6b35e69252.js"></script>
