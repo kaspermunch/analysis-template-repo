@@ -1,12 +1,13 @@
 
 # clean slate
 conda-build purge-all
+rm -rf conda
 
 conda config --set anaconda_upload yes
 
 platform=`uname`
 if [ $platform == 'Darwin' ] ; then
-    if [`uname -m` == 'arm64'] ; then
+    if [ `uname -m` == 'arm64' ] ; then
         plat='osx-arm64'
     else
         plat='osx-64'
@@ -22,7 +23,7 @@ name=${PWD##*/}
 conda skeleton pypi --output-dir conda $name
 
 # for for each version of python
-for pythonversion in 3.6 3.7 3.8; do
+for pythonversion in 3.7 3.8. 3.9 3.10 2.11; do
     conda-build --python $pythonversion conda/$name $@
 done
 
