@@ -1,0 +1,48 @@
+
+# Reproducible research
+
+This is the last part, but the most important.
+
+More detail on what that means...
+
+## Do not save data files, save how you made them
+
+In the world of data projects, there are three kinds of data files. 
+
+1. Those representing the  input to your project (sequencing reads, raw data, etc.)
+2. Those representing the output from your project (numbers, notebooks, plots, tables, etc.)
+3. Those representing intermediary steps to get from files of type 1 to files of type 2.
+
+Type 1 files are usually hard/expensive to reproduce, and type 2 is saved indefinitely on the cluster. Type 2 files are generally very small and inexpensive to save indefinitely on the cluster. Type 3 files can be large and are easily regenerated if your project is reproducible. So type 3 files are *not* saved indefinitely. In fact, type 3 files should be deleted as soon as the project is finished. Toward the end of this tutorial, I will help you get set up to distinguish these three types of files.
+
+
+## Export your conda environment
+
+When you have created you conda environment (and whenever you add new packages to your environment), you should update the `environment.yml` file in the binder directory. That file allows anyone to create the same conda environment, ensuring that they have all the packages needed to run your code. You do that like this:
+
+```bash
+conda env export --from-history -f ./binder/environment.yml
+```
+
+> Supervisor note: this also makes it easy to create a binder for playing with the students notebooks without interfering with the project. Go to [Binder](https://mybinder.org/) and fill in the `https` address of the student repository: E.g. `https://github.com/username/birc-project`.
+
+## Building workflows with GWF
+
+https://gwf.app/
+
+## Managing notebooks
+
+bla bla 
+
+## Document your work
+
+Quarto
+
+Markdown / Qmarkdown / Notebooks
+
+the _quarto.yml file
+
+rendering
+
+bla bla 
+

@@ -17,6 +17,10 @@ book:
       chapters: 
       - notebooks/01_notebook.ipynb
       - notebooks/02_notebook.ipynb
+    - part: "Howtos"
+      chapters: 
+      - howtos/genomedk.qmd
+      - howtos/reproducible.qmd
     - references.qmd
 
 bibliography: references.bib
