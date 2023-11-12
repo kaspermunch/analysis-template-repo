@@ -1,6 +1,5 @@
 project:
-  type: website
-  output-dir: docs
+  type: book
 
 execute:
   echo: true
@@ -29,11 +28,5 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-    fig-width: 5
-    fig-height: 3
-  pdf:
-    documentclass: scrbook
-    fig-width: 7
-    fig-height: 5
     toc-depth: 2
 
