@@ -1,5 +1,6 @@
 project:
   type: book
+  # output-dir: docs
 
 execute:
   echo: true
@@ -9,18 +10,20 @@ book:
   author: "Your Name"
   chapters:
     - index.qmd
-    - part: "Reports"
+    - reading.qmd
+    - part: "Howtos"
       chapters: 
-      - reports/manuscript.qmd
-      - reports/supplementary.qmd
+      - howtos/genomedk.qmd
+      - howtos/setup.qmd
+      - howtos/reproducible.qmd
     - part: "Notebooks"
       chapters: 
       - notebooks/01_notebook.ipynb
       - notebooks/02_notebook.ipynb
-    - part: "Howtos"
+    - part: "Reports"
       chapters: 
-      - howtos/genomedk.qmd
-      - howtos/reproducible.qmd
+      - reports/manuscript.qmd
+      - reports/supplementary.qmd
     - references.qmd
 
 bibliography: references.bib

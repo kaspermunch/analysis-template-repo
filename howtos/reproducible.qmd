@@ -46,3 +46,5 @@ rendering
 
 bla bla 
 
+at the project end set output-dir to docs, render the whole thing and add docs to repository
+
