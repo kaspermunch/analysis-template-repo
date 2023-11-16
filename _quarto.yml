@@ -10,12 +10,12 @@ book:
   author: "Your Name"
   chapters:
     - index.qmd
-    - reading.qmd
     - part: "Howtos"
       chapters: 
-      - howtos/genomedk.qmd
-      - howtos/setup.qmd
-      - howtos/reproducible.qmd
+      - guides/laptop_setup.qmd
+      - guides/genomedk.qmd
+      - guides/cluster_setup.qmd
+      - guides/reproducible.qmd
     - part: "Notebooks"
       chapters: 
       - notebooks/01_notebook.ipynb

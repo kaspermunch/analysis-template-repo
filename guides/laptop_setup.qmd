@@ -1,0 +1,33 @@
+
+# Laptop setup
+
+You will do your work on our computing cluster, but before we get there, we need to get you properly set up on your own machine.
+
+### Install Python
+
+If you have not done so already, you should install a distribution of Python called *Anaconda*. Anaconda is not only an easy way of installing Python on Windows, Mac, and Linux; it also comes with the conda package management system (see below). To install Anaconda, head to [this page](https://www.anaconda.com/download). When the download has been completed, you must follow the default installation.
+
+### The Terminal
+
+Most of the programs we will use in this course are command-line applications. I.e., programs that are executed by writing their name and any arguments in a terminal rather than clicking on an icon and using a graphical user interface. There are many different programs that can serve as a terminal. If you have a Windows machine, you must use the *Anaconda Powershell Prompt* (*not* the Anaconda Prompt and *not* the `CMD`). You installed Anaconda Powershell Prompt along with Anaconda Python. If you have a Mac, the terminal you will use is called *Terminal*. The Terminal application is pre-installed on Mac. So from now on, whenever I refer to the terminal, I mean *Anaconda Powershell Prompt* on Windows and *Terminal* on Mac. We will assume some familiarity with using a terminal and with executing commands on the command line. If you have not used a terminal before, or if you are a bit rusty, you should run through [this primer](https://lifehacker.com/5633909/who-needs-a-mouse-learn-to-use-the-command-line-for-almost-anything) before you go on.
+
+### Conda environments
+
+<img src="https://docs.conda.io/en/latest/_images/conda_logo.svg" align="right" width="200" height="100" />
+
+You need to install packages and programs for use in your analyses and pipelines. Sometimes, however, the versions of packages you need for one project conflicts with the versions you need for other projects that you work on in parallel. Such conflicts seem like an unsolvable problem. Would it not be fantastic if you could create a small world insulated from the rest of your Anaconda installation. Then that small world would only contain the packages you needed for a single project. If each project had its own isolated world, then there would be no such conflicts. Fortunately, there is a tool that lets you do just that, and its name is Conda. The small worlds that Conda creates are called "environments," and you can create as many as you like. You can then switch between them as you switch between your bioinformatics projects. Conda also downloads and installs the packages for you, and it makes sure that the packages you install in each environment are compatible. It even makes sure that packages needed by packages (dependencies) are installed too.  By creating an environment for each project, the libraries installed for each project do not interfere.
+
+### Create an environment on your local machine
+
+When you install Anaconda or Miniconda, Conda makes a single base environment for you. It is called "base," and this is why it says "(base)" at your terminal prompt. You need a conda environment for your project on both your local machine and on the cluster. Let us call both of them 'birc-project' (you can call it anything you like).
+
+The environment on your local machine does not need a lot of packages since it mainly serves to let you connect to the cluster. This creates the environment and installs `slurm-jupyter` from my conda channel:
+
+    conda create -n birc-project -c kaspermunch slurm-jupyter
+
+Say yes (press Enter) when asked to install packages.
+
+### VPN
+
+To be able to connect to the cluster, you need to on the AU internal network. You can do that by either physically being on campus or by connecting to the AU network using VPN. To install VPN, use the instructions [on this page](https://studerende.au.dk/it-support/vpn/). Before you can *use* the VPN, you also need to enable two-step verification. You can see how to do that on the same page. If you are not physically on campus, you need to activate your VPN before you can log in to the cluster. Your password for VPN is the same as you use to log on to access Blackboard.
+

@@ -1,11 +1,17 @@
-# Outline {.unnumbered}
+# Introduction {.unnumbered}
 
-bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+These pages are generated from Git repository (more about that later). The repository serves both as a source of practial information to get you started, and as a scaffold for your project. Once you have copied it and made it your own, you populate with your own text, code, analysis notebooks, and documentation. For now most of what you see are placeholders for what will eventually be your own contributions.
 
-1.  bla bla bla bla bla bla bla 
-2.  bla bla bla bla bla bla bla 
-3.  bla bla bla bla bla bla bla
-4.  bla bla bla bla bla bla bla 
-5.  bla bla bla bla bla bla bla
+## Project outline
 
-bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
+Here you should write a paragraph outlining the project to the extent you can at this point. What are the goals of your project? What would you like to find out? What would you like to learn? You should update it along the way.
+
+## Project plan
+
+Here you should outline project plan and what you intend to do in the weeks/months of your project. This is ofcause tentative and will change along the way. But it is important that it changes because you decide it is meaningful.
+
+1.  The first month is allocated to ...
+2.  
+3.  
+4.  
+5.  The last month ...
