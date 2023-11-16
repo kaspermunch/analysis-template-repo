@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Title of your project - 3&nbsp; Cluster set up</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../guides/reproducible.html" rel="next">
+<link href="../guides/genomedk.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guides/laptop_setup.html">Howtos</a></li><li class="breadcrumb-item"><a href="../guides/cluster_setup.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cluster set up</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Title of your project</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Howtos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/laptop_setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Laptop setup</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/genomedk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cluster access</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/cluster_setup.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cluster set up</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../guides/reproducible.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reproducible research</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Notebooks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/01_notebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some analysis</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../notebooks/02_notebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some other analysis</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Reports</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reports/manuscript.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manuscript</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reports/supplementary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Supplementary info</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#install-python-on-your-cluster-account" id="toc-install-python-on-your-cluster-account" class="nav-link active" data-scroll-target="#install-python-on-your-cluster-account"><span class="header-section-number">3.1</span> Install Python on your cluster account</a></li>
+  <li><a href="#the-project-folder" id="toc-the-project-folder" class="nav-link" data-scroll-target="#the-project-folder"><span class="header-section-number">3.2</span> The project folder</a></li>
+  <li><a href="#the-github-repository" id="toc-the-github-repository" class="nav-link" data-scroll-target="#the-github-repository"><span class="header-section-number">3.3</span> The GitHub repository</a></li>
+  <li><a href="#git-1.0.1" id="toc-git-1.0.1" class="nav-link" data-scroll-target="#git-1.0.1"><span class="header-section-number">3.4</span> Git 1.0.1</a></li>
+  <li><a href="#create-a-conda-environment" id="toc-create-a-conda-environment" class="nav-link" data-scroll-target="#create-a-conda-environment"><span class="header-section-number">3.5</span> Create a conda environment</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cluster set up</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This page covers how you get set up on the GenomeDK cluster to do your project. First log in to the cluster:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>cluster user name<span class="op">&gt;</span>@login.genome.au.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="install-python-on-your-cluster-account" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="install-python-on-your-cluster-account"><span class="header-section-number">3.1</span> Install Python on your cluster account</h2>
+<p>You need to install miniconda (a minimal Anaconda version) in your cluster home dir. Log in to the cluster and run this command to download the miniconda install script:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then use this command to download and install miniconda:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> Miniconda3-latest-Linux-x86_64.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Follow the default installation, and say <strong>yes</strong> when it asks you if it should run <code>conda init</code> for you.</p>
+<p><strong>NP:</strong> Now log out of the cluster and log back in. This is needed to make the <code>conda</code> command available to you.</p>
+</section>
+<section id="the-project-folder" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="the-project-folder"><span class="header-section-number">3.2</span> The project folder</h2>
+<p>The project folder is a folder that is set up on the cluster to hold your project. I call it <code>projectfolder</code> here, but it will be called something sensible like <code>baboonadmixture</code>.</p>
+<p>It is accessible to only you and anyone else you collaborate with (such as your supervisor). The project folder is in your home directory and should hold the following subfolders:</p>
+<pre><code>projectfolder
+    /data
+    /people
+        /username
+        /supervisor_username</code></pre>
+<p>The <code>&lt;projectfolder&gt;/people/&lt;username&gt;</code> is your domain. This is where you have all the files that relates to your project.</p>
+<p>The name of the project folder is is also the name of the account that gets billed for the work on the cluster. When you run <code>srun</code>, <code>sbatch</code> or <code>slurm-jupyter</code> you must specify that project name using the <code>-A</code> or <code>--account</code> options (see below for more details on that).</p>
+<section id="cloning-this-git-repository-to-the-cluster" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="cloning-this-git-repository-to-the-cluster"><span class="header-section-number">3.2.1</span> Cloning this git repository to the cluster</h3>
+<p>Go to your folder under the project folder (<code>&lt;projectfolder&gt;/people/&lt;username&gt;</code>) and clone your repository:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:username/birc-project.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(replace <code>username</code> with your GitHub username).</p>
+<p>You now have a folder called <code>&lt;projectfolder&gt;/people/&lt;username&gt;/birc-project</code> and this is where you will do all your work for the project.</p>
+<p>If you <code>cd</code> into <code>birc-directory</code> and run <code>ls</code>, you will see a number of folders.</p>
+<ul>
+<li><code>data</code>: Stores <em>small</em> (tens of megabases) data files you want to keep .</li>
+<li><code>binder</code>: Stores the <code>environment.yml</code> files documenting your conda environment used in the project.</li>
+<li><code>sandbox</code>: Stores experiment and other files that are not yet part of your project workflow. This keeps the rest of the folder structure clean.</li>
+<li><code>scripts</code>: Stores Python scripts that that produces intermediate and final results.</li>
+<li><code>steps</code>: Stores intermediary files (“steps” on the way to final results).</li>
+<li><code>notebooks</code>: Stores Juptyer notebooks with code, documentation, and results.</li>
+<li><code>figures</code>: Stores result plots and figures you make.</li>
+<li><code>results</code>: Stores the small result files of your project (tens of megabases).</li>
+</ul>
+<p>Files in all those folders are under Git control, <em>except</em> files in the <code>steps</code> folder. Those files are not backed up in any way, but should instead be reproducible using the code and information in your other folders.</p>
+</section>
+</section>
+<section id="the-github-repository" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="the-github-repository"><span class="header-section-number">3.3</span> The GitHub repository</h2>
+<p><img src="https://github.githubassets.com/images/modules/open_graph/github-mark.png" align="right" width="200"></p>
+<p>The text you are reading now is actually in a Git repository i made for you.</p>
+<p><a href="https://git-scm.com/">Git</a> is a version control tool that you use from the terminal. A folder under Git control is called a repository. Git does not interfere with your files and it does not save them. It lets you monitor the state of your files so you can easily see if any files are added, modified, or removed, and it allows you to (manually) maintain a record of what files where changes when, how, and for what reason.</p>
+<p>In addition to the documentation you are reading now, the repository serves as a template for your project. Follow these steps in order to get this repository:</p>
+<ol type="1">
+<li>Start by creating your own <a href="https://github.com/join">github account</a> if you do not have one.</li>
+<li>Follow the instructions <a href="https://www.inmotionhosting.com/support/server/ssh/how-to-add-ssh-keys-to-your-github-account/">on this page</a> to add ssh keys to GitHub.</li>
+<li>Log in to your GitHub account on the web. Go to the <a href="https://github.com/kaspermunch/analysis-remplate-repo">analysis-remplate-repo</a>. Click the big green button that says “Use this template” and pick “Create new repository”. You are then prompted for a name for your repository. Name it <code>birc-project</code>. Leave the rest as it is and click “Create repository”. This will create your own copy of this repository on your own GitHub account.</li>
+</ol>
+<p>Once your own <code>birc-project</code> repository is ready, find it on your own account, go to the repository front page. Look at the <code>cluster_setup.qmd</code> file in the <code>guides</code> folder. This is what renders into the page you are reading this from. You will learn later how to make such web pages yourself to document your work.</p>
+</section>
+<section id="git-1.0.1" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="git-1.0.1"><span class="header-section-number">3.4</span> Git 1.0.1</h2>
+<p>Start logging into the cluster and run these two commands to let Git know who you are:</p>
+<pre><code>git config --global user.name "&lt;Your GitHub user name&gt;"
+git config --global user.email &lt;your_email@whatever.com&gt;</code></pre>
+<p>Note that to run git commands tracking your <code>birc-project</code>, .</p>
+<p><a href="https://www.atlassian.com/git">These tutorials</a> are good. The three most important commands to learn are <a href="https://git-scm.com/docs/git-status">git status</a>, <a href="https://git-scm.com/docs/git-add">git add</a>, <a href="https://git-scm.com/docs/git-rm">git rm</a>, <a href="https://git-scm.com/docs/git-commit">git commit</a> and <a href="https://git-scm.com/docs/git-push">git push</a>.</p>
+<p>You should read the documentation, but in a nutshell this is how it works:</p>
+<p><code>git status</code> shows you the status of your files. It may show you that you have created or modified one or more files.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you run git commands, you must be in your <code>birc-project</code> folder. Otherwise git will not know which repository you are referring to.</p>
+</div>
+</div>
+<p>To journal the creation or modification of a file, you run <code>git add &lt;the_changed_file&gt;</code>. This “stages” the change. This adds the file to the a “group” of changes that represent some modification to your project. You can add more files to that “group” by running <code>git add</code> again.</p>
+<p>Maybe you added two python files that together lets you run some analysis. Now you want to store the group of changes to the journal maintained by Git and associate it with a description that describes it. For that you use <code>git commit -m 'description'</code>. If you added two python files, your description could be <code>'Added two python files for my analysis'</code>. Now your changes are recorded in the Git journal for the <code>birc-project</code> repository <em>on the cluster</em>, but that does not serve as a backup in case you accidentally delete your entire folder or the cluster burns down.</p>
+<p>To backup your repository you need to synchronize your local <code>birc-project</code> repository on your computer with the <code>birc-project</code> repository on GitHub. You do that using the <code>git push</code> command.</p>
+<p>There is a cheat sheet <a href="https://training.github.com/downloads/github-git-cheat-sheet/">here</a> and some good visual guides <a href="https://ndpsoftware.com/git-cheatsheet.html">here</a> and <a href="https://marklodato.github.io/visual-git-guide/index-en.html">here</a>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning: Files on the cluster are not backed up!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your files on the cluster are not backed up! If you want to backup files, you need to put them in a folder called BACKUP. But even if you do you may loose a week of work, since the backup loop is very slow.</p>
+</div>
+</div>
+<p>The best/only way to keep your code safe is to track your files with git push each set of changes to GitHub as often as it makes sense. The more often you do it, the less work you will loose if you accidentally delete or overwrite a file.</p>
+<p>We will get back to which files you should track using Git in <a href="reproducible.html"><span>Chapter&nbsp;4</span></a> on reproducible research.</p>
+</section>
+<section id="create-a-conda-environment" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="create-a-conda-environment"><span class="header-section-number">3.5</span> Create a conda environment</h2>
+<p>Log in to the cluster and run this command to create a conda environment for your project on the cluster. This environment should contain the packages that you need for your project.</p>
+<p>Create your environment like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-y</span> <span class="at">-f</span> binder/environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You probably end up needing more packages than is initially included, you can easily install them later. E.g., to see how to install <code>biopython</code> using <code>conda</code>, just google “conda biopython”. The top link instructs you to install it like this: <code>conda install -c conda-forge biopython</code>.</p>
+<p><strong>Important:</strong> Whenever you log into the cluster to work on your project, you should activate your <code>birc-project</code> environment like this:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate birc-project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When your environment is active, it says <code>(birc-project)</code> on the command prompt instead of <code>(base)</code>.</p>
+<section id="set-up-jupyter" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="set-up-jupyter"><span class="header-section-number">3.5.1</span> Set up Jupyter</h3>
+<p><img src="https://github.com/jupyter/jupyter.github.io/blob/master/assets/main-logo.svg" align="right" width="100" height="100"></p>
+<p><a href="https://jupyter.org/">Jupyter</a> is a notebook environment where you can easily combine text, code, and plots. Using the <a href="https://slurm-jupyter.readthedocs.io/en/latest">slurm-jupyter</a> tool, you can run a jupyter notebook on the cluster but see it in the browser on your own machine. That way, your analysis runs on the cluster file system where your data is but the notebook interface is sent to your browser window.</p>
+<p>Before you can connect to a jupyter session on the cluster, you need to do a bit of configuration of the jupyter settings on the cluster. <code>slurm-jupyter</code> comes with script that automates that procedure. Just log into the cluster, activate your environment, and run:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">config-slurm-jupyter.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The script will ask for a lot of information. You can just press <code>Enter</code> for all of them <strong>except</strong> when prompted for what password you want to use: Then, you must type your cluster password.</p>
+</section>
+<section id="visual-studio-code" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="visual-studio-code"><span class="header-section-number">3.5.2</span> Visual Studio Code</h3>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2560px-Visual_Studio_Code_1.35_icon.svg.png" align="right" width="100" height="100"></p>
+<p>If you did not do so when you installed Anaconda, you should download and install Visual Studio Code. VScode is great for developing scripts and editing text files. Once you have installed VS code, you should install the “Remote Development” extension. You do that by clicking the funny squares in the left bar and search for “Remote Development”. Once installed, you can click the small green square in the lower-left corner to connect to the cluster. Select “Connect current window to host” then “Add new SSH host”, then type <code>&lt;username&gt;@login.genome.au.dk</code>, then select the config file <code>.ssh/config</code>. Now you can click the small green square in the lower-left corner to connect to the cluster by selecting <code>login.genome.au.dk</code>. It may take a bit, but once it is done installing a remote server, you will have access to the files in your home folder on the cluster.</p>
+</section>
+<section id="how-to-run-a-jupyter-notebook-on-the-cluster" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="how-to-run-a-jupyter-notebook-on-the-cluster"><span class="header-section-number">3.5.3</span> How to run a Jupyter notebook on the cluster</h3>
+<p>Jupyter runs best in the <a href="https://www.google.com/chrome">Chrome browser</a> or Safari on Mac. For the best experience, install that before you go on. It does not need to be your default browser. <code>slurm-jupyter</code> will use it anyway. Now make sure you are on your own machine and that your <code>popgen</code> environment is activated. Then run this command to start a jupyter notebook on the cluster and send the display to your browser:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">slurm-jupyter</span> <span class="at">-C</span> <span class="at">-u</span> <span class="op">&lt;</span>cluster_user_name<span class="op">&gt;</span> -A <span class="op">&lt;</span>projectfolder<span class="op">&lt;&gt;</span> -e birc-project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(replace <code>&lt;cluster_user_name&gt;</code> with your cluster user name, <code>&lt;projectfolder&gt;</code> with your project folder name.</p>
+<p>Watch the terminal to see what is going on. After a while, a jupyter notebook should show up in your browser window. The first time you do this, your browser may refuse to show jupyter because the connection is unsafe. In Safari you are prompted with this winidow where you click “details”:</p>
+<p><img src="img/mac_warning1.png" alt="image" width="450"></p>
+<p>Then you get this window and click “visit this website”:</p>
+<p><img src="img/mac_warning2.png" alt="image" width="450"></p>
+<p>In Chrome, you can simply type the characters “thisisunsafe” while in the Chrome window:</p>
+<p><img src="img/thisisunsafe.png" alt="image" width="450"></p>
+<p>Once ready, jupyter may ask for your cluster password. To close the jupyter notebook, press <code>Ctrl-c</code> in the terminal. Closing the browser window does <strong>not</strong> close down the jupyter on the cluster. You can <a href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/">read this tutorial</a> to learn how to use a jupyter notebook.</p>
+</section>
+<section id="running-interactive-commands-on-the-cluster" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="running-interactive-commands-on-the-cluster"><span class="header-section-number">3.5.4</span> Running interactive commands on the cluster</h3>
+<p>When you log into the cluster, you land on the “front-end” of the cluster. Think of it as the lobby of a giant hotel. If you execute the <code>hostname</code> command, you will get <code>fe-open-01</code>. <code>fe1</code> is the name of the front-end machine. The “front-end” is a single machine shared by anyone who logs in. So you cannot run resource-intensive jobs there, but quick commands are ok. Commands that finish in less than ten seconds are ok. In the exercises for this course, you will run software that takes a much longer time to finish. So you need one of the computing machines on the cluster, so you can work on that instead. You ask for a computing machine by running this command:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem-per-cpu</span><span class="op">=</span>1g <span class="at">--time</span><span class="op">=</span>3:00:00 <span class="at">--account</span><span class="op">=&lt;</span>projectfolder<span class="op">&gt;</span> --pty bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That says that you need at most one gigabyte of memory, that you need it for at most three hours (the duration of the exercise), and that the computing expenses should be billed to the project <code>&lt;projectfolder&gt;</code>. When you execute the command, your terminal will say “srun: job 40924828 queued and waiting for resources”. That means that you are waiting for a machine. Once it prints “srun: job 40924828 has been allocated resources”, you have been logged into a computing node. If you execute the <code>hostname</code> command, you will get something like <code>s05n20</code>. <code>s05n20</code> is a computing machine. The same way you moved from your own computer to front-end machine of the cluster by logging in using ssh, the command above moves you from the front-end to a compute machine. Now you can execute any command you like without causing trouble for anyone.</p>
+<p>Now try to log out of the compute node by executing the <code>exit</code> command or by pressing <code>Ctrl-d</code>. If you execute the <code>hostname</code> command again, you will get <code>fe1.genomedk.net</code> showing that you are back at the front-end machine.</p>
+</section>
+<section id="queueing-commands-on-the-cluster" class="level3" data-number="3.5.5">
+<h3 data-number="3.5.5" class="anchored" data-anchor-id="queueing-commands-on-the-cluster"><span class="header-section-number">3.5.5</span> Queueing commands on the cluster</h3>
+<p>For non-interactive work, it is better to submit your command as a job to the cluster. When you do that, the job gets queued along with many other jobs, and as soon as the requested resources are available on the cluster, the job will start on one the many many machines. To submit a job, you must first create a file (a “batch script”) that contains both the requested computer resources and the command you want to run.</p>
+<p>Create a file called <code>myscript.sh</code> with exactly this content:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1gb</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=&lt;projectfolder&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=firstjob</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"I can submit cluster jobs now!"</span> <span class="op">&gt;</span> success.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(replace <code>&lt;projectfolder&gt;</code> with your project folder name)</p>
+<p>The first line says this is a bash script, the lines following three lines say that your job needs at most one gigabyte of memory, will run for at most one hour, that the expenses should be billed to the project <code>&lt;projectfolder&gt;</code>. The fourth line gives the name of the job. Here we have called it <code>firstjob</code>, but you should name it something sensible.</p>
+<p>You submit the job using the <code>sbatch</code> command:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> myscript.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now your job is queued. Use the <code>mj</code> command to see what jobs you have queued or running. That will show something like this:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>                                                                        Alloc</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Job ID           Username Queue    Jobname    SessID NDS  S Elap Time   nodes</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>---------------- -------- -------- ---------- ------ ---  - ----------  -----</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>34745986         kmt      normal   firstjob       --   1  R 0-00:19:27  s03n56</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want to cancel this job before it finishes, you can use the <code>scancel</code> command:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> 34745986</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once your job finishes, it has created the file <code>success.txt</code> and written “I can submit cluster jobs now!” to it. So see that you can use the <code>cat</code> command:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> success.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When you a program or script on the command line, it usually also prints some information in the terminal. When you run a job on the cluster there is no terminal to print to. Instead, this is written to two files that you can read when the job finishes. In this case, the fiels are called <code>firstjob.stdout</code> and <code>firstjob.stderr</code>. To see what is in them, you can use the <code>cat</code> command:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> firstjob.stdout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> firstjob.stderr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That is basically it.</p>
+</section>
+<section id="how-to-copy-files-to-and-from-the-cluster" class="level3" data-number="3.5.6">
+<h3 data-number="3.5.6" class="anchored" data-anchor-id="how-to-copy-files-to-and-from-the-cluster"><span class="header-section-number">3.5.6</span> How to copy files to and from the cluster</h3>
+<p>You may need to transfer files back and forth between your own machine and the cluster. To copy a file called <code>file</code> in a directory called <code>dir</code> on the cluster to the current folder on your own machine, you can use the <code>scp</code> command:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="op">&lt;</span>cluster_user_name<span class="op">&gt;</span>@login.genome.au.dk:dir/file .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To copy a file called <code>file</code> in the current folder on your own machine to a folder called <code>dir</code> on the cluster, you do this:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> ./file <span class="op">&lt;</span>cluster_user_name<span class="op">&gt;</span>@login.genome.au.dk:dir/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../guides/genomedk.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cluster access</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../guides/reproducible.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reproducible research</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,83 +1,62 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-    <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.3.450">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Title of your project - Some analysis</title>    <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      div.columns{display: flex; gap: min(4vw, 1.5em);}
-      div.column{flex: auto; overflow-x: auto;}
-      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-      ul.task-list{list-style: none;}
-      ul.task-list li input[type="checkbox"] {
-        width: 0.8em;
-        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-        vertical-align: middle;
-      }
-      /* CSS for syntax highlighting */
-      pre > code.sourceCode { white-space: pre; position: relative; }
-      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-      pre > code.sourceCode > span:empty { height: 1.2em; }
-      .sourceCode { overflow: visible; }
-      code.sourceCode > span { color: inherit; text-decoration: inherit; }
-      div.sourceCode { margin: 1em 0; }
-      pre.sourceCode { margin: 0; }
-      @media screen {
-      div.sourceCode { overflow: auto; }
-      }
-      @media print {
-      pre > code.sourceCode { white-space: pre-wrap; }
-      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-      }
-      pre.numberSource code
-        { counter-reset: source-line 0; }
-      pre.numberSource code > span
-        { position: relative; left: -4em; counter-increment: source-line; }
-      pre.numberSource code > span > a:first-child::before
-        { content: counter(source-line);
-          position: relative; left: -1em; text-align: right; vertical-align: baseline;
-          border: none; display: inline-block;
-          -webkit-touch-callout: none; -webkit-user-select: none;
-          -khtml-user-select: none; -moz-user-select: none;
-          -ms-user-select: none; user-select: none;
-          padding: 0 4px; width: 4em;
-        }
-      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-      div.sourceCode
-        {   }
-      @media screen {
-      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-      }
-    </style>
-    <style>
-      .quarto-embed-header {
-        height: 3em;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: solid 1px;
-      }
-      .quarto-embed-header h6 {
-        font-size: 1em;
-        padding-top: 0.6em;
-        margin-left: 1em;
-        margin-right: 1em;
-        font-weight: 300;
-      }
-      .quarto-embed-header a.quarto-download-embed {
-        font-size: 0.7em;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        margin-left: 1em;
-        margin-right: 1em;
-      }
-    </style>
-    
+<title>Title of your project - 4&nbsp; Reproducible research</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -85,8 +64,8 @@
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../notebooks/02_notebook.html" rel="next">
-<link href="../guides/reproducible.html" rel="prev">
+<link href="../notebooks/01_notebook.html" rel="next">
+<link href="../guides/cluster_setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -96,7 +75,7 @@
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-     <script id="quarto-search-options" type="application/json">{
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -115,21 +94,21 @@
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>  
-      </head>
-  <body class="nav-sidebar floating quarto-notebook">
-    <div class="quarto-embed-header">
-      <h6><i class="bi bi-journal-code"></i> 01_notebook.ipynb</h6>
-      <a href="../notebooks/01_notebook.ipynb" class="btn btn-primary quarto-download-embed" download="01_notebook.ipynb">Download Notebook</a>
-    </div>
-     <div id="quarto-search-results"></div>
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01_notebook.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/01_notebook.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some analysis</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../guides/laptop_setup.html">Howtos</a></li><li class="breadcrumb-item"><a href="../guides/reproducible.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reproducible research</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -189,7 +168,7 @@
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../guides/reproducible.html" class="sidebar-item-text sidebar-link">
+  <a href="../guides/reproducible.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reproducible research</span></span></a>
   </div>
 </li>
@@ -206,7 +185,7 @@
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/01_notebook.html" class="sidebar-item-text sidebar-link active">
+  <a href="../notebooks/01_notebook.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some analysis</span></span></a>
   </div>
 </li>
@@ -257,14 +236,22 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#some-analysis" id="toc-some-analysis" class="nav-link active" data-scroll-target="#some-analysis"><span class="header-section-number">1</span> Some analysis</a></li>
+  <li><a href="#reproducing-your-work" id="toc-reproducing-your-work" class="nav-link active" data-scroll-target="#reproducing-your-work"><span class="header-section-number">4.1</span> Reproducing your work</a></li>
+  <li><a href="#raw-data" id="toc-raw-data" class="nav-link" data-scroll-target="#raw-data"><span class="header-section-number">4.2</span> Raw data</a></li>
+  <li><a href="#git-version-control" id="toc-git-version-control" class="nav-link" data-scroll-target="#git-version-control"><span class="header-section-number">4.3</span> Git version control</a></li>
+  <li><a href="#conda" id="toc-conda" class="nav-link" data-scroll-target="#conda"><span class="header-section-number">4.4</span> Conda</a></li>
+  <li><a href="#gwf" id="toc-gwf" class="nav-link" data-scroll-target="#gwf"><span class="header-section-number">4.5</span> GWF</a></li>
+  <li><a href="#jupyter" id="toc-jupyter" class="nav-link" data-scroll-target="#jupyter"><span class="header-section-number">4.6</span> Jupyter</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">4.7</span> Quarto</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Some analysis</h1>
+<h1 class="title"><span id="sec-reproducible-research" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reproducible research</span></span></h1>
 </div>
 
 
@@ -277,30 +264,88 @@
   </div>
   
 
-</header>     <section id="some-analysis" class="level1 page-columns page-full" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Some analysis</h1>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.plot([random.random() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)]) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-line-plot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="01_notebook_files/figure-html/fig-line-plot-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1.1: Line plot of random points. bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</figcaption>
-</figure>
+</header>
+
+<p>Reproducible research refers to the idea that the results of a research study can be duplicated or reproduced by other researchers. In the context of scientific and academic research, it means that the data, methods, and code used in a study are made available to others, allowing them to replicate the study’s findings. The goal is to ensure transparency, verifiability, and the ability to build upon existing work.</p>
+<p>To me, the advice that best guides reproducibility is to remember that “you should not save your results, you should save how you made them”. If you completely document how your results are produced, they can always be generated a new - by you or anywone else.</p>
+<p><strong>Specify raw data:</strong><br>
+Report the location and version of the raw data that serve as input to your analysis.</p>
+<p><strong>Define dependencies:</strong><br>
+Employing tools like Conda define the dependencies of your of your project, ensuring that others can run the same code with the same dependencies.</p>
+<p><strong>Version control:</strong><br>
+Using version control systems like Git to track changes to code and documentation over time. This helps in understanding the evolution of the research and facilitates collaboration. It also allows you to tag the the state of your repository upon publication, so you can keep working on it later without disrupting its state at publication.</p>
+<p><strong>Pipeline the steps of your project:</strong><br>
+Pipeline the steps of the computationally demanding part of your analysis in executable workflows using cluster workflow tools like <a href="https://gwf.app/">GWF</a>. This ensures that interdependent steps are run in the right order and rerun if necessary.</p>
+<p><strong>Make your analysis executable:</strong><br>
+Use <a href="https://jupyter.org/">Jupyter</a> notebooks to assemble the code, ducumentation, and figures relevant to each part of your subsequent analysis. That way your analysis is what is produced by running your notebooks in order, no more, no less.</p>
+<p><strong>Make your reporting executable:</strong><br>
+Compile your manuscript and any supplementary ducumemnts by linking to figures and results in your notebooks. This is easily done using tools like <a href="https://quarto.org/">Quarto</a></p>
+<p><strong>Make your entire project publically available:</strong><br>
+Making your repository publically available on GitHub. In addition to the scientific reguirement, reproducibility allows anyone to benefit from and build upon your work, greatly increasing its value.</p>
+<section id="reproducing-your-work" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="reproducing-your-work"><span class="header-section-number">4.1</span> Reproducing your work</h2>
+<p>If you follow the steps above, reproducing your results would only entail the following steps:</p>
+<ol type="1">
+<li>Retrieve the raw data in the specified version.</li>
+<li>Clone your Git repository.</li>
+<li>Create the conda environment from the <code>environment.yml</code> file.</li>
+<li>Run GWF workflow on a compute cluster for the computationally demanding parts of your analysis.</li>
+<li>Run the Jupyter notebooks in the specified order.</li>
+<li>Run Quarto on the resulting state of the repository to build the manuscript and supplementary information.</li>
+</ol>
+<p>Below I will go over how to organize your project so that these steps also contribute to makeing your own life easier.</p>
+</section>
+<section id="raw-data" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="raw-data"><span class="header-section-number">4.2</span> Raw data</h2>
+<p>Separate folder</p>
+<p>read only</p>
+</section>
+<section id="git-version-control" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="git-version-control"><span class="header-section-number">4.3</span> Git version control</h2>
+<p>In the world of data projects, there are three kinds of data files.</p>
+<p><strong>Type 1 files:</strong> Files representing the input to your project: sequencing reads, genomes, genotypes, etc. These are usually difficult or expensive to reproduce and once made they never change. They are often too large to fit on GitHub, so they are saved (and backed up) indefinitely on the cluster, and can be distributed upon request to other researchers that want to replicate your analysis. Often the data is only local copy of data also available in a public database. You can put such files in the <code>data</code> folder of your repository on the cluster, but unless they are very small, do not <code>git add</code> these files to Git control.</p>
+<p><strong>Type 2 files:</strong> Files representing your work and the results from the project: documentation, scripts, code, gwf workflows, notebooks, plots, tables, etc. These files are usually as small as they are precious and they are the ones you add to your Git repository and puth to GitHub every time you change them. These files are <code>workflow.py</code>, and files you put in the <code>binder</code>, <code>scripts</code>, <code>notebooks</code>, <code>results</code>, <code>figures</code>, and <code>reports</code> folders.</p>
+<p><strong>Type 3 files:</strong> Files representing intermediary steps to get from files of type 1 to files of type 2. These can be large and many and often most of the harddisk space consumed by your project. However, they are easily regenerated if your project is reproducible. So type 3 files need <em>not</em> be saved indefinitely and they should <em>not</em> be added to your Git repository. In fact, type 3 files should be deleted as soon as the project is finished. All such files must be put in the <code>steps</code> folder or in folders inside the <code>steps</code> folder. This way, removing <em>all</em> type 3 files is safely done by deleting the content of the <code>steps</code> folder.</p>
+</section>
+<section id="conda" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="conda"><span class="header-section-number">4.4</span> Conda</h2>
+<p>When you create your conda environment, and whenever you install new packages, you should update the <code>environment.yml</code> file in the <code>binder</code> directory. That way the specification of your environment is always up to date and allows anyone to create the conda environment required to run your analysis You do it by running this command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="at">-f</span> ./binder/environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Supervisor note
 </div>
 </div>
-</div></div>
+<div class="callout-body-container callout-body">
+<p>This also makes it easy to create a binder for playing with the students notebooks without interfering with the project. Go to <a href="https://mybinder.org/">Binder</a> and fill in the “https” address of the student repository: E.g., “https://github.com/username/birc-project”.</p>
+</div>
+</div>
+</section>
+<section id="gwf" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="gwf"><span class="header-section-number">4.5</span> GWF</h2>
+<p>https://gwf.app/</p>
+</section>
+<section id="jupyter" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="jupyter"><span class="header-section-number">4.6</span> Jupyter</h2>
+<p>placeholder notebooks in the notebooks <code>folder</code></p>
+<p>name them so they sort lexicographically: <code>01_first_analysis.ipynb</code>, <code>02_second_analysis.ipynb</code>.</p>
+</section>
+<section id="quarto" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="quarto"><span class="header-section-number">4.7</span> Quarto</h2>
+<p>Markdown / Qmarkdown / Notebooks</p>
+<p>the _quarto.yml file</p>
+<p>rendering</p>
+<p>at the project end set output-dir to docs, render the whole thing and add docs to repository</p>
 
 
 </section>
-     </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -532,19 +577,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  <nav class="page-navigation">
+</script>
+<nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../guides/reproducible.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Reproducible research</span></span>
+      <a href="../guides/cluster_setup.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Cluster set up</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../notebooks/02_notebook.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Some other analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../notebooks/01_notebook.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Some analysis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
-</div> <!-- /content --> 
-  
+</div> <!-- /content -->
+
+
 
 </body></html>
