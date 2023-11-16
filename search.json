@@ -70,53 +70,60 @@
     "text": "3.5 Create a conda environment\nLog in to the cluster and run this command to create a conda environment for your project on the cluster. This environment should contain the packages that you need for your project.\nCreate your environment like this:\nconda env create -y -f binder/environment.yml\nYou probably end up needing more packages than is initially included, you can easily install them later. E.g., to see how to install biopython using conda, just google “conda biopython”. The top link instructs you to install it like this: conda install -c conda-forge biopython.\nImportant: Whenever you log into the cluster to work on your project, you should activate your birc-project environment like this:\nconda activate birc-project\nWhen your environment is active, it says (birc-project) on the command prompt instead of (base).\n\n3.5.1 Set up Jupyter\n\nJupyter is a notebook environment where you can easily combine text, code, and plots. Using the slurm-jupyter tool, you can run a jupyter notebook on the cluster but see it in the browser on your own machine. That way, your analysis runs on the cluster file system where your data is but the notebook interface is sent to your browser window.\nBefore you can connect to a jupyter session on the cluster, you need to do a bit of configuration of the jupyter settings on the cluster. slurm-jupyter comes with script that automates that procedure. Just log into the cluster, activate your environment, and run:\nconfig-slurm-jupyter.sh\nThe script will ask for a lot of information. You can just press Enter for all of them except when prompted for what password you want to use: Then, you must type your cluster password.\n\n\n3.5.2 Visual Studio Code\n\nIf you did not do so when you installed Anaconda, you should download and install Visual Studio Code. VScode is great for developing scripts and editing text files. Once you have installed VS code, you should install the “Remote Development” extension. You do that by clicking the funny squares in the left bar and search for “Remote Development”. Once installed, you can click the small green square in the lower-left corner to connect to the cluster. Select “Connect current window to host” then “Add new SSH host”, then type &lt;username&gt;@login.genome.au.dk, then select the config file .ssh/config. Now you can click the small green square in the lower-left corner to connect to the cluster by selecting login.genome.au.dk. It may take a bit, but once it is done installing a remote server, you will have access to the files in your home folder on the cluster.\n\n\n3.5.3 How to run a Jupyter notebook on the cluster\nJupyter runs best in the Chrome browser or Safari on Mac. For the best experience, install that before you go on. It does not need to be your default browser. slurm-jupyter will use it anyway. Now make sure you are on your own machine and that your popgen environment is activated. Then run this command to start a jupyter notebook on the cluster and send the display to your browser:\nslurm-jupyter -C -u &lt;cluster_user_name&gt; -A &lt;projectfolder&lt;&gt; -e birc-project\n(replace &lt;cluster_user_name&gt; with your cluster user name, &lt;projectfolder&gt; with your project folder name.\nWatch the terminal to see what is going on. After a while, a jupyter notebook should show up in your browser window. The first time you do this, your browser may refuse to show jupyter because the connection is unsafe. In Safari you are prompted with this winidow where you click “details”:\n\nThen you get this window and click “visit this website”:\n\nIn Chrome, you can simply type the characters “thisisunsafe” while in the Chrome window:\n\nOnce ready, jupyter may ask for your cluster password. To close the jupyter notebook, press Ctrl-c in the terminal. Closing the browser window does not close down the jupyter on the cluster. You can read this tutorial to learn how to use a jupyter notebook.\n\n\n3.5.4 Running interactive commands on the cluster\nWhen you log into the cluster, you land on the “front-end” of the cluster. Think of it as the lobby of a giant hotel. If you execute the hostname command, you will get fe-open-01. fe1 is the name of the front-end machine. The “front-end” is a single machine shared by anyone who logs in. So you cannot run resource-intensive jobs there, but quick commands are ok. Commands that finish in less than ten seconds are ok. In the exercises for this course, you will run software that takes a much longer time to finish. So you need one of the computing machines on the cluster, so you can work on that instead. You ask for a computing machine by running this command:\nsrun --mem-per-cpu=1g --time=3:00:00 --account=&lt;projectfolder&gt; --pty bash\nThat says that you need at most one gigabyte of memory, that you need it for at most three hours (the duration of the exercise), and that the computing expenses should be billed to the project &lt;projectfolder&gt;. When you execute the command, your terminal will say “srun: job 40924828 queued and waiting for resources”. That means that you are waiting for a machine. Once it prints “srun: job 40924828 has been allocated resources”, you have been logged into a computing node. If you execute the hostname command, you will get something like s05n20. s05n20 is a computing machine. The same way you moved from your own computer to front-end machine of the cluster by logging in using ssh, the command above moves you from the front-end to a compute machine. Now you can execute any command you like without causing trouble for anyone.\nNow try to log out of the compute node by executing the exit command or by pressing Ctrl-d. If you execute the hostname command again, you will get fe1.genomedk.net showing that you are back at the front-end machine.\n\n\n3.5.5 Queueing commands on the cluster\nFor non-interactive work, it is better to submit your command as a job to the cluster. When you do that, the job gets queued along with many other jobs, and as soon as the requested resources are available on the cluster, the job will start on one the many many machines. To submit a job, you must first create a file (a “batch script”) that contains both the requested computer resources and the command you want to run.\nCreate a file called myscript.sh with exactly this content:\n#!/bin/bash\n#SBATCH --mem=1gb\n#SBATCH --time=01:00:00\n#SBATCH --account=&lt;projectfolder&gt;\n#SBATCH --job-name=firstjob\n\necho \"I can submit cluster jobs now!\" &gt; success.txt\n(replace &lt;projectfolder&gt; with your project folder name)\nThe first line says this is a bash script, the lines following three lines say that your job needs at most one gigabyte of memory, will run for at most one hour, that the expenses should be billed to the project &lt;projectfolder&gt;. The fourth line gives the name of the job. Here we have called it firstjob, but you should name it something sensible.\nYou submit the job using the sbatch command:\nsbatch myscript.sh\nNow your job is queued. Use the mj command to see what jobs you have queued or running. That will show something like this:\n                                                                        Alloc\nJob ID           Username Queue    Jobname    SessID NDS  S Elap Time   nodes\n---------------- -------- -------- ---------- ------ ---  - ----------  -----\n34745986         kmt      normal   firstjob       --   1  R 0-00:19:27  s03n56\nIf you want to cancel this job before it finishes, you can use the scancel command:\nscancel 34745986\nOnce your job finishes, it has created the file success.txt and written “I can submit cluster jobs now!” to it. So see that you can use the cat command:\ncat success.txt\nWhen you a program or script on the command line, it usually also prints some information in the terminal. When you run a job on the cluster there is no terminal to print to. Instead, this is written to two files that you can read when the job finishes. In this case, the fiels are called firstjob.stdout and firstjob.stderr. To see what is in them, you can use the cat command:\ncat firstjob.stdout\nand\ncat firstjob.stderr\nThat is basically it.\n\n\n3.5.6 How to copy files to and from the cluster\nYou may need to transfer files back and forth between your own machine and the cluster. To copy a file called file in a directory called dir on the cluster to the current folder on your own machine, you can use the scp command:\nscp &lt;cluster_user_name&gt;@login.genome.au.dk:dir/file .\nTo copy a file called file in the current folder on your own machine to a folder called dir on the cluster, you do this:\nscp ./file &lt;cluster_user_name&gt;@login.genome.au.dk:dir/"
   },
   {
+    "objectID": "guides/reproducible.html#specify-raw-input-data",
+    "href": "guides/reproducible.html#specify-raw-input-data",
+    "title": "4  Reproducible research",
+    "section": "4.1 Specify raw input data",
+    "text": "4.1 Specify raw input data\nReport the location and version of the raw data that serve as input to your analysis. Make sure this data is “read only” so that onone accidentally modifies or deletes it. You can do that like this:\nchmod a=r important_input_file.txt\nor recursively for an entire folder:\nchmod -R a=r input_file_folder"
+  },
+  {
+    "objectID": "guides/reproducible.html#define-dependencies",
+    "href": "guides/reproducible.html#define-dependencies",
+    "title": "4  Reproducible research",
+    "section": "4.2 Define dependencies",
+    "text": "4.2 Define dependencies\nEmploying tools like Conda define the dependencies of your of your project, ensuring that others can run the same code with the same dependencies.\nWhen you create your conda environment, and whenever you install new packages, you should update the environment.yml file in the binder directory. That way the specification of your environment is always up to date and allows anyone to create the conda environment required to run your analysis You do it by running this command:\nconda env export --from-history -f ./binder/environment.yml"
+  },
+  {
+    "objectID": "guides/reproducible.html#use-version-control",
+    "href": "guides/reproducible.html#use-version-control",
+    "title": "4  Reproducible research",
+    "section": "4.3 Use version control",
+    "text": "4.3 Use version control\nUsing version control systems like Git to track changes to code and documentation over time. This helps in understanding the evolution of the research and facilitates collaboration. It also allows you to tag the the state of your repository upon publication, so you can keep working on it later without disrupting its state at publication.\nIn the world of data projects, there are three kinds of data files.\nType 1 files: Files representing the input to your project: sequencing reads, genomes, genotypes, etc. These are usually difficult or expensive to reproduce and once made they never change. They are often too large to fit on GitHub, so they are saved (and backed up) indefinitely on the cluster, and can be distributed upon request to other researchers that want to replicate your analysis. Often the data is only local copy of data also available in a public database. You can put such files in the data folder of your repository on the cluster, but unless they are very small, do not git add these files to Git control.\nType 2 files: Files representing your work and the results from the project: documentation, scripts, code, gwf workflows, notebooks, plots, tables, etc. These files are usually as small as they are precious and they are the ones you add to your Git repository and puth to GitHub every time you change them. These files are workflow.py, and files you put in the binder, scripts, notebooks, results, figures, and reports folders.\nType 3 files: Files representing intermediary steps to get from files of type 1 to files of type 2. These can be large and many and often most of the harddisk space consumed by your project. However, they are easily regenerated if your project is reproducible. So type 3 files need not be saved indefinitely and they should not be added to your Git repository. In fact, type 3 files should be deleted as soon as the project is finished. All such files must be put in the steps folder or in folders inside the steps folder. This way, removing all type 3 files is safely done by deleting the content of the steps folder."
+  },
+  {
+    "objectID": "guides/reproducible.html#make-computatioal-steps-an-executable-workflow",
+    "href": "guides/reproducible.html#make-computatioal-steps-an-executable-workflow",
+    "title": "4  Reproducible research",
+    "section": "4.4 Make computatioal steps an executable workflow",
+    "text": "4.4 Make computatioal steps an executable workflow\nhttps://gwf.app/\nPipeline the steps of the computationally demanding part of your analysis in executable workflows using cluster workflow tools like GWF. This ensures that interdependent steps are run in the right order and rerun if necessary."
+  },
+  {
+    "objectID": "guides/reproducible.html#make-your-analysis-executable",
+    "href": "guides/reproducible.html#make-your-analysis-executable",
+    "title": "4  Reproducible research",
+    "section": "4.5 Make your analysis executable",
+    "text": "4.5 Make your analysis executable\nUse Jupyter notebooks to assemble the code, ducumentation, and figures relevant to each part of your subsequent analysis. That way your analysis is what is produced by running your notebooks in order, no more, no less. placeholder notebooks in the notebooks folder\nname them so they sort lexicographically: 01_first_analysis.ipynb, 02_second_analysis.ipynb."
+  },
+  {
+    "objectID": "guides/reproducible.html#make-your-reporting-executable",
+    "href": "guides/reproducible.html#make-your-reporting-executable",
+    "title": "4  Reproducible research",
+    "section": "4.6 Make your reporting executable",
+    "text": "4.6 Make your reporting executable\nCompile your manuscript and any supplementary ducumemnts by linking to figures and results in your notebooks. This is easily done using tools like Quarto\nMarkdown / Qmarkdown / Notebooks\nthe _quarto.yml file\nrendering\nat the project end set output-dir to docs, render the whole thing and add docs to repository"
+  },
+  {
+    "objectID": "guides/reproducible.html#make-your-entire-project-publicly-available",
+    "href": "guides/reproducible.html#make-your-entire-project-publicly-available",
+    "title": "4  Reproducible research",
+    "section": "4.7 Make your entire project publicly available",
+    "text": "4.7 Make your entire project publicly available\nMaking your repository publically available on GitHub. In addition to the scientific reguirement, reproducibility allows anyone to benefit from and build upon your work, greatly increasing its value."
+  },
+  {
     "objectID": "guides/reproducible.html#reproducing-your-work",
     "href": "guides/reproducible.html#reproducing-your-work",
     "title": "4  Reproducible research",
-    "section": "4.1 Reproducing your work",
-    "text": "4.1 Reproducing your work\nIf you follow the steps above, reproducing your results would only entail the following steps:\n\nRetrieve the raw data in the specified version.\nClone your Git repository.\nCreate the conda environment from the environment.yml file.\nRun GWF workflow on a compute cluster for the computationally demanding parts of your analysis.\nRun the Jupyter notebooks in the specified order.\nRun Quarto on the resulting state of the repository to build the manuscript and supplementary information.\n\nBelow I will go over how to organize your project so that these steps also contribute to makeing your own life easier."
-  },
-  {
-    "objectID": "guides/reproducible.html#raw-data",
-    "href": "guides/reproducible.html#raw-data",
-    "title": "4  Reproducible research",
-    "section": "4.2 Raw data",
-    "text": "4.2 Raw data\nSeparate folder\nread only"
-  },
-  {
-    "objectID": "guides/reproducible.html#git-version-control",
-    "href": "guides/reproducible.html#git-version-control",
-    "title": "4  Reproducible research",
-    "section": "4.3 Git version control",
-    "text": "4.3 Git version control\nIn the world of data projects, there are three kinds of data files.\nType 1 files: Files representing the input to your project: sequencing reads, genomes, genotypes, etc. These are usually difficult or expensive to reproduce and once made they never change. They are often too large to fit on GitHub, so they are saved (and backed up) indefinitely on the cluster, and can be distributed upon request to other researchers that want to replicate your analysis. Often the data is only local copy of data also available in a public database. You can put such files in the data folder of your repository on the cluster, but unless they are very small, do not git add these files to Git control.\nType 2 files: Files representing your work and the results from the project: documentation, scripts, code, gwf workflows, notebooks, plots, tables, etc. These files are usually as small as they are precious and they are the ones you add to your Git repository and puth to GitHub every time you change them. These files are workflow.py, and files you put in the binder, scripts, notebooks, results, figures, and reports folders.\nType 3 files: Files representing intermediary steps to get from files of type 1 to files of type 2. These can be large and many and often most of the harddisk space consumed by your project. However, they are easily regenerated if your project is reproducible. So type 3 files need not be saved indefinitely and they should not be added to your Git repository. In fact, type 3 files should be deleted as soon as the project is finished. All such files must be put in the steps folder or in folders inside the steps folder. This way, removing all type 3 files is safely done by deleting the content of the steps folder."
-  },
-  {
-    "objectID": "guides/reproducible.html#conda",
-    "href": "guides/reproducible.html#conda",
-    "title": "4  Reproducible research",
-    "section": "4.4 Conda",
-    "text": "4.4 Conda\nWhen you create your conda environment, and whenever you install new packages, you should update the environment.yml file in the binder directory. That way the specification of your environment is always up to date and allows anyone to create the conda environment required to run your analysis You do it by running this command:\nconda env export --from-history -f ./binder/environment.yml\n\n\n\n\n\n\nSupervisor note\n\n\n\nThis also makes it easy to create a binder for playing with the students notebooks without interfering with the project. Go to Binder and fill in the “https” address of the student repository: E.g., “https://github.com/username/birc-project”."
-  },
-  {
-    "objectID": "guides/reproducible.html#gwf",
-    "href": "guides/reproducible.html#gwf",
-    "title": "4  Reproducible research",
-    "section": "4.5 GWF",
-    "text": "4.5 GWF\nhttps://gwf.app/"
-  },
-  {
-    "objectID": "guides/reproducible.html#jupyter",
-    "href": "guides/reproducible.html#jupyter",
-    "title": "4  Reproducible research",
-    "section": "4.6 Jupyter",
-    "text": "4.6 Jupyter\nplaceholder notebooks in the notebooks folder\nname them so they sort lexicographically: 01_first_analysis.ipynb, 02_second_analysis.ipynb."
-  },
-  {
-    "objectID": "guides/reproducible.html#quarto",
-    "href": "guides/reproducible.html#quarto",
-    "title": "4  Reproducible research",
-    "section": "4.7 Quarto",
-    "text": "4.7 Quarto\nMarkdown / Qmarkdown / Notebooks\nthe _quarto.yml file\nrendering\nat the project end set output-dir to docs, render the whole thing and add docs to repository"
+    "section": "4.8 Reproducing your work",
+    "text": "4.8 Reproducing your work\nIf you follow the steps above, reproducing your results would only entail the following steps:\n\nRetrieve the raw data in the specified version.\nClone your Git repository.\nCreate the conda environment from the environment.yml file.\nRun GWF workflow on a compute cluster for the computationally demanding parts of your analysis.\nRun the Jupyter notebooks in the specified order.\nRun Quarto on the resulting state of the repository to build the manuscript and supplementary information.\n\nBelow I will go over how to organize your project so that these steps also contribute to makeing your own life easier."
   },
   {
     "objectID": "notebooks/01_notebook.html",

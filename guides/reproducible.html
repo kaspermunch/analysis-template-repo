@@ -236,13 +236,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#reproducing-your-work" id="toc-reproducing-your-work" class="nav-link active" data-scroll-target="#reproducing-your-work"><span class="header-section-number">4.1</span> Reproducing your work</a></li>
-  <li><a href="#raw-data" id="toc-raw-data" class="nav-link" data-scroll-target="#raw-data"><span class="header-section-number">4.2</span> Raw data</a></li>
-  <li><a href="#git-version-control" id="toc-git-version-control" class="nav-link" data-scroll-target="#git-version-control"><span class="header-section-number">4.3</span> Git version control</a></li>
-  <li><a href="#conda" id="toc-conda" class="nav-link" data-scroll-target="#conda"><span class="header-section-number">4.4</span> Conda</a></li>
-  <li><a href="#gwf" id="toc-gwf" class="nav-link" data-scroll-target="#gwf"><span class="header-section-number">4.5</span> GWF</a></li>
-  <li><a href="#jupyter" id="toc-jupyter" class="nav-link" data-scroll-target="#jupyter"><span class="header-section-number">4.6</span> Jupyter</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">4.7</span> Quarto</a></li>
+  <li><a href="#specify-raw-input-data" id="toc-specify-raw-input-data" class="nav-link active" data-scroll-target="#specify-raw-input-data"><span class="header-section-number">4.1</span> Specify raw input data</a></li>
+  <li><a href="#define-dependencies" id="toc-define-dependencies" class="nav-link" data-scroll-target="#define-dependencies"><span class="header-section-number">4.2</span> Define dependencies</a></li>
+  <li><a href="#use-version-control" id="toc-use-version-control" class="nav-link" data-scroll-target="#use-version-control"><span class="header-section-number">4.3</span> Use version control</a></li>
+  <li><a href="#make-computatioal-steps-an-executable-workflow" id="toc-make-computatioal-steps-an-executable-workflow" class="nav-link" data-scroll-target="#make-computatioal-steps-an-executable-workflow"><span class="header-section-number">4.4</span> Make computatioal steps an executable workflow</a></li>
+  <li><a href="#make-your-analysis-executable" id="toc-make-your-analysis-executable" class="nav-link" data-scroll-target="#make-your-analysis-executable"><span class="header-section-number">4.5</span> Make your analysis executable</a></li>
+  <li><a href="#make-your-reporting-executable" id="toc-make-your-reporting-executable" class="nav-link" data-scroll-target="#make-your-reporting-executable"><span class="header-section-number">4.6</span> Make your reporting executable</a></li>
+  <li><a href="#make-your-entire-project-publicly-available" id="toc-make-your-entire-project-publicly-available" class="nav-link" data-scroll-target="#make-your-entire-project-publicly-available"><span class="header-section-number">4.7</span> Make your entire project publicly available</a></li>
+  <li><a href="#reproducing-your-work" id="toc-reproducing-your-work" class="nav-link" data-scroll-target="#reproducing-your-work"><span class="header-section-number">4.8</span> Reproducing your work</a></li>
   </ul>
 </nav>
     </div>
@@ -266,24 +267,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Reproducible research refers to the idea that the results of a research study can be duplicated or reproduced by other researchers. In the context of scientific and academic research, it means that the data, methods, and code used in a study are made available to others, allowing them to replicate the study’s findings. The goal is to ensure transparency, verifiability, and the ability to build upon existing work.</p>
-<p>To me, the advice that best guides reproducibility is to remember that “you should not save your results, you should save how you made them”. If you completely document how your results are produced, they can always be generated a new - by you or anywone else.</p>
-<p><strong>Specify raw data:</strong><br>
-Report the location and version of the raw data that serve as input to your analysis.</p>
-<p><strong>Define dependencies:</strong><br>
-Employing tools like Conda define the dependencies of your of your project, ensuring that others can run the same code with the same dependencies.</p>
-<p><strong>Version control:</strong><br>
-Using version control systems like Git to track changes to code and documentation over time. This helps in understanding the evolution of the research and facilitates collaboration. It also allows you to tag the the state of your repository upon publication, so you can keep working on it later without disrupting its state at publication.</p>
-<p><strong>Pipeline the steps of your project:</strong><br>
-Pipeline the steps of the computationally demanding part of your analysis in executable workflows using cluster workflow tools like <a href="https://gwf.app/">GWF</a>. This ensures that interdependent steps are run in the right order and rerun if necessary.</p>
-<p><strong>Make your analysis executable:</strong><br>
-Use <a href="https://jupyter.org/">Jupyter</a> notebooks to assemble the code, ducumentation, and figures relevant to each part of your subsequent analysis. That way your analysis is what is produced by running your notebooks in order, no more, no less.</p>
-<p><strong>Make your reporting executable:</strong><br>
-Compile your manuscript and any supplementary ducumemnts by linking to figures and results in your notebooks. This is easily done using tools like <a href="https://quarto.org/">Quarto</a></p>
-<p><strong>Make your entire project publically available:</strong><br>
-Making your repository publically available on GitHub. In addition to the scientific reguirement, reproducibility allows anyone to benefit from and build upon your work, greatly increasing its value.</p>
-<section id="reproducing-your-work" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="reproducing-your-work"><span class="header-section-number">4.1</span> Reproducing your work</h2>
+<p>Reproducible research refers to the idea that the results of a research study can be duplicated or reproduced by other researchers. In the context of scientific and academic research, it means that the data, methods, and code used in a study are made available to others, allowing them to replicate the study’s findings. The goal is to ensure transparency, verifiability, and the ability to build upon existing work. To me, the what best guides reproducibility is to always keep in mind that:</p>
+<p><strong>You should not save your results, you should save how you made them</strong>.</p>
+<p>If you completely document how your results are produced, they can always be generated a new - by you or anywone else.</p>
+<p>Still, even with the best of intentions, simply recording the commands you used and writing down what you did rarely suffice in practise: You may forget to document something, things you feel are implicit may not be to the reader, you may put something down in the wrong order, you may forget your last minute install of a library in an updated version, and so on … Any such such thing will leave anyone trying to reproduce your work stuck, not knowing what to do. Even if they figure out a way to proceed, it may not be the way you origiginally did, defeating the purpuse of reprudcing. This page takes you through the approach to reproducibility we use in our group and teaches you how to follow the following seven rules:</p>
+<ol type="1">
+<li>Define version and location of data (if any) that serve as raw input to your analysis.</li>
+<li>Use <code>conda</code> to define which external tools and libraries your analysis depend on.</li>
+<li>Use <code>git</code> for version control and backup and host your repository at the <a href="https://github.com/munch-lab">group’s home on GitHub</a></li>
+<li>Use <code>gwf</code> to pipeline your computationally demanding steps in an executable workflow.</li>
+<li>Use executable <code>jupyter</code> notebooks for your experiments, plots, analyses, statistical tests, and interpretation.</li>
+<li>Use <code>quarto</code> to assemble reports or manuscripts that link directly to results in your notebooks.</li>
+<li>Make your GitHub repository public and render your project as web pages on the <a href="">group web page</a></li>
+</ol>
+<section id="specify-raw-input-data" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="specify-raw-input-data"><span class="header-section-number">4.1</span> Specify raw input data</h2>
+<p>Report the location and version of the raw data that serve as input to your analysis. Make sure this data is “read only” so that onone accidentally modifies or deletes it. You can do that like this:</p>
+<pre><code>chmod a=r important_input_file.txt</code></pre>
+<p>or recursively for an entire folder:</p>
+<pre><code>chmod -R a=r input_file_folder</code></pre>
+</section>
+<section id="define-dependencies" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="define-dependencies"><span class="header-section-number">4.2</span> Define dependencies</h2>
+<p>Employing tools like Conda define the dependencies of your of your project, ensuring that others can run the same code with the same dependencies.</p>
+<p>When you create your conda environment, and whenever you install new packages, you should update the <code>environment.yml</code> file in the <code>binder</code> directory. That way the specification of your environment is always up to date and allows anyone to create the conda environment required to run your analysis You do it by running this command:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="at">-f</span> ./binder/environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="use-version-control" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="use-version-control"><span class="header-section-number">4.3</span> Use version control</h2>
+<p>Using version control systems like Git to track changes to code and documentation over time. This helps in understanding the evolution of the research and facilitates collaboration. It also allows you to tag the the state of your repository upon publication, so you can keep working on it later without disrupting its state at publication.</p>
+<p>In the world of data projects, there are three kinds of data files.</p>
+<p><strong>Type 1 files:</strong> Files representing the input to your project: sequencing reads, genomes, genotypes, etc. These are usually difficult or expensive to reproduce and once made they never change. They are often too large to fit on GitHub, so they are saved (and backed up) indefinitely on the cluster, and can be distributed upon request to other researchers that want to replicate your analysis. Often the data is only local copy of data also available in a public database. You can put such files in the <code>data</code> folder of your repository on the cluster, but unless they are very small, do not <code>git add</code> these files to Git control.</p>
+<p><strong>Type 2 files:</strong> Files representing your work and the results from the project: documentation, scripts, code, gwf workflows, notebooks, plots, tables, etc. These files are usually as small as they are precious and they are the ones you add to your Git repository and puth to GitHub every time you change them. These files are <code>workflow.py</code>, and files you put in the <code>binder</code>, <code>scripts</code>, <code>notebooks</code>, <code>results</code>, <code>figures</code>, and <code>reports</code> folders.</p>
+<p><strong>Type 3 files:</strong> Files representing intermediary steps to get from files of type 1 to files of type 2. These can be large and many and often most of the harddisk space consumed by your project. However, they are easily regenerated if your project is reproducible. So type 3 files need <em>not</em> be saved indefinitely and they should <em>not</em> be added to your Git repository. In fact, type 3 files should be deleted as soon as the project is finished. All such files must be put in the <code>steps</code> folder or in folders inside the <code>steps</code> folder. This way, removing <em>all</em> type 3 files is safely done by deleting the content of the <code>steps</code> folder.</p>
+</section>
+<section id="make-computatioal-steps-an-executable-workflow" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="make-computatioal-steps-an-executable-workflow"><span class="header-section-number">4.4</span> Make computatioal steps an executable workflow</h2>
+<p>https://gwf.app/</p>
+<p>Pipeline the steps of the computationally demanding part of your analysis in executable workflows using cluster workflow tools like <a href="https://gwf.app/">GWF</a>. This ensures that interdependent steps are run in the right order and rerun if necessary.</p>
+</section>
+<section id="make-your-analysis-executable" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="make-your-analysis-executable"><span class="header-section-number">4.5</span> Make your analysis executable</h2>
+<p>Use <a href="https://jupyter.org/">Jupyter</a> notebooks to assemble the code, ducumentation, and figures relevant to each part of your subsequent analysis. That way your analysis is what is produced by running your notebooks in order, no more, no less. placeholder notebooks in the notebooks <code>folder</code></p>
+<p>name them so they sort lexicographically: <code>01_first_analysis.ipynb</code>, <code>02_second_analysis.ipynb</code>.</p>
+</section>
+<section id="make-your-reporting-executable" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="make-your-reporting-executable"><span class="header-section-number">4.6</span> Make your reporting executable</h2>
+<p>Compile your manuscript and any supplementary ducumemnts by linking to figures and results in your notebooks. This is easily done using tools like <a href="https://quarto.org/">Quarto</a></p>
+<p>Markdown / Qmarkdown / Notebooks</p>
+<p>the _quarto.yml file</p>
+<p>rendering</p>
+<p>at the project end set output-dir to docs, render the whole thing and add docs to repository</p>
+</section>
+<section id="make-your-entire-project-publicly-available" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="make-your-entire-project-publicly-available"><span class="header-section-number">4.7</span> Make your entire project publicly available</h2>
+<p>Making your repository publically available on GitHub. In addition to the scientific reguirement, reproducibility allows anyone to benefit from and build upon your work, greatly increasing its value.</p>
+</section>
+<section id="reproducing-your-work" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="reproducing-your-work"><span class="header-section-number">4.8</span> Reproducing your work</h2>
 <p>If you follow the steps above, reproducing your results would only entail the following steps:</p>
 <ol type="1">
 <li>Retrieve the raw data in the specified version.</li>
@@ -294,52 +335,6 @@ Making your repository publically available on GitHub. In addition to the scient
 <li>Run Quarto on the resulting state of the repository to build the manuscript and supplementary information.</li>
 </ol>
 <p>Below I will go over how to organize your project so that these steps also contribute to makeing your own life easier.</p>
-</section>
-<section id="raw-data" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="raw-data"><span class="header-section-number">4.2</span> Raw data</h2>
-<p>Separate folder</p>
-<p>read only</p>
-</section>
-<section id="git-version-control" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="git-version-control"><span class="header-section-number">4.3</span> Git version control</h2>
-<p>In the world of data projects, there are three kinds of data files.</p>
-<p><strong>Type 1 files:</strong> Files representing the input to your project: sequencing reads, genomes, genotypes, etc. These are usually difficult or expensive to reproduce and once made they never change. They are often too large to fit on GitHub, so they are saved (and backed up) indefinitely on the cluster, and can be distributed upon request to other researchers that want to replicate your analysis. Often the data is only local copy of data also available in a public database. You can put such files in the <code>data</code> folder of your repository on the cluster, but unless they are very small, do not <code>git add</code> these files to Git control.</p>
-<p><strong>Type 2 files:</strong> Files representing your work and the results from the project: documentation, scripts, code, gwf workflows, notebooks, plots, tables, etc. These files are usually as small as they are precious and they are the ones you add to your Git repository and puth to GitHub every time you change them. These files are <code>workflow.py</code>, and files you put in the <code>binder</code>, <code>scripts</code>, <code>notebooks</code>, <code>results</code>, <code>figures</code>, and <code>reports</code> folders.</p>
-<p><strong>Type 3 files:</strong> Files representing intermediary steps to get from files of type 1 to files of type 2. These can be large and many and often most of the harddisk space consumed by your project. However, they are easily regenerated if your project is reproducible. So type 3 files need <em>not</em> be saved indefinitely and they should <em>not</em> be added to your Git repository. In fact, type 3 files should be deleted as soon as the project is finished. All such files must be put in the <code>steps</code> folder or in folders inside the <code>steps</code> folder. This way, removing <em>all</em> type 3 files is safely done by deleting the content of the <code>steps</code> folder.</p>
-</section>
-<section id="conda" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="conda"><span class="header-section-number">4.4</span> Conda</h2>
-<p>When you create your conda environment, and whenever you install new packages, you should update the <code>environment.yml</code> file in the <code>binder</code> directory. That way the specification of your environment is always up to date and allows anyone to create the conda environment required to run your analysis You do it by running this command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="at">-f</span> ./binder/environment.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Supervisor note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This also makes it easy to create a binder for playing with the students notebooks without interfering with the project. Go to <a href="https://mybinder.org/">Binder</a> and fill in the “https” address of the student repository: E.g., “https://github.com/username/birc-project”.</p>
-</div>
-</div>
-</section>
-<section id="gwf" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="gwf"><span class="header-section-number">4.5</span> GWF</h2>
-<p>https://gwf.app/</p>
-</section>
-<section id="jupyter" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="jupyter"><span class="header-section-number">4.6</span> Jupyter</h2>
-<p>placeholder notebooks in the notebooks <code>folder</code></p>
-<p>name them so they sort lexicographically: <code>01_first_analysis.ipynb</code>, <code>02_second_analysis.ipynb</code>.</p>
-</section>
-<section id="quarto" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="quarto"><span class="header-section-number">4.7</span> Quarto</h2>
-<p>Markdown / Qmarkdown / Notebooks</p>
-<p>the _quarto.yml file</p>
-<p>rendering</p>
-<p>at the project end set output-dir to docs, render the whole thing and add docs to repository</p>
 
 
 </section>
