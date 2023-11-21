@@ -35,233 +35,44 @@
     "text": "import matplotlib.pyplot as plt\nimport seaborn as sns\nsns.set()\nsns.set_style(\"whitegrid\")\nimport random\n\n\nplt.scatter([random.random() for i in range(100)],\n            [random.random() for i in range(100)]) ;\n\n\n\n\nFigure 2.1: Scatter plot of random points"
   },
   {
-    "objectID": "notebooks/jupyter_walk_through.html",
-    "href": "notebooks/jupyter_walk_through.html",
-    "title": "3  Jupyter lab",
-    "section": "",
-    "text": "4 Starting jupyter lab\nTerminal commands:\nIt then appears in your default browser.|\n- alks flaksjf laskjdf laskdfj\nasdflaksdfj\nPick the folder icon in the side pane menu on the left, click the big blue button and launch a notebook\nprint('hello world')\n\nhello world\nThis is formatted markdown\nThis is raw text\nprint(\"Move this cell somewhere\")\n\nMove this cell somewhere\nSome other cell\nThis is some more markdown with bold text and italics and showing that somthing is a code, like x = 2 + 2.\n%%html\n&lt;style&gt;\ntable {float:left}\n&lt;/style&gt;\nMake markdown cell and then drag an image into it:\nSome other cell\n! ls\n\n01_notebook.ipynb          README.md\n02_notebook.ipynb          jupyter_walk_through.ipynb\nFast computation using vectors and matrices\nlist1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\nlist2 = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]\n\nsummed = []\nfor i in range(len(list1)):\n    summed.append(list1[i] + list2[i])\nsummed\n\n[9, 9, 9, 9, 9, 9, 9, 9, 9, 9]\nFast computations on data tables (on top of Numpy).\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nsns.set_style(\"darkgrid\")\n\n# make graphics sharper on a good screen\nfrom matplotlib_inline.backend_inline import set_matplotlib_formats\nset_matplotlib_formats('retina', 'png')\nplt.scatter(penguins.bill_length_mm, penguins.flipper_length_mm) ;  # semi colon makes last value None\nsns.set_style(\"ticks\")\n# sns.set_style(\"darkgrid\")\n# sns.set_style(\"whitegrid\")\n# sns.set_style(\"white\")\n# sns.set_style(\"dark\")\n\nplt.scatter(penguins.bill_length_mm, penguins.flipper_length_mm)\nsns.despine()\nplt.hist(penguins.bill_length_mm) ;\nsns.scatterplot(data=penguins, x=\"bill_length_mm\", y=\"flipper_length_mm\") ;\nsns.scatterplot(data=penguins, x=\"bill_length_mm\", y=\"flipper_length_mm\", hue=\"species\") ;\nsns.scatterplot(data=penguins, x=\"bill_length_mm\", y=\"flipper_length_mm\", hue=\"species\", style=\"sex\") ;\nsns.scatterplot(data=penguins, x=\"bill_length_mm\", y=\"flipper_length_mm\", hue=\"species\", \n                style=\"sex\", size=\"body_mass_g\") ;\ndef legend_outside():\n    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)\nsns.scatterplot(data=penguins, x=\"bill_length_mm\", y=\"flipper_length_mm\", hue=\"species\", style=\"sex\", size=\"body_mass_g\") ;\n\nlegend_outside()\n\nplt.title(\"Penguin measurements\")\nplt.ylabel(\"flipper length (mm)\")\nplt.xlabel(\"bill length in (mm)\") ;\nWide format data:\npenguins[['bill_length_mm', 'bill_depth_mm']]\n\n\n\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\n\n\n\n\n0\n39.1\n18.7\n\n\n1\n39.5\n17.4\n\n\n2\n40.3\n18.0\n\n\n3\nNaN\nNaN\n\n\n4\n36.7\n19.3\n\n\n...\n...\n...\n\n\n339\nNaN\nNaN\n\n\n340\n46.8\n14.3\n\n\n341\n50.4\n15.7\n\n\n342\n45.2\n14.8\n\n\n343\n49.9\n16.1\n\n\n\n\n344 rows × 2 columns\nLong format data:\nlong_df = penguins.melt(value_vars=['bill_length_mm', 'bill_depth_mm'])\nlong_df\n\n\n\n\n\n\n\n\nvariable\nvalue\n\n\n\n\n0\nbill_length_mm\n39.1\n\n\n1\nbill_length_mm\n39.5\n\n\n2\nbill_length_mm\n40.3\n\n\n3\nbill_length_mm\nNaN\n\n\n4\nbill_length_mm\n36.7\n\n\n...\n...\n...\n\n\n683\nbill_depth_mm\nNaN\n\n\n684\nbill_depth_mm\n14.3\n\n\n685\nbill_depth_mm\n15.7\n\n\n686\nbill_depth_mm\n14.8\n\n\n687\nbill_depth_mm\n16.1\n\n\n\n\n688 rows × 2 columns\nlong format is required when you want a number of columns to appear as a “variable” in the plot. As in the example below where the color “variable” reflects whether the point is bill_depth_mm or bill_length_mm.\nRetain other information for each observation:\nlong_df = penguins.melt(id_vars=['species', 'body_mass_g', 'island'], value_vars=['bill_length_mm', 'bill_depth_mm'])\nlong_df\n\n\n\n\n\n\n\n\nspecies\nbody_mass_g\nisland\nvariable\nvalue\n\n\n\n\n0\nAdelie\n3750.0\nTorgersen\nbill_length_mm\n39.1\n\n\n1\nAdelie\n3800.0\nTorgersen\nbill_length_mm\n39.5\n\n\n2\nAdelie\n3250.0\nTorgersen\nbill_length_mm\n40.3\n\n\n3\nAdelie\nNaN\nTorgersen\nbill_length_mm\nNaN\n\n\n4\nAdelie\n3450.0\nTorgersen\nbill_length_mm\n36.7\n\n\n...\n...\n...\n...\n...\n...\n\n\n683\nGentoo\nNaN\nBiscoe\nbill_depth_mm\nNaN\n\n\n684\nGentoo\n4850.0\nBiscoe\nbill_depth_mm\n14.3\n\n\n685\nGentoo\n5750.0\nBiscoe\nbill_depth_mm\n15.7\n\n\n686\nGentoo\n5200.0\nBiscoe\nbill_depth_mm\n14.8\n\n\n687\nGentoo\n5400.0\nBiscoe\nbill_depth_mm\n16.1\n\n\n\n\n688 rows × 5 columns\nsns.scatterplot(data=long_df, x='body_mass_g', y='value', hue='variable', style='species')\nlegend_outside()\nsns.boxplot(data=long_df, x='species', y='value', hue='variable') ;\nsns.boxplot(data=long_df, x='variable', y='value', hue='species') ;\nsns.boxplot(data=long_df, x='species', y='value', hue='variable') ;\ng = sns.FacetGrid(penguins, col=\"island\")\ng ;\nMap plotting to each facet:\ng = sns.FacetGrid(penguins, col=\"island\", hue=\"species\") ;\ng.map(sns.scatterplot, \"bill_length_mm\", \"flipper_length_mm\") ;\nGrid of facets representing combinations of two variables:\ng = sns.FacetGrid(penguins, row=\"sex\", col=\"island\", hue=\"species\") ;\ng.map(sns.scatterplot, \"bill_length_mm\", \"flipper_length_mm\") ;\ng = sns.FacetGrid(penguins, row=\"sex\", col=\"island\", hue=\"species\") ;\ng.map(sns.regplot, \"bill_length_mm\", \"flipper_length_mm\") ;\nsns.lmplot(data=penguins, x=\"bill_length_mm\", y=\"flipper_length_mm\", row=\"sex\", col=\"island\", hue=\"species\", height=3) ;"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#menu-toolbar-context-menu",
-    "href": "notebooks/jupyter_walk_through.html#menu-toolbar-context-menu",
-    "title": "3  Jupyter lab",
-    "section": "9.1 Menu, Toolbar, Context menu",
-    "text": "9.1 Menu, Toolbar, Context menu"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#command-palette-commandctrl-shift-c",
-    "href": "notebooks/jupyter_walk_through.html#command-palette-commandctrl-shift-c",
-    "title": "3  Jupyter lab",
-    "section": "9.2 Command palette: Command/Ctrl Shift C",
-    "text": "9.2 Command palette: Command/Ctrl Shift C"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#keyboard-short-cuts-commandctrl-shift-h",
-    "href": "notebooks/jupyter_walk_through.html#keyboard-short-cuts-commandctrl-shift-h",
-    "title": "3  Jupyter lab",
-    "section": "9.3 Keyboard short-cuts: Command/Ctrl Shift H",
-    "text": "9.3 Keyboard short-cuts: Command/Ctrl Shift H"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#code-blocks",
-    "href": "notebooks/jupyter_walk_through.html#code-blocks",
-    "title": "3  Jupyter lab",
-    "section": "11.1 Code blocks",
-    "text": "11.1 Code blocks\n\nx = 0"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#last-value-is-displayed",
-    "href": "notebooks/jupyter_walk_through.html#last-value-is-displayed",
-    "title": "3  Jupyter lab",
-    "section": "11.2 Last value is displayed",
-    "text": "11.2 Last value is displayed\n\nx = 1\nx\n\n1"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#everything-is-one-python-process",
-    "href": "notebooks/jupyter_walk_through.html#everything-is-one-python-process",
-    "title": "3  Jupyter lab",
-    "section": "11.3 Everything is one Python process",
-    "text": "11.3 Everything is one Python process\n\nx += 1\nx\n\n2"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#restarting-the-kernel",
-    "href": "notebooks/jupyter_walk_through.html#restarting-the-kernel",
-    "title": "3  Jupyter lab",
-    "section": "11.4 Restarting the kernel",
-    "text": "11.4 Restarting the kernel"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#lists",
-    "href": "notebooks/jupyter_walk_through.html#lists",
-    "title": "3  Jupyter lab",
-    "section": "15.1 Lists",
-    "text": "15.1 Lists\n\nfoo\nbar\nbaz"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#numbered-lists",
-    "href": "notebooks/jupyter_walk_through.html#numbered-lists",
-    "title": "3  Jupyter lab",
-    "section": "15.2 Numbered lists",
-    "text": "15.2 Numbered lists\n\nfoo\nbar\nbaz"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#quotes",
-    "href": "notebooks/jupyter_walk_through.html#quotes",
-    "title": "3  Jupyter lab",
-    "section": "15.3 Quotes",
-    "text": "15.3 Quotes\n\nThis is a quote"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#formulas",
-    "href": "notebooks/jupyter_walk_through.html#formulas",
-    "title": "3  Jupyter lab",
-    "section": "15.4 Formulas",
-    "text": "15.4 Formulas\n\\(\\sum_{i=0}^n i\\)\n\nHTML"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#header-2",
-    "href": "notebooks/jupyter_walk_through.html#header-2",
-    "title": "3  Jupyter lab",
-    "section": "15.5 Header 2",
-    "text": "15.5 Header 2\n\n15.5.1 Header 3\n\n15.5.1.1 Header 4"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#formulas-1",
-    "href": "notebooks/jupyter_walk_through.html#formulas-1",
-    "title": "3  Jupyter lab",
-    "section": "15.6 Formulas",
-    "text": "15.6 Formulas\n\\(\\sum_{i=0}^n i\\)"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#tables",
-    "href": "notebooks/jupyter_walk_through.html#tables",
-    "title": "3  Jupyter lab",
-    "section": "15.7 Tables",
-    "text": "15.7 Tables\n\n\n\nName\nValue\n\n\n\n\nfoo\n2\n\n\nbar\n3"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#arrays",
-    "href": "notebooks/jupyter_walk_through.html#arrays",
-    "title": "3  Jupyter lab",
-    "section": "20.1 Arrays",
-    "text": "20.1 Arrays\n\nimport numpy as np\n\n\na = np.array(list1)\nb = np.array(list2)\na, b\n\n(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]))"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#broadcasting",
-    "href": "notebooks/jupyter_walk_through.html#broadcasting",
-    "title": "3  Jupyter lab",
-    "section": "20.2 Broadcasting",
-    "text": "20.2 Broadcasting\n\na + b\n\narray([9, 9, 9, 9, 9, 9, 9, 9, 9, 9])\n\n\n\na * b\n\narray([ 0,  8, 14, 18, 20, 20, 18, 14,  8,  0])\n\n\n\na - 10\n\narray([-10,  -9,  -8,  -7,  -6,  -5,  -4,  -3,  -2,  -1])\n\n\n\na.sum()\n\n45\n\n\n\na.mean()\n\n4.5"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#multidimentional-arrays",
-    "href": "notebooks/jupyter_walk_through.html#multidimentional-arrays",
-    "title": "3  Jupyter lab",
-    "section": "20.3 Multidimentional arrays",
-    "text": "20.3 Multidimentional arrays\n\nlist_of_lists = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nlist_of_lists\n\n[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n\n\n\nlist_of_lists[1][1]\n\n5\n\n\n\nmatrix = np.array(list_of_lists)\nmatrix\n\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])\n\n\n\nmatrix[1][1] # not efficient\n\n5\n\n\n\nmatrix[1, 1] # efficient\n\n5\n\n\n\nmatrix - 10\n\narray([[-9, -8, -7],\n       [-6, -5, -4],\n       [-3, -2, -1]])\n\n\n\nmatrix.sum()\n\n45\n\n\n\nlist_of_lists_of_lists = [[[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]]]\nlist_of_lists_of_lists\n\n[[[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]]]\n\n\n\ntensor = np.array(list_of_lists_of_lists)\ntensor\n\narray([[[1, 2, 3],\n        [4, 5, 6],\n        [7, 8, 9]],\n\n       [[1, 2, 3],\n        [4, 5, 6],\n        [7, 8, 9]]])\n\n\n\ntensor[1, 1, 1]\n\n5"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#dataframe",
-    "href": "notebooks/jupyter_walk_through.html#dataframe",
-    "title": "3  Jupyter lab",
-    "section": "21.1 DataFrame",
-    "text": "21.1 DataFrame\n\ndf = pd.DataFrame({'name': ['Mike', 'Mia', 'Jake'], 'weight': [82, 62, 75]})\ndf\n\n\n\n\n\n\n\n\nname\nweight\n\n\n\n\n0\nMike\n82\n\n\n1\nMia\n62\n\n\n2\nJake\n75\n\n\n\n\n\n\n\n\ntype(df)\n\npandas.core.frame.DataFrame\n\n\n\ndf = pd.DataFrame(dict(name=['Mike', 'Mia', 'Jake'], weight=[82, 62, 75]))\ndf\n\n\n\n\n\n\n\n\nname\nweight\n\n\n\n\n0\nMike\n82\n\n\n1\nMia\n62\n\n\n2\nJake\n75\n\n\n\n\n\n\n\n\nrecords = [('Mike', 82), ('Mia', 62), ('Jake', 75)]\n\ndf = pd.DataFrame().from_records(records, columns=['age', 'weight'])\ndf\n\n\n\n\n\n\n\n\nage\nweight\n\n\n\n\n0\nMike\n82\n\n\n1\nMia\n62\n\n\n2\nJake\n75\n\n\n\n\n\n\n\n\ndf.index\n\nRangeIndex(start=0, stop=3, step=1)\n\n\n\ndf.index.values\n\narray([0, 1, 2])\n\n\n\ndf.columns\n\nIndex(['age', 'weight'], dtype='object')\n\n\n\ndf.dtypes\n\nage       object\nweight     int64\ndtype: object\n\n\nAdd a column to an existing dataframe:\n\ndf['height'] = [182.5, 173.0, 192.5]\ndf\n\n\n\n\n\n\n\n\nage\nweight\nheight\n\n\n\n\n0\nMike\n82\n182.5\n\n\n1\nMia\n62\n173.0\n\n\n2\nJake\n75\n192.5\n\n\n\n\n\n\n\nAdd another, categorical, column:\n\ndf['sex'] = pd.Categorical(['male', 'female', 'male'], categories=['female', 'male'], ordered=True)\ndf\n\n\n\n\n\n\n\n\nage\nweight\nheight\nsex\n\n\n\n\n0\nMike\n82\n182.5\nmale\n\n\n1\nMia\n62\n173.0\nfemale\n\n\n2\nJake\n75\n192.5\nmale\n\n\n\n\n\n\n\n\ndf.dtypes\n\nage         object\nweight       int64\nheight     float64\nsex       category\ndtype: object\n\n\nA Series just wraps an array:\n\ndf.height.to_numpy()\n\narray([182.5, 173. , 192.5])"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#example-penguin-data-set",
-    "href": "notebooks/jupyter_walk_through.html#example-penguin-data-set",
-    "title": "3  Jupyter lab",
-    "section": "21.2 Example penguin data set",
-    "text": "21.2 Example penguin data set\n\nimport seaborn as sns\n\npenguins = sns.load_dataset('penguins')\n\n\npenguins\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n339\nGentoo\nBiscoe\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n340\nGentoo\nBiscoe\n46.8\n14.3\n215.0\n4850.0\nFemale\n\n\n341\nGentoo\nBiscoe\n50.4\n15.7\n222.0\n5750.0\nMale\n\n\n342\nGentoo\nBiscoe\n45.2\n14.8\n212.0\n5200.0\nFemale\n\n\n343\nGentoo\nBiscoe\n49.9\n16.1\n213.0\n5400.0\nMale\n\n\n\n\n344 rows × 7 columns\n\n\n\n\npenguins.dtypes\n\nspecies               object\nisland                object\nbill_length_mm       float64\nbill_depth_mm        float64\nflipper_length_mm    float64\nbody_mass_g          float64\nsex                   object\ndtype: object\n\n\n\npenguins.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale\n\n\n\n\n\n\n\n\npenguins.tail()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n339\nGentoo\nBiscoe\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n340\nGentoo\nBiscoe\n46.8\n14.3\n215.0\n4850.0\nFemale\n\n\n341\nGentoo\nBiscoe\n50.4\n15.7\n222.0\n5750.0\nMale\n\n\n342\nGentoo\nBiscoe\n45.2\n14.8\n212.0\n5200.0\nFemale\n\n\n343\nGentoo\nBiscoe\n49.9\n16.1\n213.0\n5400.0\nMale"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#series",
-    "href": "notebooks/jupyter_walk_through.html#series",
-    "title": "3  Jupyter lab",
-    "section": "21.3 Series",
-    "text": "21.3 Series\n\npenguins['flipper_length_mm']\n\n0      181.0\n1      186.0\n2      195.0\n3        NaN\n4      193.0\n       ...  \n339      NaN\n340    215.0\n341    222.0\n342    212.0\n343    213.0\nName: flipper_length_mm, Length: 344, dtype: float64\n\n\n\npenguins.flipper_length_mm\n\n0      181.0\n1      186.0\n2      195.0\n3        NaN\n4      193.0\n       ...  \n339      NaN\n340    215.0\n341    222.0\n342    212.0\n343    213.0\nName: flipper_length_mm, Length: 344, dtype: float64\n\n\n\ntype(penguins.flipper_length_mm)\n\npandas.core.series.Series"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#broadcasting-1",
-    "href": "notebooks/jupyter_walk_through.html#broadcasting-1",
-    "title": "3  Jupyter lab",
-    "section": "21.4 Broadcasting",
-    "text": "21.4 Broadcasting\n\npenguins.bill_depth_mm - 1000\n\n0     -981.3\n1     -982.6\n2     -982.0\n3        NaN\n4     -980.7\n       ...  \n339      NaN\n340   -985.7\n341   -984.3\n342   -985.2\n343   -983.9\nName: bill_depth_mm, Length: 344, dtype: float64\n\n\n\npenguins.bill_depth_mm * penguins.flipper_length_mm\n\n0      3384.7\n1      3236.4\n2      3510.0\n3         NaN\n4      3724.9\n        ...  \n339       NaN\n340    3074.5\n341    3485.4\n342    3137.6\n343    3429.3\nLength: 344, dtype: float64"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#indexing",
-    "href": "notebooks/jupyter_walk_through.html#indexing",
-    "title": "3  Jupyter lab",
-    "section": "21.5 Indexing",
-    "text": "21.5 Indexing\n\n21.5.1 Get a cell\n\npenguins.loc[4, 'island']\n\n'Torgersen'\n\n\n\n\n21.5.2 Get a row\n\npenguins.loc[4]\n\nspecies                 Adelie\nisland               Torgersen\nbill_length_mm            36.7\nbill_depth_mm             19.3\nflipper_length_mm        193.0\nbody_mass_g             3450.0\nsex                     Female\nName: 4, dtype: object\n\n\n\n\n21.5.3 Get a column\n\npenguins['bill_depth_mm']\n\n0      18.7\n1      17.4\n2      18.0\n3       NaN\n4      19.3\n       ... \n339     NaN\n340    14.3\n341    15.7\n342    14.8\n343    16.1\nName: bill_depth_mm, Length: 344, dtype: float64\n\n\n\npenguins.bill_depth_mm\n\n0      18.7\n1      17.4\n2      18.0\n3       NaN\n4      19.3\n       ... \n339     NaN\n340    14.3\n341    15.7\n342    14.8\n343    16.1\nName: bill_depth_mm, Length: 344, dtype: float64\n\n\n\n\n21.5.4 Get a range of rows and multiple columns\n\npenguins.loc[40:45, ['island', 'body_mass_g']]\n\n\n\n\n\n\n\n\nisland\nbody_mass_g\n\n\n\n\n40\nDream\n3150.0\n\n\n41\nDream\n3900.0\n\n\n42\nDream\n3100.0\n\n\n43\nDream\n4400.0\n\n\n44\nDream\n3000.0\n\n\n45\nDream\n4600.0\n\n\n\n\n\n\n\n\n\n21.5.5 Use boolean series as index to subset data\n\nidx = penguins.bill_length_mm &gt; 55\nidx\n\n0      False\n1      False\n2      False\n3      False\n4      False\n       ...  \n339    False\n340    False\n341    False\n342    False\n343    False\nName: bill_length_mm, Length: 344, dtype: bool\n\n\n\npenguins.loc[idx]\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n169\nChinstrap\nDream\n58.0\n17.8\n181.0\n3700.0\nFemale\n\n\n215\nChinstrap\nDream\n55.8\n19.8\n207.0\n4000.0\nMale\n\n\n253\nGentoo\nBiscoe\n59.6\n17.0\n230.0\n6050.0\nMale\n\n\n321\nGentoo\nBiscoe\n55.9\n17.0\n228.0\n5600.0\nMale\n\n\n335\nGentoo\nBiscoe\n55.1\n16.0\n230.0\n5850.0\nMale\n\n\n\n\n\n\n\n\npenguins.loc[(penguins.bill_length_mm &gt; 55) & (penguins.sex == 'Female')]\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n169\nChinstrap\nDream\n58.0\n17.8\n181.0\n3700.0\nFemale\n\n\n\n\n\n\n\n\n\n21.5.6 Setting and resetting the index\n\npenguins\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nMale\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nFemale\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nFemale\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nFemale\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n339\nGentoo\nBiscoe\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n340\nGentoo\nBiscoe\n46.8\n14.3\n215.0\n4850.0\nFemale\n\n\n341\nGentoo\nBiscoe\n50.4\n15.7\n222.0\n5750.0\nMale\n\n\n342\nGentoo\nBiscoe\n45.2\n14.8\n212.0\n5200.0\nFemale\n\n\n343\nGentoo\nBiscoe\n49.9\n16.1\n213.0\n5400.0\nMale\n\n\n\n\n344 rows × 7 columns\n\n\n\n\ndf = penguins.set_index(['species', 'sex', 'island'])\ndf.head(10)\n\n\n\n\n\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\n\n\nspecies\nsex\nisland\n\n\n\n\n\n\n\n\nAdelie\nMale\nTorgersen\n39.1\n18.7\n181.0\n3750.0\n\n\nFemale\nTorgersen\n39.5\n17.4\n186.0\n3800.0\n\n\nTorgersen\n40.3\n18.0\n195.0\n3250.0\n\n\nNaN\nTorgersen\nNaN\nNaN\nNaN\nNaN\n\n\nFemale\nTorgersen\n36.7\n19.3\n193.0\n3450.0\n\n\nMale\nTorgersen\n39.3\n20.6\n190.0\n3650.0\n\n\nFemale\nTorgersen\n38.9\n17.8\n181.0\n3625.0\n\n\nMale\nTorgersen\n39.2\n19.6\n195.0\n4675.0\n\n\nNaN\nTorgersen\n34.1\n18.1\n193.0\n3475.0\n\n\nTorgersen\n42.0\n20.2\n190.0\n4250.0\n\n\n\n\n\n\n\n\ndf.reset_index()\n\n\n\n\n\n\n\n\nspecies\nsex\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\n\n\n\n\n0\nAdelie\nMale\nTorgersen\n39.1\n18.7\n181.0\n3750.0\n\n\n1\nAdelie\nFemale\nTorgersen\n39.5\n17.4\n186.0\n3800.0\n\n\n2\nAdelie\nFemale\nTorgersen\n40.3\n18.0\n195.0\n3250.0\n\n\n3\nAdelie\nNaN\nTorgersen\nNaN\nNaN\nNaN\nNaN\n\n\n4\nAdelie\nFemale\nTorgersen\n36.7\n19.3\n193.0\n3450.0\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n339\nGentoo\nNaN\nBiscoe\nNaN\nNaN\nNaN\nNaN\n\n\n340\nGentoo\nFemale\nBiscoe\n46.8\n14.3\n215.0\n4850.0\n\n\n341\nGentoo\nMale\nBiscoe\n50.4\n15.7\n222.0\n5750.0\n\n\n342\nGentoo\nFemale\nBiscoe\n45.2\n14.8\n212.0\n5200.0\n\n\n343\nGentoo\nMale\nBiscoe\n49.9\n16.1\n213.0\n5400.0\n\n\n\n\n344 rows × 7 columns"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#sorting-rows",
-    "href": "notebooks/jupyter_walk_through.html#sorting-rows",
-    "title": "3  Jupyter lab",
-    "section": "21.6 Sorting rows",
-    "text": "21.6 Sorting rows\n\nsorted_df = penguins.sort_values(by=\"bill_length_mm\")\nsorted_df.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\n142\nAdelie\nDream\n32.1\n15.5\n188.0\n3050.0\nFemale\n\n\n98\nAdelie\nDream\n33.1\n16.1\n178.0\n2900.0\nFemale\n\n\n70\nAdelie\nTorgersen\n33.5\n19.0\n190.0\n3600.0\nFemale\n\n\n92\nAdelie\nDream\n34.0\n17.1\n185.0\n3400.0\nFemale\n\n\n8\nAdelie\nTorgersen\n34.1\n18.1\n193.0\n3475.0\nNaN\n\n\n\n\n\n\n\n\nsorted_df.index.values\n\narray([142,  98,  70,  92,   8,  18,  54,  80,  14, 100,  52,  83, 124,\n        25,  66,  74, 136,  60,  90, 118,  68,  22,  42,  48, 150, 148,\n        78,  94, 120,  86,  34,  64,  58,  40,  15, 147,   4,  82, 132,\n        87,  44, 138,  77,  31, 144, 117,  84,  47, 133,  62,  38,  59,\n        21, 121, 102, 103,  10,  20,  11, 149, 104,  28,  96, 108, 134,\n       110, 107,  23,  88, 130,  13, 106, 116,  16,  24, 126,  36,  89,\n         6, 128, 145,  56,   0,  35, 146,   7,   5,  30,   1,  32, 114,\n        45,  50,  72,  93, 112, 105, 139,  71,  39,  51, 137, 140, 122,\n        97,   2,  27,  29, 125, 141,  26,  57, 143,  95,  41, 230, 182,\n        33,  76, 101, 135, 119,  46,  63,  91,  67,  12,  61,  85, 123,\n        55, 127, 151,  65, 326,  69, 236,  53,   9,  79, 113,  37,  49,\n       172, 184, 206,  17, 256, 115, 260,  75, 251,  81, 244, 131, 278,\n       109, 174,  99, 228, 328, 306, 216, 332, 288, 265, 276, 258, 129,\n        43, 257, 246, 336, 314, 268, 304, 275, 241, 252, 272, 208, 298,\n       299, 269, 342, 157, 280, 262, 226, 155, 232, 277, 195, 312, 266,\n       111, 211, 214, 204, 282,  73, 284, 234, 166, 160,  19, 158, 245,\n       220, 286, 238, 334, 281, 193, 243, 170, 180, 291, 294, 293, 225,\n       274, 152, 242, 162, 270, 227, 176, 325, 229, 340, 213, 317, 190,\n       164, 338, 322, 324, 250, 302, 310, 296, 187, 308, 188, 224, 290,\n       247, 329, 202, 248, 292, 318, 233, 255, 271, 173, 320, 295, 259,\n       239, 222, 337, 192, 199, 231, 300, 323, 254, 171, 237, 235, 209,\n       316, 313, 179, 287, 263, 261, 217, 186, 331, 201, 285, 343, 303,\n       153, 221, 223, 249, 198, 273, 210, 219, 240, 168, 279, 341, 267,\n       330, 167, 178, 264, 175, 289, 205, 305, 218, 197, 315, 196, 194,\n       185, 297, 319, 154, 159, 161, 307, 203, 333, 200, 163, 212, 165,\n       177, 189, 309, 207, 311, 301, 156, 181, 327, 191, 183, 283, 335,\n       215, 321, 169, 253,   3, 339])\n\n\nClick to the left of an output cell to enable/disable scrolling of the output (usefull for large amounts of output).\n\nsorted_df.loc[0]\n\nspecies                 Adelie\nisland               Torgersen\nbill_length_mm            39.1\nbill_depth_mm             18.7\nflipper_length_mm        181.0\nbody_mass_g             3750.0\nsex                       Male\nName: 0, dtype: object\n\n\n\nsorted_df.flipper_length_mm[0]\n\n181.0\n\n\n\nsorted_df.iloc[0] # iloc !!!\n\nspecies              Adelie\nisland                Dream\nbill_length_mm         32.1\nbill_depth_mm          15.5\nflipper_length_mm     188.0\nbody_mass_g          3050.0\nsex                  Female\nName: 142, dtype: object\n\n\n\nsorted_df.flipper_length_mm.iloc[0]\n\n188.0"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#summary-stats",
-    "href": "notebooks/jupyter_walk_through.html#summary-stats",
-    "title": "3  Jupyter lab",
-    "section": "21.7 Summary stats",
-    "text": "21.7 Summary stats\n\npenguins.describe()\n\n\n\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\n\n\n\n\ncount\n342.000000\n342.000000\n342.000000\n342.000000\n\n\nmean\n43.921930\n17.151170\n200.915205\n4201.754386\n\n\nstd\n5.459584\n1.974793\n14.061714\n801.954536\n\n\nmin\n32.100000\n13.100000\n172.000000\n2700.000000\n\n\n25%\n39.225000\n15.600000\n190.000000\n3550.000000\n\n\n50%\n44.450000\n17.300000\n197.000000\n4050.000000\n\n\n75%\n48.500000\n18.700000\n213.000000\n4750.000000\n\n\nmax\n59.600000\n21.500000\n231.000000\n6300.000000\n\n\n\n\n\n\n\n\npenguins.bill_length_mm.mean()\n\n43.9219298245614\n\n\n\npenguins.bill_length_mm.count()\n\n342"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#grouping",
-    "href": "notebooks/jupyter_walk_through.html#grouping",
-    "title": "3  Jupyter lab",
-    "section": "21.8 Grouping",
-    "text": "21.8 Grouping\n\npenguins.groupby('island')\n\n&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x15c85ab00&gt;\n\n\n\n21.8.1 Aggregate\nAggregating produces a single value for each variable in each group:\nMeans for all numeric variables for each island:\n\npenguins.groupby('island').aggregate(\"mean\", numeric_only=True)\n\n\n\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\n\n\nisland\n\n\n\n\n\n\n\n\nBiscoe\n45.257485\n15.874850\n209.706587\n4716.017964\n\n\nDream\n44.167742\n18.344355\n193.072581\n3712.903226\n\n\nTorgersen\n38.950980\n18.429412\n191.196078\n3706.372549\n\n\n\n\n\n\n\n\npenguins.groupby('island').mean(numeric_only=True)\n\n\n\n\n\n\n\n\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\n\n\nisland\n\n\n\n\n\n\n\n\nBiscoe\n45.257485\n15.874850\n209.706587\n4716.017964\n\n\nDream\n44.167742\n18.344355\n193.072581\n3712.903226\n\n\nTorgersen\n38.950980\n18.429412\n191.196078\n3706.372549\n\n\n\n\n\n\n\nMeans for bill_length_mm and flipper_length_mm:\n\npenguins.groupby('island')[['bill_length_mm', 'flipper_length_mm']].mean()\n\n\n\n\n\n\n\n\nbill_length_mm\nflipper_length_mm\n\n\nisland\n\n\n\n\n\n\nBiscoe\n45.257485\n209.706587\n\n\nDream\n44.167742\n193.072581\n\n\nTorgersen\n38.950980\n191.196078\n\n\n\n\n\n\n\nJust for flipper_length_mm:\n\npenguins.groupby('island').flipper_length_mm.mean()\n\nisland\nBiscoe       209.706587\nDream        193.072581\nTorgersen    191.196078\nName: flipper_length_mm, dtype: float64\n\n\n\n\n21.8.2 Transform\nTransforming produces new colums with the same length as the input:\n\npenguins.groupby('island')[['bill_length_mm', 'flipper_length_mm']].transform(\"mean\")\n\n\n\n\n\n\n\n\nbill_length_mm\nflipper_length_mm\n\n\n\n\n0\n38.950980\n191.196078\n\n\n1\n38.950980\n191.196078\n\n\n2\n38.950980\n191.196078\n\n\n3\n38.950980\n191.196078\n\n\n4\n38.950980\n191.196078\n\n\n...\n...\n...\n\n\n339\n45.257485\n209.706587\n\n\n340\n45.257485\n209.706587\n\n\n341\n45.257485\n209.706587\n\n\n342\n45.257485\n209.706587\n\n\n343\n45.257485\n209.706587\n\n\n\n\n344 rows × 2 columns\n\n\n\n\ndef z_value(sr):\n    return (sr - sr.mean()) / sr.std()\n\npenguins.groupby('island')[['bill_length_mm', 'flipper_length_mm']].transform(z_value)\n\n\n\n\n\n\n\n\nbill_length_mm\nflipper_length_mm\n\n\n\n\n0\n0.049258\n-1.636022\n\n\n1\n0.181475\n-0.833742\n\n\n2\n0.445910\n0.610362\n\n\n3\nNaN\nNaN\n\n\n4\n-0.744048\n0.289450\n\n\n...\n...\n...\n\n\n339\nNaN\nNaN\n\n\n340\n0.323193\n0.374297\n\n\n341\n1.077478\n0.869267\n\n\n342\n-0.012044\n0.162167\n\n\n343\n0.972717\n0.232877\n\n\n\n\n344 rows × 2 columns\n\n\n\n\n\n21.8.3 Apply\nFlexible method allowing any operation on grouped data.\nReturn a single value:\n\ndef fun(df):\n    return df.bill_length_mm + df.flipper_length_mm.mean() / df.body_mass_g\n\npenguins.groupby('island').apply(fun)#.to_frame('my_stat')\n\nisland        \nBiscoe     20     37.861678\n           21     37.758252\n           22     35.955186\n           23     38.253090\n           24     38.855186\n                    ...    \nTorgersen  127    41.544464\n           128    39.062687\n           129    44.147799\n           130    38.557503\n           131    43.154627\nLength: 344, dtype: float64\n\n\nReturn a dataframe:\n\ndef fun(df):\n    return pd.DataFrame({'sqrt_bill': np.sqrt(df.bill_length_mm),\n                         'bill_squared': df.bill_length_mm**2})\n\npenguins.groupby('island').apply(fun)\n\n\n\n\n\n\n\n\n\nsqrt_bill\nbill_squared\n\n\nisland\n\n\n\n\n\n\n\nBiscoe\n20\n6.148170\n1428.84\n\n\n21\n6.140033\n1421.29\n\n\n22\n5.991661\n1288.81\n\n\n23\n6.180615\n1459.24\n\n\n24\n6.228965\n1505.44\n\n\n...\n...\n...\n...\n\n\nTorgersen\n127\n6.442049\n1722.25\n\n\n128\n6.244998\n1521.00\n\n\n129\n6.640783\n1944.81\n\n\n130\n6.204837\n1482.25\n\n\n131\n6.565059\n1857.61\n\n\n\n\n344 rows × 2 columns"
-  },
-  {
-    "objectID": "notebooks/jupyter_walk_through.html#facetgrid.map-vs.-facetgrid.map_dataframe",
-    "href": "notebooks/jupyter_walk_through.html#facetgrid.map-vs.-facetgrid.map_dataframe",
-    "title": "3  Jupyter lab",
-    "section": "25.1 FacetGrid.map vs. FacetGrid.map_dataframe",
-    "text": "25.1 FacetGrid.map vs. FacetGrid.map_dataframe\nWhen you use FacetGrid.map(func, \"col1\", \"col2\", ...), the function func is passed the values of the columns \"col1\" and \"col2\" (and more if needed) as parameters 1 and 2 (args[0], args[1], …). In addition, the function always receives a keyword argument named color=.\n\ndef scatter(*args, **kwargs):\n    return plt.scatter(args[0], args[1], **kwargs)\n    \ng = sns.FacetGrid(penguins, row=\"sex\", col=\"island\", hue=\"species\") ;\ng.map(scatter, \"bill_length_mm\", \"flipper_length_mm\") ;\n\n\n\n\nWhen you use FacetGrid.map_dataframe(func, \"col1\", \"col2\", ...), the function func is passed the names \"col1\" and \"col2\" (and more if needed) as parameters 1 and 2 (args[0], args[1], …), and the filtered dataframe as keyword argument data=. In addition, the function always receives a keyword argument named color=.\n\ndef scatterplot(*args, **kwargs):\n    return sns.scatterplot(x=args[0], y=args[1], **kwargs)\n\ng = sns.FacetGrid(penguins, row=\"sex\", col=\"island\", hue=\"species\") ;\ng.map_dataframe(scatterplot, \"bill_length_mm\", \"flipper_length_mm\") ;\n\n\n\n\n\ng = sns.FacetGrid(penguins, row=\"sex\", col=\"island\", hue=\"species\") ;\ng.map(sns.histplot, \"bill_length_mm\") ;\n\n\n\n\n\ng = sns.FacetGrid(penguins, row=\"sex\", col=\"island\", hue=\"species\") ;\ng.map(sns.kdeplot, \"bill_length_mm\") ;\n\n\n\n\n\nsns.pairplot(penguins, hue=\"species\") ;\n\n\n\n\n\nsns.pairplot(penguins, hue=\"sex\") ;"
-  },
-  {
     "objectID": "reports/manuscript.html#abstract",
     "href": "reports/manuscript.html#abstract",
-    "title": "4  Manuscript",
-    "section": "4.1 Abstract",
-    "text": "4.1 Abstract\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+    "title": "3  Manuscript",
+    "section": "3.1 Abstract",
+    "text": "3.1 Abstract\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
   },
   {
     "objectID": "reports/manuscript.html#introduction",
     "href": "reports/manuscript.html#introduction",
-    "title": "4  Manuscript",
-    "section": "4.2 Introduction",
-    "text": "4.2 Introduction\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+    "title": "3  Manuscript",
+    "section": "3.2 Introduction",
+    "text": "3.2 Introduction\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
   },
   {
     "objectID": "reports/manuscript.html#results",
     "href": "reports/manuscript.html#results",
-    "title": "4  Manuscript",
-    "section": "4.3 Results",
-    "text": "4.3 Results\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla (Figure 4.1).\n\n\n\n\n\n\nFigure 4.1: Line plot of random points. bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla\n\n\n\n\nSource: 01_notebook.ipynb\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla (Figure 4.2)\n\n\n\n\n\n\nFigure 4.2: Scatter plot of random points\n\n\n\n\nSource: 02_notebook.ipynb"
+    "title": "3  Manuscript",
+    "section": "3.3 Results",
+    "text": "3.3 Results\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla (Figure 3.1).\n\n\n\n\n\n\nFigure 3.1: Line plot of random points. bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla\n\n\n\n\nSource: 01_notebook.ipynb\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla (Figure 3.2)\n\n\n\n\n\n\nFigure 3.2: Scatter plot of random points\n\n\n\n\nSource: 02_notebook.ipynb"
   },
   {
     "objectID": "reports/manuscript.html#discussion",
     "href": "reports/manuscript.html#discussion",
-    "title": "4  Manuscript",
-    "section": "4.4 Discussion",
-    "text": "4.4 Discussion\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+    "title": "3  Manuscript",
+    "section": "3.4 Discussion",
+    "text": "3.4 Discussion\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
   },
   {
     "objectID": "reports/manuscript.html#methods",
     "href": "reports/manuscript.html#methods",
-    "title": "4  Manuscript",
-    "section": "4.5 Methods",
-    "text": "4.5 Methods\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
+    "title": "3  Manuscript",
+    "section": "3.5 Methods",
+    "text": "3.5 Methods\nbla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
   },
   {
     "objectID": "reports/supplementary.html",
     "href": "reports/supplementary.html",
-    "title": "5  Supplementary info",
+    "title": "4  Supplementary info",
     "section": "",
     "text": "bla bla bla"
   }
