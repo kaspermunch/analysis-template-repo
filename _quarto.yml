@@ -14,7 +14,6 @@ book:
       chapters: 
       - notebooks/01_notebook.ipynb
       - notebooks/02_notebook.ipynb
-      - notebooks/jupyter_walk_through.ipynb
     - part: "Reports"
       chapters: 
       - reports/manuscript.qmd
