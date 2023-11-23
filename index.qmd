@@ -1,13 +1,20 @@
 # Project {.unnumbered}
 
-These pages are generated from Git repository (more about that later). The repository serves both as a source of practial information to get you started, and as a scaffold for your project. Once you have copied it and made it your own, you populate with your own text, code, analysis notebooks, and documentation. For now most of what you see are placeholders for what will eventually be your own contributions.
+These pages are generated from a the content of a termplate Git repository, I made for you. You can read more about Git and repositories in the [project guide](https://munch-lab.github.io/project-guide). This repository serves both as an initial scaffold for your project, with placeholder files to get you started, and as a means of documenting and reporting your work. During the project, you will populate with your own texts, code, analysis notebooks, and documentation. 
 
 ## Outline
 
 Here you should write a paragraph outlining the project to the extent you can at this point. What are the goals of your project? What would you like to find out? What would you like to learn? You should update it along the way.
+
+## Suggested reading
+
+If you need a basic introduction to population genetics, I suggest reading "An introduction to population genetics: Theory and applications" by Rasmus Nielsen and Monty Slatkin [@NielsenSlatkin2016].
+
+Other suggested reading specific to this project...
 
 ## Schedule
 
 Here you should outline project plan and what you intend to do in the weeks/months of your project. This is ofcause tentative and will change along the way. But it is important that it changes because you decide it is meaningful.
 
 A good way to do this is to use [GitHubs Project feature](https://github.com/orgs/munch-lab/projects) on our the group GitHub account.
+
