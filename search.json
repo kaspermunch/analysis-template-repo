@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Title of your project",
     "section": "",
-    "text": "Project\nThese pages are generated from Git repository (more about that later). The repository serves both as a source of practial information to get you started, and as a scaffold for your project. Once you have copied it and made it your own, you populate with your own text, code, analysis notebooks, and documentation. For now most of what you see are placeholders for what will eventually be your own contributions."
+    "text": "Project\nThese pages are generated from a the content of a termplate Git repository, I made for you. You can read more about Git and repositories in the project guide. This repository serves both as an initial scaffold for your project, with placeholder files to get you started, and as a means of documenting and reporting your work. During the project, you will populate with your own texts, code, analysis notebooks, and documentation."
   },
   {
     "objectID": "index.html#outline",
@@ -14,11 +14,18 @@
     "text": "Outline\nHere you should write a paragraph outlining the project to the extent you can at this point. What are the goals of your project? What would you like to find out? What would you like to learn? You should update it along the way."
   },
   {
+    "objectID": "index.html#suggested-reading",
+    "href": "index.html#suggested-reading",
+    "title": "Title of your project",
+    "section": "Suggested reading",
+    "text": "Suggested reading\nIf you need a basic introduction to population genetics, I suggest reading “An introduction to population genetics: Theory and applications” by Rasmus Nielsen and Monty Slatkin (Nielsen and Slatkin 2016). A free alternative is Graham Coop’s Lecture notes, which offer a similar introduction.\nThese are additional some suggestions for background reading:\n\nGenetic Villains: Killer Meiotic Drivers, is a review on meiotic drive.\nExtraordinary selection on the human X chromosome associated with archaic admixture is our most recent paper on the topic.\n\nI will guide you to additional material once you get started."
+  },
+  {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
     "title": "Title of your project",
     "section": "Schedule",
-    "text": "Schedule\nHere you should outline project plan and what you intend to do in the weeks/months of your project. This is ofcause tentative and will change along the way. But it is important that it changes because you decide it is meaningful.\nA good way to do this is to use GitHubs Project feature on our the group GitHub account."
+    "text": "Schedule\nHere you should outline project plan and what you intend to do in the weeks/months of your project. This is ofcause tentative and will change along the way. But it is important that it changes because you decide it is meaningful.\nA good way to do this is to use GitHubs Project feature on our the group GitHub account.\n\n\n\n\nNielsen, Rasmgb, and Montgomery Slatkin. 2016. An Introduction to Population Genetics: Theory and Applications."
   },
   {
     "objectID": "notebooks/01_notebook.html#weather-data",
@@ -75,5 +82,12 @@
     "title": "4  Supplementary info",
     "section": "4.1 Regression analysis of formality",
     "text": "4.1 Regression analysis of formality\nBlah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\nFigure 4.1: Interaction among Danes: Regressions of informality against age for five levels of seniority.\n\n\n\n\nSource: 02_notebook.ipynb"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Nielsen, Rasmgb, and Montgomery Slatkin. 2016. An Introduction to\nPopulation Genetics: Theory and Applications."
   }
 ]

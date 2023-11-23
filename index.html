@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -170,6 +189,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#project" id="toc-project" class="nav-link active" data-scroll-target="#project">Project</a>
   <ul class="collapse">
   <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#suggested-reading" id="toc-suggested-reading" class="nav-link" data-scroll-target="#suggested-reading">Suggested reading</a></li>
   <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
   </ul></li>
   </ul>
@@ -203,10 +223,20 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="project" class="level1 unnumbered">
 <h1 class="unnumbered">Project</h1>
-<p>These pages are generated from Git repository (more about that later). The repository serves both as a source of practial information to get you started, and as a scaffold for your project. Once you have copied it and made it your own, you populate with your own text, code, analysis notebooks, and documentation. For now most of what you see are placeholders for what will eventually be your own contributions.</p>
+<p>These pages are generated from a the content of a termplate Git repository, I made for you. You can read more about Git and repositories in the <a href="https://munch-lab.github.io/project-guide">project guide</a>. This repository serves both as an initial scaffold for your project, with placeholder files to get you started, and as a means of documenting and reporting your work. During the project, you will populate with your own texts, code, analysis notebooks, and documentation.</p>
 <section id="outline" class="level2">
 <h2 class="anchored" data-anchor-id="outline">Outline</h2>
 <p>Here you should write a paragraph outlining the project to the extent you can at this point. What are the goals of your project? What would you like to find out? What would you like to learn? You should update it along the way.</p>
+</section>
+<section id="suggested-reading" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-reading">Suggested reading</h2>
+<p>If you need a basic introduction to population genetics, I suggest reading “An introduction to population genetics: Theory and applications” by Rasmus Nielsen and Monty Slatkin <span class="citation" data-cites="NielsenSlatkin2016">(<a href="references.html#ref-NielsenSlatkin2016" role="doc-biblioref">Nielsen and Slatkin 2016</a>)</span>. A free alternative is <a href="https://github.com/cooplab/popgen-notes">Graham Coop’s Lecture notes</a>, which offer a similar introduction.</p>
+<p>These are additional some suggestions for background reading:</p>
+<ul>
+<li><a href="https://doi.org/10.1016/j.tig.2018.02.003">Genetic Villains: Killer Meiotic Drivers</a>, is a review on meiotic drive.</li>
+<li><a href="10.1016/j.xgen.2023.100274">Extraordinary selection on the human X chromosome associated with archaic admixture</a> is our most recent paper on the topic.</li>
+</ul>
+<p>I will guide you to additional material once you get started.</p>
 </section>
 <section id="schedule" class="level2">
 <h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
@@ -214,6 +244,11 @@ ul.task-list li input[type="checkbox"] {
 <p>A good way to do this is to use <a href="https://github.com/orgs/munch-lab/projects">GitHubs Project feature</a> on our the group GitHub account.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-NielsenSlatkin2016" class="csl-entry" role="listitem">
+Nielsen, Rasmgb, and Montgomery Slatkin. 2016. <em>An Introduction to Population Genetics: Theory and Applications</em>.
+</div>
+</div>
 </section>
 </section>
 
