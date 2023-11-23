@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Title of your project - Some analysis</title>    <style>
+    <title>Title of your project - Danish weather</title>    <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
       div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -115,7 +115,9 @@
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>  
+}</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  
       </head>
   <body class="nav-sidebar floating quarto-notebook">
     <div class="quarto-embed-header">
@@ -129,7 +131,7 @@
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01_notebook.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/01_notebook.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Some analysis</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01_notebook.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/01_notebook.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Danish weather</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -157,7 +159,7 @@
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
+ <span class="menu-text">Project</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -172,13 +174,13 @@
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/01_notebook.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Some analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Danish weather</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../notebooks/02_notebook.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Some other analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workplace interaction</span></span></a>
   </div>
 </li>
       </ul>
@@ -222,14 +224,17 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#some-analysis" id="toc-some-analysis" class="nav-link active" data-scroll-target="#some-analysis"><span class="header-section-number">1</span> Some analysis</a></li>
+  <li><a href="#danish-weather" id="toc-danish-weather" class="nav-link active" data-scroll-target="#danish-weather"><span class="header-section-number">1</span> Danish weather</a>
+  <ul class="collapse">
+  <li><a href="#weather-data" id="toc-weather-data" class="nav-link" data-scroll-target="#weather-data"><span class="header-section-number">1.1</span> Weather data</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Some analysis</h1>
+<h1 class="title">Danish weather</h1>
 </div>
 
 
@@ -242,28 +247,235 @@
   </div>
   
 
-</header>     <section id="some-analysis" class="level1 page-columns page-full" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Some analysis</h1>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</header>     <section id="danish-weather" class="level1 page-columns page-full" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Danish weather</h1>
+<p>Import some plotting libraries and set some defaults:</p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [13]:</pre></div><div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.plot([random.random() <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>)]) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-line-plot" class="quarto-figure quarto-figure-center anchored">
+<p>Here is some computation:</p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [14]:</pre></div><div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nr_project_days <span class="op">=</span> <span class="dv">150</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'day'</span>: <span class="bu">list</span>(<span class="bu">range</span>(nr_project_days)), </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">'wind'</span>: [random.random()<span class="op">+</span><span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nr_project_days)], </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">'precipitation'</span>: [random.random()<span class="op">+</span><span class="dv">1</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(nr_project_days)]})</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">day</th>
+<th data-quarto-table-cell-role="th">wind</th>
+<th data-quarto-table-cell-role="th">precipitation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>1.929137</td>
+<td>1.977371</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>1.825586</td>
+<td>1.611594</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>1.005757</td>
+<td>1.345819</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>1.691406</td>
+<td>1.986148</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>1.597337</td>
+<td>1.878306</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">145</td>
+<td>145</td>
+<td>1.600091</td>
+<td>1.313758</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">146</td>
+<td>146</td>
+<td>1.320659</td>
+<td>1.074981</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">147</td>
+<td>147</td>
+<td>1.056534</td>
+<td>1.566736</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">148</td>
+<td>148</td>
+<td>1.028825</td>
+<td>1.950311</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">149</td>
+<td>149</td>
+<td>1.677810</td>
+<td>1.204017</td>
+</tr>
+</tbody>
+</table>
+
+<p>150 rows × 3 columns</p>
+</div>
+</div>
+</div></div>
+<section id="weather-data" class="level2 page-columns page-full" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="weather-data"><span class="header-section-number">1.1</span> Weather data</h2>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [15]:</pre></div><div class="cell" data-execution_count="15">
+<div id="doc-weather-data" class="cell-output cell-output-display" data-execution_count="15">
+<p>Weather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah</p>
+</div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [16]:</pre></div><div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>long_format <span class="op">=</span> df.melt(id_vars<span class="op">=</span>[<span class="st">'day'</span>], value_vars<span class="op">=</span>[<span class="st">'wind'</span>, <span class="st">'precipitation'</span>], var_name<span class="op">=</span><span class="st">'weather'</span>, value_name<span class="op">=</span><span class="st">'value'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>long_format</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">day</th>
+<th data-quarto-table-cell-role="th">weather</th>
+<th data-quarto-table-cell-role="th">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>wind</td>
+<td>1.929137</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>wind</td>
+<td>1.825586</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>wind</td>
+<td>1.005757</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>wind</td>
+<td>1.691406</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>wind</td>
+<td>1.597337</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">295</td>
+<td>145</td>
+<td>precipitation</td>
+<td>1.313758</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">296</td>
+<td>146</td>
+<td>precipitation</td>
+<td>1.074981</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">297</td>
+<td>147</td>
+<td>precipitation</td>
+<td>1.566736</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">298</td>
+<td>148</td>
+<td>precipitation</td>
+<td>1.950311</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">299</td>
+<td>149</td>
+<td>precipitation</td>
+<td>1.204017</td>
+</tr>
+</tbody>
+</table>
+
+<p>300 rows × 3 columns</p>
+</div>
+</div>
+</div></div>
+<div id="fig-danish-weather" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="01_notebook_files/figure-html/fig-line-plot-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1.1: Line plot of random points. bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</figcaption>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>long_format, x<span class="op">=</span><span class="st">'day'</span>, y<span class="op">=</span><span class="st">'value'</span>, hue<span class="op">=</span><span class="st">'weather'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.ylim(bottom<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-danish-weather-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<pre><code>(0.0, 2.0476970813167363)</code></pre>
+<figcaption class="figure-caption">(a) Danish weather: This is the weather forcast for your project</figcaption>
+</figure>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-danish-weather-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01_notebook_files/figure-html/fig-danish-weather-output-2.png" class="img-fluid figure-img" data-ref-parent="fig-danish-weather"></p>
+<figcaption class="figure-caption">(b)</figcaption>
 </figure>
 </div>
 </div>
-</div></div>
+<figcaption class="figure-caption">Figure&nbsp;1.1: <strong>?(caption)</strong></figcaption>
+</figure>
+</div>
+<p>From this plot, it seems Danish weather is quite unpredictable.</p>
 
 
+</section>
 </section>
      </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -500,12 +712,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>  <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Project</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../notebooks/02_notebook.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Some other analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Workplace interaction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
