@@ -10,14 +10,18 @@ Here you should write a paragraph outlining the project to the extent you can at
 
 If you need a basic introduction to population genetics, I suggest reading "An introduction to population genetics: Theory and applications" by Rasmus Nielsen and Monty Slatkin [@NielsenSlatkin2016]. A free alternative is [Graham Coop's Lecture notes](https://github.com/cooplab/popgen-notes), which offer a similar introduction.
 
+<!-- 
 These are additional some suggestions for background reading:
 
 - [Genetic Villains: Killer Meiotic Drivers](https://doi.org/10.1016/j.tig.2018.02.003), is a review on meiotic drive.
 - [Extraordinary selection on the human X chromosome associated with archaic admixture](10.1016/j.xgen.2023.100274) is our most recent paper on the topic.
+- -->
 
 I will guide you to additional material once you get started.
 
 ## Schedule
+
+Once you get started and you should make an plan for your project. It will change along the way, but with a plan, you will know when it does. 
 
 Here you should outline project plan and what you intend to do in the weeks/months of your project. This is ofcause tentative and will change along the way. But it is important that it changes because you decide it is meaningful.
 

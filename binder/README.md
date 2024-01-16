@@ -1,20 +1,14 @@
 
 # Conda environment
 
-Create environment
+Activate your environment and export the names of its packages like this:
 
-```
-conda env create -y -f binder/environment.yml
-```
-
-Activate environment
-
-```
-conda activate birc-project
+```txt
+conda env export --from-history > environment.yml
 ```
 
-Deactivate environment
+Then export the names of packages along with their versions used on GenomeDK with like this:
 
-```
-conda deactivate
+```txt
+conda env export > environment-genomedk.yml
 ```

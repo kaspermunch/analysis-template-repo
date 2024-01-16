@@ -1,3 +1,3 @@
 
-# Data files to be tracked with Git
+# Data files tracked with Git
 
