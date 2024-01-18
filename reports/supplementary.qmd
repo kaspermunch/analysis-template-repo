@@ -5,4 +5,4 @@
 
 Blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.
 
-{{< embed ../notebooks/02_notebook.ipynb#fig-danish-interaction-regressions >}}
+{{< embed ../notebooks/02_interaction.ipynb#fig-danish-interaction-regressions >}}

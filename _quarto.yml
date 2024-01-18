@@ -12,8 +12,8 @@ book:
     - index.qmd
     - part: "Notebooks"
       chapters: 
-      - notebooks/01_notebook.ipynb
-      - notebooks/02_notebook.ipynb
+      - notebooks/01_weather.ipynb
+      - notebooks/02_interaction.ipynb
     - part: "Reports"
       chapters: 
       - reports/manuscript.qmd

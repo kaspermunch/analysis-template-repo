@@ -15,21 +15,21 @@ Denmark is .... blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah
 
 As shown in @fig-danish-weather, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.
 
-{{< embed ../notebooks/01_notebook.ipynb#fig-danish-weather >}}
+{{< embed ../notebooks/01_weather.ipynb#fig-danish-weather >}}
 
 ### Social norms
 
 In Denmark, the workplace interaction is very informal and largely unaffected by seniority and age. 
 
-{{< embed ../notebooks/02_notebook.ipynb#doc-sampling echo=false >}}
+{{< embed ../notebooks/02_interaction.ipynb#doc-sampling echo=false >}}
 
 I found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see @fig-danish-interaction). 
 
-{{< embed ../notebooks/02_notebook.ipynb#fig-danish-interaction >}}
+{{< embed ../notebooks/02_interaction.ipynb#fig-danish-interaction >}}
 
 <!-- a bug in quarto does not allow successive embeds witout somthing in between (like this) -->
 
-{{< embed ../notebooks/02_notebook.ipynb#doc-formality-correlation echo=false >}}
+{{< embed ../notebooks/02_interaction.ipynb#doc-formality-correlation echo=false >}}
 
 
 ## Discussion
@@ -40,11 +40,11 @@ This this investigation of Danes..., blah, blah, blah, blah, blah, blah, blah, b
 
 ### Weather analysis
 
-{{< embed ../notebooks/01_notebook.ipynb#doc-weather-data echo=false >}}
+{{< embed ../notebooks/01_weather.ipynb#doc-weather-data echo=false >}}
 
 ### Interaction analysis
 
-{{< embed ../notebooks/02_notebook.ipynb#doc-interviews echo=false >}}
+{{< embed ../notebooks/02_interaction.ipynb#doc-interviews echo=false >}}
 
 
 
