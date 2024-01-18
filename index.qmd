@@ -1,10 +1,10 @@
 # Project {.unnumbered}
 
-These pages are generated from a the content of a termplate Git repository, I made for you. You can read more about Git and repositories in the [project guide](https://munch-lab.github.io/project-guide). This repository serves both as an initial scaffold for your project, with placeholder files to get you started, and as a means of documenting and reporting your work. During the project, you will populate with your own texts, code, analysis notebooks, and documentation. 
+These pages are generated from a Git repository I made for you. Read more about Git and repositories in the [project guide](https://munch-lab.github.io/project-guide). The repository, with its files and folders, serves as a scaffold for your project, with placeholder files to get you started. During the project, you will populate it with your code, analysis notebooks, and documentation reporting your work and use Git to track this development.
 
 ## Outline
 
-Here you should write a paragraph outlining the project to the extent you can at this point. What are the goals of your project? What would you like to find out? What would you like to learn? You should update it along the way.
+It will help if you write a paragraph here outlining the project to the extent you can. What are the goals of your project? What would you like to find out? What would you like to learn? You should update it along the way.
 
 ## Suggested reading
 
@@ -21,9 +21,9 @@ I will guide you to additional material once you get started.
 
 ## Schedule
 
-Once you get started and you should make an plan for your project. It will change along the way, but with a plan, you will know when it does. 
+Once you get started, you should make a plan for your project. It will change along the way, but with a plan, you will know when it does. 
 
-Here you should outline project plan and what you intend to do in the weeks/months of your project. This is ofcause tentative and will change along the way. But it is important that it changes because you decide it is meaningful.
+You should outline the project plan and what you intend to do in the weeks/months of your project. Such a plan is tentative and will change along the way when you find such changes are meaningful or necessary.
 
-A good way to do this is to use [GitHubs Project feature](https://github.com/orgs/munch-lab/projects) on our the group GitHub account.
+An excellent way to do this is to use [the GitHub Project feature](https://github.com/orgs/munch-lab/projects) on our group GitHub account.
 
