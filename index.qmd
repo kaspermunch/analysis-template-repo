@@ -1,6 +1,8 @@
 # Project {.unnumbered}
 
-These pages are generated from a Git repository I made for you. Read more about Git and repositories in the [project guide](https://munch-lab.github.io/project-guide). The repository, with its files and folders, serves as a scaffold for your project, with placeholder files to get you started. During the project, you will populate it with your code, analysis notebooks, and documentation reporting your work and use Git to track this development.
+These pages are generated from a Git repository I made for you. Read more about Git and repositories in the [project guide](https://munch-lab.github.io/project-guide). The repository, with its files and folders, serves as a scaffold for your project, with placeholder files to get you started.
+
+During the project, you will populate it with your code, analysis notebooks, and documentation reporting your work and use Git to track this development. This way your project will end up documented by a set of pages like these.
 
 ## Outline
 
