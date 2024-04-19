@@ -42,9 +42,9 @@
   {
     "objectID": "notebooks/01_weather.html",
     "href": "notebooks/01_weather.html",
-    "title": "1  Danish weather",
+    "title": "Danish weather",
     "section": "",
-    "text": "1.1 Weather data\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\nlong_format = df.melt(id_vars=['day'], value_vars=['wind', 'precipitation'], var_name='weather', value_name='value')\nlong_format\n\n\n\n\n\n\n\n\n\nday\nweather\nvalue\n\n\n\n\n0\n0\nwind\n1.707801\n\n\n1\n1\nwind\n1.677524\n\n\n2\n2\nwind\n1.219416\n\n\n3\n3\nwind\n1.952052\n\n\n4\n4\nwind\n1.733835\n\n\n...\n...\n...\n...\n\n\n295\n145\nprecipitation\n1.940254\n\n\n296\n146\nprecipitation\n1.216917\n\n\n297\n147\nprecipitation\n1.344908\n\n\n298\n148\nprecipitation\n1.746911\n\n\n299\n149\nprecipitation\n1.549489\n\n\n\n\n300 rows × 3 columns\nsns.lineplot(data=long_format, x='day', y='value', hue='weather')\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 1.1: Danish weather: This is the weather forcast for your project\nFrom this plot, it seems Danish weather is quite unpredictable.",
+    "text": "Weather data\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\nlong_format = df.melt(id_vars=['day'], value_vars=['wind', 'precipitation'], var_name='weather', value_name='value')\nlong_format\n\n\n\n\n\n\n\n\n\nday\nweather\nvalue\n\n\n\n\n0\n0\nwind\n1.707801\n\n\n1\n1\nwind\n1.677524\n\n\n2\n2\nwind\n1.219416\n\n\n3\n3\nwind\n1.952052\n\n\n4\n4\nwind\n1.733835\n\n\n...\n...\n...\n...\n\n\n295\n145\nprecipitation\n1.940254\n\n\n296\n146\nprecipitation\n1.216917\n\n\n297\n147\nprecipitation\n1.344908\n\n\n298\n148\nprecipitation\n1.746911\n\n\n299\n149\nprecipitation\n1.549489\n\n\n\n\n300 rows × 3 columns\nsns.lineplot(data=long_format, x='day', y='value', hue='weather')\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 1.1: Danish weather: This is the weather forcast for your project\nFrom this plot, it seems Danish weather is quite unpredictable.",
     "crumbs": [
       "Notebooks",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Danish weather</span>"
@@ -53,9 +53,9 @@
   {
     "objectID": "notebooks/02_interaction.html",
     "href": "notebooks/02_interaction.html",
-    "title": "2  Workplace interaction",
+    "title": "Workplace interaction",
     "section": "",
-    "text": "2.1 Sampling\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\nWorkplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\ndf = pd.DataFrame({'name': danish_people, \n                   'seniority': np.random.randint(0, 5, len(danish_people)), \n                   'age': np.random.randint(22, 67, len(danish_people))})\ndf['informality'] = np.random.normal(loc=10, scale=1, size=len(danish_people))\ndf\n\n\n\n\n\n\n\n\n\nname\nseniority\nage\ninformality\n\n\n\n\n0\nJulie\n4\n59\n10.577367\n\n\n1\nSofie\n0\n51\n9.456797\n\n\n2\nSara\n3\n57\n9.966668\n\n\n3\nCecilie\n3\n31\n10.806400\n\n\n4\nEmma\n1\n59\n9.494767\n\n\n...\n...\n...\n...\n...\n\n\n95\nJesper\n2\n44\n10.670476\n\n\n96\nDavid\n3\n48\n9.679540\n\n\n97\nAsger\n0\n40\n10.301785\n\n\n98\nMichael\n2\n45\n10.335186\n\n\n99\nJohan\n4\n33\n9.682334\n\n\n\n\n100 rows × 4 columns\nsns.scatterplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age')\nplt.legend(title='Seniority', loc='lower right', labels=['Undergrad', 'Postgrad', 'PhD', 'Postdoc', 'Professor'])\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 2.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\nSeems Danish people act very informally unaffected by age and seniority.\ninformality_age_cor = df.informality.corr(df.age)\ninformality_age_cor\n\n-0.035287884645279835\ninformality_seniority_cor = df.informality.corr(df.seniority)\ninformality_seniority_cor\n\n0.05328570497075633\nThe correlation between informality and age was -0.035 and the correlation between informality and seniority was 0.053.\nsns.lmplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age') ;\n\n\n\n\n\n\n\nFigure 2.2: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
+    "text": "Sampling\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\nWorkplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\ndf = pd.DataFrame({'name': danish_people, \n                   'seniority': np.random.randint(0, 5, len(danish_people)), \n                   'age': np.random.randint(22, 67, len(danish_people))})\ndf['informality'] = np.random.normal(loc=10, scale=1, size=len(danish_people))\ndf\n\n\n\n\n\n\n\n\n\nname\nseniority\nage\ninformality\n\n\n\n\n0\nJulie\n4\n59\n10.577367\n\n\n1\nSofie\n0\n51\n9.456797\n\n\n2\nSara\n3\n57\n9.966668\n\n\n3\nCecilie\n3\n31\n10.806400\n\n\n4\nEmma\n1\n59\n9.494767\n\n\n...\n...\n...\n...\n...\n\n\n95\nJesper\n2\n44\n10.670476\n\n\n96\nDavid\n3\n48\n9.679540\n\n\n97\nAsger\n0\n40\n10.301785\n\n\n98\nMichael\n2\n45\n10.335186\n\n\n99\nJohan\n4\n33\n9.682334\n\n\n\n\n100 rows × 4 columns\nsns.scatterplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age')\nplt.legend(title='Seniority', loc='lower right', labels=['Undergrad', 'Postgrad', 'PhD', 'Postdoc', 'Professor'])\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 2.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\nSeems Danish people act very informally unaffected by age and seniority.\ninformality_age_cor = df.informality.corr(df.age)\ninformality_age_cor\n\n-0.035287884645279835\ninformality_seniority_cor = df.informality.corr(df.seniority)\ninformality_seniority_cor\n\n0.05328570497075633\nThe correlation between informality and age was -0.035 and the correlation between informality and seniority was 0.053.\nsns.lmplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age') ;\n\n\n\n\n\n\n\nFigure 2.2: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
     "crumbs": [
       "Notebooks",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workplace interaction</span>"
@@ -64,9 +64,9 @@
   {
     "objectID": "reports/manuscript.html",
     "href": "reports/manuscript.html",
-    "title": "3  Manuscript",
+    "title": "Manuscript",
     "section": "",
-    "text": "3.1 Abstract\nThis is my report about Denmark… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah",
+    "text": "Abstract\nThis is my report about Denmark… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah",
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
@@ -75,9 +75,9 @@
   {
     "objectID": "reports/manuscript.html#introduction",
     "href": "reports/manuscript.html#introduction",
-    "title": "3  Manuscript",
-    "section": "3.2 Introduction",
-    "text": "3.2 Introduction\nDenmark is …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah",
+    "title": "Manuscript",
+    "section": "Introduction",
+    "text": "Introduction\nDenmark is …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah",
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
@@ -86,9 +86,9 @@
   {
     "objectID": "reports/manuscript.html#results",
     "href": "reports/manuscript.html#results",
-    "title": "3  Manuscript",
-    "section": "3.3 Results",
-    "text": "3.3 Results\n\n3.3.1 Weather\nAs shown in Figure 3.1, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\n\n\n\nFigure 3.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\n\n3.3.2 Social norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 3.2).\n\n\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was -0.035 and the correlation between informality and seniority was 0.053.",
+    "title": "Manuscript",
+    "section": "Results",
+    "text": "Results\n\nWeather\nAs shown in Figure 3.1, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\n\n\n\nFigure 3.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\n\nSocial norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 3.2).\n\n\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was -0.035 and the correlation between informality and seniority was 0.053.",
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
@@ -97,9 +97,9 @@
   {
     "objectID": "reports/manuscript.html#discussion",
     "href": "reports/manuscript.html#discussion",
-    "title": "3  Manuscript",
-    "section": "3.4 Discussion",
-    "text": "3.4 Discussion\nThis this investigation of Danes…, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
+    "title": "Manuscript",
+    "section": "Discussion",
+    "text": "Discussion\nThis this investigation of Danes…, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
@@ -108,9 +108,9 @@
   {
     "objectID": "reports/manuscript.html#methods",
     "href": "reports/manuscript.html#methods",
-    "title": "3  Manuscript",
-    "section": "3.5 Methods",
-    "text": "3.5 Methods\n\n3.5.1 Weather analysis\n\n\n\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\n\n\n\n\n\n3.5.2 Interaction analysis\n\n\n\nWorkplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,",
+    "title": "Manuscript",
+    "section": "Methods",
+    "text": "Methods\n\nWeather analysis\n\n\n\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\n\n\n\n\n\nInteraction analysis\n\n\n\nWorkplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,",
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
@@ -119,9 +119,9 @@
   {
     "objectID": "reports/supplementary.html",
     "href": "reports/supplementary.html",
-    "title": "4  Supplementary info",
+    "title": "Supplementary info",
     "section": "",
-    "text": "4.1 Regression analysis of formality\nBlah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
+    "text": "Regression analysis of formality\nBlah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Supplementary info</span>"
@@ -130,7 +130,7 @@
   {
     "objectID": "reports/supplementary.html#regression-analysis-of-formality",
     "href": "reports/supplementary.html#regression-analysis-of-formality",
-    "title": "4  Supplementary info",
+    "title": "Supplementary info",
     "section": "",
     "text": "Figure 4.1: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
     "crumbs": [
