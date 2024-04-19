@@ -25,6 +25,7 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme: default
     toc-depth: 2
+    number-sections: false
 
