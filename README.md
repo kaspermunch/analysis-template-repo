@@ -1,4 +1,12 @@
 
-# Using submodules with Git
+![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=push)
 
-Read on [here](https://gist.github.com/kaspermunch/1131f20216648bd55bb20f6b35e69252)
+# Title
+
+Description...
+
+## Reproducing this project
+
+This project runs in a Linux environment and may do so too on Mac. A conda environment for the project is created like this:
+
+    conda env create -f binder/environment.yml
