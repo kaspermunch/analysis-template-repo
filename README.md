@@ -1,5 +1,7 @@
 
-![example event parameter](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?event=push)
+![example event parameter](https://github.com/munch-group/analysis-template/actions/workflows/main.yml/badge.svg?event=push)
+
+*In the link below, replace analysis-template with your repository name and then delete this text*
 
 # Title
 
