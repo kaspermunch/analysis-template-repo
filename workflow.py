@@ -7,7 +7,10 @@ from collections import defaultdict
 from gwf import Workflow
 
 
-def submodule_b_workflow(working_dir=os.getcwd(), input_files=None, output_dir=None, summarize=True):
+def submodule_b_workflow(working_dir=os.getcwd(), 
+                         input_files=None,
+                         output_dir=None, 
+                         summarize=True):
     """Workflow B"""
 
     if not os.path.exists(output_dir):
