@@ -181,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reports/manuscript.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Manuscript</span></a>
+  <a href="../reports/manuscript.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">My manuscript</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -235,15 +235,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Import some plotting libraries and set some defaults:</p>
 <div id="cell-2" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>random_seed <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_formats <span class="op">=</span> [<span class="st">'svg'</span>] </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>random_seed <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-3" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>danish_people <span class="op">=</span> [<span class="st">'Julie'</span>, <span class="st">'Sofie'</span>, <span class="st">'Sara'</span>, <span class="st">'Cecilie'</span>, <span class="st">'Emma'</span>, <span class="st">'Caroline'</span>, <span class="st">'Laura'</span>, <span class="st">'Mathilde'</span>, <span class="st">'Katrine'</span>, <span class="st">'Anna'</span>, <span class="st">'Emilie'</span>, <span class="st">'Ida'</span>, <span class="st">'Freja'</span>, <span class="st">'Maria'</span>, <span class="st">'Amalie'</span>, <span class="st">'Camilla'</span>, <span class="st">'Louise'</span>, <span class="st">'Signe'</span>, <span class="st">'Maja'</span>, <span class="st">'Josefine'</span>, <span class="st">'Line'</span>, <span class="st">'Nanna'</span>, <span class="st">'Anne'</span>, <span class="st">'Nicoline'</span>, <span class="st">'Clara'</span>, <span class="st">'Victoria'</span>, <span class="st">'Marie'</span>, <span class="st">'Natasja'</span>, <span class="st">'Lærke'</span>, <span class="st">'Alberte'</span>, <span class="st">'Frederikke'</span>, <span class="st">'Rebecca'</span>, <span class="st">'Mette'</span>, <span class="st">'Rikke'</span>, <span class="st">'Amanda'</span>, <span class="st">'Mia'</span>, <span class="st">'Kristine'</span>, <span class="st">'Johanne'</span>, <span class="st">'Stine'</span>, <span class="st">'Simone'</span>, <span class="st">'Isabella'</span>, <span class="st">'Jasmin'</span>, <span class="st">'Michelle'</span>, <span class="st">'Pernille'</span>, <span class="st">'Christina'</span>, <span class="st">'Astrid'</span>, <span class="st">'Sille'</span>, <span class="st">'Thea'</span>, <span class="st">'Mie'</span>, <span class="st">'Nadia'</span>, <span class="st">'Mathias'</span>,<span class="st">'Mads'</span>,<span class="st">'Mikkel'</span>,<span class="st">'Rasmus'</span>,<span class="st">'Emil'</span>,<span class="st">'Oliver'</span>,<span class="st">'Frederik'</span>,<span class="st">'Christian'</span>,<span class="st">'Nicolai'</span>,<span class="st">'Jonas'</span>,<span class="st">'Jacob'</span>,<span class="st">'Kasper'</span>,<span class="st">'Magnus'</span>,<span class="st">'Andreas'</span>,<span class="st">'Tobias'</span>,<span class="st">'Simon'</span>,<span class="st">'Lucas'</span>,<span class="st">'Marcus'</span>, <span class="st">'Victor'</span>, <span class="st">'Nicklas'</span>, <span class="st">'Sebastian'</span>, <span class="st">'Daniel'</span>, <span class="st">'Alexander'</span>, <span class="st">'Anders'</span>, <span class="st">'Christoffer'</span>, <span class="st">'Patrick'</span>, <span class="st">'Lasse'</span>, <span class="st">'Benjamin'</span>, <span class="st">'Thomas'</span>, <span class="st">'Martin'</span>, <span class="st">'Jeppe'</span>, <span class="st">'Gustav'</span>, <span class="st">'Peter'</span>, <span class="st">'Philip'</span>, <span class="st">'William'</span>, <span class="st">'Oscar'</span>, <span class="st">'Malthe'</span>, <span class="st">'Jonathan'</span>, <span class="st">'Anton'</span>, <span class="st">'Morten'</span>, <span class="st">'Carl'</span>, <span class="st">'Søren'</span>, <span class="st">'Mohammad'</span>, <span class="st">'Mark'</span>, <span class="st">'Jens'</span>, <span class="st">'Jesper'</span>, <span class="st">'David'</span>, <span class="st">'Asger'</span>, <span class="st">'Michael'</span>, <span class="st">'Johan'</span>]</span>
@@ -845,8 +846,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../reports/manuscript.html" class="pagination-link" aria-label="Manuscript">
-        <span class="nav-page-text"><span class="chapter-title">Manuscript</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../reports/manuscript.html" class="pagination-link" aria-label="My manuscript">
+        <span class="nav-page-text"><span class="chapter-title">My manuscript</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

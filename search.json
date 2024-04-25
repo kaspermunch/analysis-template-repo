@@ -44,7 +44,7 @@
     "href": "notebooks/01_weather.html",
     "title": "Danish weather",
     "section": "",
-    "text": "Weather data\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\nlong_format = df.melt(id_vars=['day'], value_vars=['wind', 'precipitation'], var_name='weather', value_name='value')\nlong_format\n\n\n\n\n\n\n\n\n\nday\nweather\nvalue\n\n\n\n\n0\n0\nwind\n1.707801\n\n\n1\n1\nwind\n1.677524\n\n\n2\n2\nwind\n1.219416\n\n\n3\n3\nwind\n1.952052\n\n\n4\n4\nwind\n1.733835\n\n\n...\n...\n...\n...\n\n\n295\n145\nprecipitation\n1.940254\n\n\n296\n146\nprecipitation\n1.216917\n\n\n297\n147\nprecipitation\n1.344908\n\n\n298\n148\nprecipitation\n1.746911\n\n\n299\n149\nprecipitation\n1.549489\n\n\n\n\n300 rows × 3 columns\nsns.lineplot(data=long_format, x='day', y='value', hue='weather')\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 1.1: Danish weather: This is the weather forcast for your project\nFrom this plot, it seems Danish weather is quite unpredictable.",
+    "text": "Weather data\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\nlong_format = df.melt(id_vars=['day'], value_vars=['wind', 'precipitation'], var_name='weather', value_name='value')\nlong_format\n\n\n\n\n\n\n\n\n\nday\nweather\nvalue\n\n\n\n\n0\n0\nwind\n1.070748\n\n\n1\n1\nwind\n1.891542\n\n\n2\n2\nwind\n1.649125\n\n\n3\n3\nwind\n1.860136\n\n\n4\n4\nwind\n1.279279\n\n\n...\n...\n...\n...\n\n\n295\n145\nprecipitation\n1.770769\n\n\n296\n146\nprecipitation\n1.490588\n\n\n297\n147\nprecipitation\n1.423878\n\n\n298\n148\nprecipitation\n1.681365\n\n\n299\n149\nprecipitation\n1.992777\n\n\n\n\n300 rows × 3 columns\nsns.lineplot(data=long_format, x='day', y='value', hue='weather')\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 1.1: Danish weather: This is the weather forcast for your project\nFrom this plot, it seems Danish weather is quite unpredictable.",
     "crumbs": [
       "Notebooks",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Danish weather</span>"
@@ -64,56 +64,56 @@
   {
     "objectID": "reports/manuscript.html",
     "href": "reports/manuscript.html",
-    "title": "Manuscript",
+    "title": "My manuscript",
     "section": "",
     "text": "Abstract\nThis is my report about Denmark… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
     "objectID": "reports/manuscript.html#introduction",
     "href": "reports/manuscript.html#introduction",
-    "title": "Manuscript",
+    "title": "My manuscript",
     "section": "Introduction",
     "text": "Introduction\nDenmark is …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
     "objectID": "reports/manuscript.html#results",
     "href": "reports/manuscript.html#results",
-    "title": "Manuscript",
+    "title": "My manuscript",
     "section": "Results",
     "text": "Results\n\nWeather\nAs shown in Figure 3.1, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\n\n\n\nFigure 3.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\n\nSocial norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 3.2).\n\n\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was -0.035 and the correlation between informality and seniority was 0.053.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
     "objectID": "reports/manuscript.html#discussion",
     "href": "reports/manuscript.html#discussion",
-    "title": "Manuscript",
+    "title": "My manuscript",
     "section": "Discussion",
     "text": "Discussion\nThis this investigation of Danes…, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
     "objectID": "reports/manuscript.html#methods",
     "href": "reports/manuscript.html#methods",
-    "title": "Manuscript",
+    "title": "My manuscript",
     "section": "Methods",
     "text": "Methods\n\nWeather analysis\n\n\n\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\n\n\n\n\n\nInteraction analysis\n\n\n\nWorkplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Manuscript</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
