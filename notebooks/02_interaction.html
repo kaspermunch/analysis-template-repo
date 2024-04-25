@@ -234,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Import some plotting libraries and set some defaults:</p>
-<div id="cell-2" class="cell" data-execution_count="40">
+<div id="cell-2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_formats <span class="op">=</span> [<span class="st">'svg'</span>] </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -246,29 +246,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>random_seed <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="41">
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>danish_people <span class="op">=</span> [<span class="st">'Julie'</span>, <span class="st">'Sofie'</span>, <span class="st">'Sara'</span>, <span class="st">'Cecilie'</span>, <span class="st">'Emma'</span>, <span class="st">'Caroline'</span>, <span class="st">'Laura'</span>, <span class="st">'Mathilde'</span>, <span class="st">'Katrine'</span>, <span class="st">'Anna'</span>, <span class="st">'Emilie'</span>, <span class="st">'Ida'</span>, <span class="st">'Freja'</span>, <span class="st">'Maria'</span>, <span class="st">'Amalie'</span>, <span class="st">'Camilla'</span>, <span class="st">'Louise'</span>, <span class="st">'Signe'</span>, <span class="st">'Maja'</span>, <span class="st">'Josefine'</span>, <span class="st">'Line'</span>, <span class="st">'Nanna'</span>, <span class="st">'Anne'</span>, <span class="st">'Nicoline'</span>, <span class="st">'Clara'</span>, <span class="st">'Victoria'</span>, <span class="st">'Marie'</span>, <span class="st">'Natasja'</span>, <span class="st">'Lærke'</span>, <span class="st">'Alberte'</span>, <span class="st">'Frederikke'</span>, <span class="st">'Rebecca'</span>, <span class="st">'Mette'</span>, <span class="st">'Rikke'</span>, <span class="st">'Amanda'</span>, <span class="st">'Mia'</span>, <span class="st">'Kristine'</span>, <span class="st">'Johanne'</span>, <span class="st">'Stine'</span>, <span class="st">'Simone'</span>, <span class="st">'Isabella'</span>, <span class="st">'Jasmin'</span>, <span class="st">'Michelle'</span>, <span class="st">'Pernille'</span>, <span class="st">'Christina'</span>, <span class="st">'Astrid'</span>, <span class="st">'Sille'</span>, <span class="st">'Thea'</span>, <span class="st">'Mie'</span>, <span class="st">'Nadia'</span>, <span class="st">'Mathias'</span>,<span class="st">'Mads'</span>,<span class="st">'Mikkel'</span>,<span class="st">'Rasmus'</span>,<span class="st">'Emil'</span>,<span class="st">'Oliver'</span>,<span class="st">'Frederik'</span>,<span class="st">'Christian'</span>,<span class="st">'Nicolai'</span>,<span class="st">'Jonas'</span>,<span class="st">'Jacob'</span>,<span class="st">'Kasper'</span>,<span class="st">'Magnus'</span>,<span class="st">'Andreas'</span>,<span class="st">'Tobias'</span>,<span class="st">'Simon'</span>,<span class="st">'Lucas'</span>,<span class="st">'Marcus'</span>, <span class="st">'Victor'</span>, <span class="st">'Nicklas'</span>, <span class="st">'Sebastian'</span>, <span class="st">'Daniel'</span>, <span class="st">'Alexander'</span>, <span class="st">'Anders'</span>, <span class="st">'Christoffer'</span>, <span class="st">'Patrick'</span>, <span class="st">'Lasse'</span>, <span class="st">'Benjamin'</span>, <span class="st">'Thomas'</span>, <span class="st">'Martin'</span>, <span class="st">'Jeppe'</span>, <span class="st">'Gustav'</span>, <span class="st">'Peter'</span>, <span class="st">'Philip'</span>, <span class="st">'William'</span>, <span class="st">'Oscar'</span>, <span class="st">'Malthe'</span>, <span class="st">'Jonathan'</span>, <span class="st">'Anton'</span>, <span class="st">'Morten'</span>, <span class="st">'Carl'</span>, <span class="st">'Søren'</span>, <span class="st">'Mohammad'</span>, <span class="st">'Mark'</span>, <span class="st">'Jens'</span>, <span class="st">'Jesper'</span>, <span class="st">'David'</span>, <span class="st">'Asger'</span>, <span class="st">'Michael'</span>, <span class="st">'Johan'</span>]</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nr_danes <span class="op">=</span> <span class="bu">len</span>(danish_people)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="sampling" class="level2">
 <h2 class="anchored" data-anchor-id="sampling">Sampling</h2>
-<div id="cell-doc-sampling" class="cell" data-execution_count="42">
-<div id="doc-sampling" class="cell-output cell-output-display cell-output-markdown" data-execution_count="42">
+<div id="cell-doc-sampling" class="cell" data-execution_count="3">
+<div id="doc-sampling" class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
 <p>I sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,</p>
 </div>
 </div>
-<div id="cell-doc-interviews" class="cell" data-execution_count="43">
-<div id="doc-interviews" class="cell-output cell-output-display cell-output-markdown" data-execution_count="43">
+<div id="cell-doc-interviews" class="cell" data-execution_count="4">
+<div id="doc-interviews" class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
 <p>Workplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,</p>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="44">
+<div id="cell-7" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>: danish_people, </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'seniority'</span>: np.random.randint(<span class="dv">0</span>, <span class="dv">5</span>, <span class="bu">len</span>(danish_people)), </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'age'</span>: np.random.randint(<span class="dv">22</span>, <span class="dv">67</span>, <span class="bu">len</span>(danish_people))})</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'informality'</span>] <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="bu">len</span>(danish_people))</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <div>
 
@@ -288,36 +288,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">0</td>
 <td>Julie</td>
 <td>4</td>
-<td>59</td>
-<td>10.577367</td>
+<td>32</td>
+<td>9.058813</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>Sofie</td>
 <td>0</td>
-<td>51</td>
-<td>9.456797</td>
+<td>66</td>
+<td>10.935441</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>Sara</td>
-<td>3</td>
-<td>57</td>
-<td>9.966668</td>
+<td>2</td>
+<td>55</td>
+<td>9.716871</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>Cecilie</td>
 <td>3</td>
-<td>31</td>
-<td>10.806400</td>
+<td>34</td>
+<td>11.144905</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>Emma</td>
 <td>1</td>
-<td>59</td>
-<td>9.494767</td>
+<td>54</td>
+<td>7.898643</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -329,37 +329,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">95</td>
 <td>Jesper</td>
-<td>2</td>
-<td>44</td>
-<td>10.670476</td>
+<td>3</td>
+<td>38</td>
+<td>7.942776</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">96</td>
 <td>David</td>
 <td>3</td>
-<td>48</td>
-<td>9.679540</td>
+<td>36</td>
+<td>9.924945</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">97</td>
 <td>Asger</td>
 <td>0</td>
-<td>40</td>
-<td>10.301785</td>
+<td>39</td>
+<td>9.842173</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">98</td>
 <td>Michael</td>
-<td>2</td>
-<td>45</td>
-<td>10.335186</td>
+<td>1</td>
+<td>44</td>
+<td>10.075713</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">99</td>
 <td>Johan</td>
-<td>4</td>
-<td>33</td>
-<td>9.682334</td>
+<td>2</td>
+<td>25</td>
+<td>8.232970</td>
 </tr>
 </tbody>
 </table>
@@ -369,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-fig-danish-interaction" class="cell" data-execution_count="47">
+<div id="cell-fig-danish-interaction" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'informality'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'seniority'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'How informal you can be'</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>)</span>
@@ -379,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="fig-danish-interaction" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-danish-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02_interaction_files/figure-html/fig-danish-interaction-output-1.png" class="img-fluid figure-img">
+<img src="02_interaction_files/figure-html/fig-danish-interaction-output-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-danish-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.
@@ -389,26 +389,26 @@ Figure&nbsp;2.1: Interaction among Danes: How Danes interact is has very little 
 </div>
 </div>
 <p>Seems Danish people act very informally unaffected by age and seniority.</p>
-<div id="cell-11" class="cell" data-execution_count="34">
+<div id="cell-11" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>informality_age_cor <span class="op">=</span> df.informality.corr(df.age)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>informality_age_cor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
-<pre><code>-0.035287884645279835</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>0.0351023049128157</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="35">
+<div id="cell-12" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>informality_seniority_cor <span class="op">=</span> df.informality.corr(df.seniority)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>informality_seniority_cor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>0.05328570497075633</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>0.12226864913588426</code></pre>
 </div>
 </div>
-<div id="cell-doc-formality-correlation" class="cell" data-execution_count="38">
-<div id="doc-formality-correlation" class="cell-output cell-output-display cell-output-markdown" data-execution_count="38">
-<p>The correlation between informality and age was -0.035 and the correlation between informality and seniority was 0.053.</p>
+<div id="cell-doc-formality-correlation" class="cell" data-execution_count="9">
+<div id="doc-formality-correlation" class="cell-output cell-output-display cell-output-markdown" data-execution_count="9">
+<p>The correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.</p>
 </div>
 </div>
-<div id="cell-fig-danish-interaction-regressions" class="cell" data-execution_count="49">
+<div id="cell-fig-danish-interaction-regressions" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'informality'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'seniority'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'How informal you can be'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -416,7 +416,7 @@ Figure&nbsp;2.1: Interaction among Danes: How Danes interact is has very little 
 <div id="fig-danish-interaction-regressions" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-danish-interaction-regressions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02_interaction_files/figure-html/fig-danish-interaction-regressions-output-1.png" class="img-fluid figure-img">
+<img src="02_interaction_files/figure-html/fig-danish-interaction-regressions-output-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-danish-interaction-regressions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.2: Interaction among Danes: Regressions of informality against age for five levels of seniority.
