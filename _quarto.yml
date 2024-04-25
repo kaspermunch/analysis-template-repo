@@ -17,7 +17,7 @@ book:
       - notebooks/02_interaction.ipynb
     - part: "Reports"
       chapters: 
-      - reports/manuscript.ipynb
+      - reports/manuscript.qmd
       - reports/supplementary.qmd
     - references.qmd
 
