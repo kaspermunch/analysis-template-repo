@@ -27,6 +27,6 @@ format:
   html:
     theme: default
     toc-depth: 2
-    notebook-links: inline
+    notebook-links: global
     number-sections: false
 
