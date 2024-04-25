@@ -1,9 +1,6 @@
-
-![example event parameter](https://github.com/munch-group/analysis-template/actions/workflows/quarto-publish.yml/badge.svg?event=push)
+# Title
 
 *In the link below, replace analysis-template with your repository name and then delete this text*
-
-# Title
 
 Description...
 
@@ -13,3 +10,4 @@ This project runs in a Linux environment and may do so too on Mac. A conda envir
 
     conda env create -f binder/environment.yml
 
+![example event parameter](https://github.com/munch-group/analysis-template/actions/workflows/quarto-publish.yml/badge.svg?event=push)
