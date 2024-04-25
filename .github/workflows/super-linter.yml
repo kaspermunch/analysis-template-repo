@@ -29,6 +29,10 @@ jobs:
       - name: Super-linter
         uses: super-linter/super-linter@v6.4.1  # x-release-please-version
         env:
+          # VALIDATE_ALL_CODEBASE: true
+          # VALIDATE_JAVASCRIPT_ES: true
+          # VALIDATE_PYTHON_BLACK: true
+          # VALIDATE_HTML: true
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ...
