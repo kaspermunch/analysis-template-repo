@@ -25,7 +25,9 @@ bibliography: references.bib
 
 format:
   html:
-    theme: default
+    theme: 
+      - default
+      - custom.scss
     toc-depth: 2
     notebook-links: global
     number-sections: false
