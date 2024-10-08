@@ -1,0 +1,18 @@
+project:
+  output-dir: _book
+  render:
+    - slides/index.qmd
+    - slides/slides.qmd
+
+title: "BDMI sims"
+author: "Kasper Munch"
+
+format: clean-revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" 
+
+# format:
+#     revealjs:
+#         smaller: true
+#         theme: simple           
