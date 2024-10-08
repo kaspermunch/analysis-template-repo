@@ -1,6 +1,8 @@
 project:
   type: book
   # output-dir: docs
+  post-render: 
+    - bash slides.sh  
 
 execute:
   freeze: auto
@@ -19,6 +21,11 @@ book:
       chapters: 
       - reports/manuscript.ipynb
       - reports/supplementary.qmd
+    - part: "Slides"
+      chapters:
+       - slides/slides.qmd 
+       - slides/suppl_slides.qmd
+       # the same slide files must also be listed in slides/_quarto.yml
     - references.qmd
 
 bibliography: references.bib

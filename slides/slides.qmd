@@ -1,5 +1,5 @@
 ---
-title: "Some title"
+title: "Main talk"
 author: "Your name"
 ---
 
@@ -52,3 +52,48 @@ In Denmark, the workplace interaction is very informal and largely unaffected by
 <!-- a bug in quarto does not allow successive embeds witout somthing in between (like this) -->
 
 {{< embed ../notebooks/02_interaction.ipynb#doc-formality-correlation echo=false >}}
+
+## Slide title
+
+::: {.incremental}
+- Eat spaghetti
+- Drink wine
+:::
+
+## Slide title
+
+:::: {.columns}
+
+::: {.column width="40%"}
+Left column
+:::
+
+::: {.column width="60%"}
+- One
+- Two
+- Three
+:::
+
+::::
+
+## Slide title
+
+:::: {.columns}
+
+::: {.column width="40%"}
+{{< embed ../notebooks/02_interaction.ipynb#doc-formality-correlation echo=false >}}
+:::
+
+::: {.column width="60%"}
+{{< embed ../notebooks/02_interaction.ipynb#fig-danish-interaction >}}
+:::
+
+::::
+
+## Slide Title
+
+Slide content
+
+::: aside
+Schumer et al. (2018)
+:::
