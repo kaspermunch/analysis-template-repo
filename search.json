@@ -48,7 +48,7 @@
     "href": "reports/manuscript.html#results",
     "title": "My manuscript",
     "section": "Results",
-    "text": "Results\n\nWeather\nAs shown in Figure 3.1, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\n\n\n\nFigure 3.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\n\nSocial norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 3.2).\n\n\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.",
+    "text": "Results\n\nWeather\nAs shown in Figure 3.1, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\n\n\n\nFigure 3.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\n\nSocial norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 5.2).\n\n\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.",
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
@@ -136,6 +136,116 @@
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Supplementary info</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html",
+    "href": "slides/slides.html",
+    "title": "Main talk",
+    "section": "",
+    "text": "Example slide",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html#example-slide",
+    "href": "slides/slides.html#example-slide",
+    "title": "Main talk",
+    "section": "",
+    "text": "This is a subtitle\nHere we have some text that may run over several lines of the slide frame, depending on how long it is.\n\nfirst item\n\nA sub item\n\n\nNext, we’ll brief review some theme-specific components.\n\nNote that all of the standard Reveal.js features can be used with this theme, even if we don’t highlight them here.",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html#additional-theme-classes",
+    "href": "slides/slides.html#additional-theme-classes",
+    "title": "Main talk",
+    "section": "Additional theme classes",
+    "text": "Additional theme classes\n\nSome extra things you can do with the clean theme\nSpecial classes for emphasis\n\n.alert class for default emphasis, e.g. important note.\n.fg class for custom colour, e.g. important note.\n.bg class for custom background, e.g. important note.\n\nCross-references\n\n.button class provides a Beamer-like button, e.g. Summary",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html#social-norms",
+    "href": "slides/slides.html#social-norms",
+    "title": "Main talk",
+    "section": "Social norms",
+    "text": "Social norms\n\nSampling\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html#social-norms-1",
+    "href": "slides/slides.html#social-norms-1",
+    "title": "Main talk",
+    "section": "Social norms",
+    "text": "Social norms\n\nNeither academic seniority or age affected interaction\n\n\n\n\n\n\n\n\n\nFigure 5.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html#slide-title",
+    "href": "slides/slides.html#slide-title",
+    "title": "Main talk",
+    "section": "Slide title",
+    "text": "Slide title\n\n\nEat spaghetti\nDrink wine",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html#slide-title-1",
+    "href": "slides/slides.html#slide-title-1",
+    "title": "Main talk",
+    "section": "Slide title",
+    "text": "Slide title\n\n\nLeft column\n\n\nOne\nTwo\nThree",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html#slide-title-2",
+    "href": "slides/slides.html#slide-title-2",
+    "title": "Main talk",
+    "section": "Slide title",
+    "text": "Slide title\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/slides.html#slide-title-3",
+    "href": "slides/slides.html#slide-title-3",
+    "title": "Main talk",
+    "section": "Slide Title",
+    "text": "Slide Title\nSlide content\n\n\n\n\nSchumer et al. (2018)",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+    ]
+  },
+  {
+    "objectID": "slides/suppl_slides.html",
+    "href": "slides/suppl_slides.html",
+    "title": "Suppl. slides",
+    "section": "",
+    "text": "Suppl. slides\nSupplementary slides …",
+    "crumbs": [
+      "Slides",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Suppl. slides</span>"
     ]
   },
   {
