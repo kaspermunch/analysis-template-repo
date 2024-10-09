@@ -11,6 +11,8 @@ execute:
 book:
   title: "Title of your project"
   author: "Your Name"
+  repo-url: https://github.com/munch-group/analysis-template/
+  repo-actions: [edit, issue, source]  
   chapters:
     - index.qmd
     - part: "Notebooks"
@@ -39,3 +41,5 @@ format:
     notebook-links: global
     number-sections: false
 
+comments:
+  hypothesis: true
