@@ -1,36 +1,13 @@
+################################################################
+## Do NOT change the content of the this section
 project:
   type: book
-  # output-dir: docs
   post-render: 
     - bash slides.sh  
 
 execute:
   freeze: auto
   echo: true
-
-book:
-  title: "Title of your project"
-  author: "Your Name"
-  repo-url: https://github.com/munch-group/analysis-template/
-  repo-actions: [edit, issue, source]  
-  chapters:
-    - index.qmd
-    - part: "Notebooks"
-      chapters: 
-      - notebooks/01_weather.ipynb
-      - notebooks/02_interaction.ipynb
-    - part: "Reports"
-      chapters: 
-      - reports/manuscript.ipynb
-      - reports/supplementary.qmd
-    - part: "Slides"
-      chapters:
-       - slides/slides.qmd 
-       - slides/suppl_slides.qmd
-       # the same slide files must also be listed in slides/_quarto.yml
-    - references.qmd
-
-bibliography: references.bib
 
 format:
   html:
@@ -43,3 +20,30 @@ format:
 
 comments:
   hypothesis: true
+
+book:
+  author: {{env GIT_COMMITTER_NAME}}
+  repo-url: {{env GITHUB_SERVER_URL}}/{{env GITHUB_REPOSITORY}}
+  repo-actions: [edit, issue, source]  
+
+  ################################################################
+  ## ADAPT the section below to match the names of your own files
+  title: "Title of your project"
+  chapters:
+    - index.qmd
+    - part: "Notebooks"
+      chapters: 
+      - notebooks/01_weather.ipynb
+      - notebooks/02_interaction.ipynb
+    - part: "Reports"
+      chapters: 
+      - reports/manuscript.ipynb
+      - reports/supplementary.qmd
+    - part: "Slides"
+      chapters:
+       - slides/slides.qmd # (must also be listed in slides/_quarto.yml)
+       - slides/suppl_slides.qmd # (must also be listed in slides/_quarto.yml)
+    - references.qmd
+
+bibliography: references.bib
+
