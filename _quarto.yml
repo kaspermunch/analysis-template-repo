@@ -23,7 +23,7 @@ comments:
 
 book:
   author: {{env GIT_COMMITTER_NAME}}
-  repo-url: {{env GITHUB_SERVER_URL}}/{{env GITHUB_REPOSITORY}}
+  repo-url: {{env GITHUB_SERVER_URL}} #/{{env GITHUB_REPOSITORY}}
   repo-actions: [edit, issue, source]  
 
   ################################################################
