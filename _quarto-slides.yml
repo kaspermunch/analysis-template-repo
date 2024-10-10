@@ -1,0 +1,15 @@
+
+format:
+  clean-revealjs:
+    smaller: true
+
+execute:
+  freeze: auto
+  echo: false
+
+project:
+  output-dir: _book
+  render:
+    - slides/slides.qmd
+    - slides/suppl_slides.qmd
+

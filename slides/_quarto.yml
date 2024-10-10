@@ -5,9 +5,6 @@ project:
     - slides/slides.qmd
     - slides/suppl_slides.qmd
 
-title: "BDMI sims"
-author: "Kasper Munch"
-
 format:
   clean-revealjs:
     smaller: true
@@ -15,3 +12,7 @@ format:
 html-math-method:
   method: mathjax
   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" 
+
+
+
+

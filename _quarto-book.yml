@@ -1,0 +1,50 @@
+project:
+  type: book
+  post-render: 
+    - quarto render --profile slides
+
+execute:
+  freeze: auto
+  echo: true
+
+format:
+  html:
+    theme: 
+      - default
+      - custom.scss
+    toc-depth: 2
+    notebook-links: global
+    number-sections: false
+
+comments:
+  hypothesis: true
+
+# project title
+title: "Title of your project"
+# your name
+author: "Joanna Doh"
+
+book:
+  repo-url: "https://github.com/munch-group/analysis-template"
+  repo-actions: [edit, issue, source]  
+  chapters:
+    # your font page:
+    - index.qmd
+    - part: "Notebooks"
+      chapters: 
+      # your jupyter notebooks:
+      - notebooks/01_weather.ipynb
+      - notebooks/02_interaction.ipynb
+    - part: "Reports"
+      chapters: 
+      # your memos, reports, manuscripts, documentation:
+      - reports/manuscript.ipynb
+      - reports/supplementary.qmd
+    - part: "Slides"
+      chapters:
+        # markdown slides
+        # (the same files must be listed _quarto-slides.yml to render as slides)
+        - slides/slides.qmd 
+        - slides/suppl_slides.qmd 
+
+bibliography: references.bib

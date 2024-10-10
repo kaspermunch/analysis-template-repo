@@ -1,49 +1,9 @@
-################################################################
-## Do NOT change the content of the this section
-project:
-  type: book
-  post-render: 
-    - bash slides.sh  
+profile:
+  group: 
+    - [book, slides]
+  default: book
 
-execute:
-  freeze: auto
-  echo: true
-
-format:
-  html:
-    theme: 
-      - default
-      - custom.scss
-    toc-depth: 2
-    notebook-links: global
-    number-sections: false
-
-comments:
-  hypothesis: true
-
-book:
-  author: {{env GIT_COMMITTER_NAME}}
-  repo-url: {{env GITHUB_SERVER_URL}} #/{{env GITHUB_REPOSITORY}}
-  repo-actions: [edit, issue, source]  
-
-  ################################################################
-  ## ADAPT the section below to match the names of your own files
-  title: "Title of your project"
-  chapters:
-    - index.qmd
-    - part: "Notebooks"
-      chapters: 
-      - notebooks/01_weather.ipynb
-      - notebooks/02_interaction.ipynb
-    - part: "Reports"
-      chapters: 
-      - reports/manuscript.ipynb
-      - reports/supplementary.qmd
-    - part: "Slides"
-      chapters:
-       - slides/slides.qmd # (must also be listed in slides/_quarto.yml)
-       - slides/suppl_slides.qmd # (must also be listed in slides/_quarto.yml)
-    - references.qmd
-
-bibliography: references.bib
+# html-math-method:
+#   method: mathjax
+#   url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" 
 
