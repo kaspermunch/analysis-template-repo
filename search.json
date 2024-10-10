@@ -15,7 +15,7 @@
     "href": "notebooks/02_interaction.html",
     "title": "Workplace interaction",
     "section": "",
-    "text": "Sampling\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\nWorkplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\ndf = pd.DataFrame({'name': danish_people, \n                   'seniority': np.random.randint(0, 5, len(danish_people)), \n                   'age': np.random.randint(22, 67, len(danish_people))})\ndf['informality'] = np.random.normal(loc=10, scale=1, size=len(danish_people))\ndf\n\n\n\n\n\n\n\n\nname\nseniority\nage\ninformality\n\n\n\n\n0\nJulie\n4\n32\n9.058813\n\n\n1\nSofie\n0\n66\n10.935441\n\n\n2\nSara\n2\n55\n9.716871\n\n\n3\nCecilie\n3\n34\n11.144905\n\n\n4\nEmma\n1\n54\n7.898643\n\n\n...\n...\n...\n...\n...\n\n\n95\nJesper\n3\n38\n7.942776\n\n\n96\nDavid\n3\n36\n9.924945\n\n\n97\nAsger\n0\n39\n9.842173\n\n\n98\nMichael\n1\n44\n10.075713\n\n\n99\nJohan\n2\n25\n8.232970\n\n\n\n\n100 rows × 4 columns\nsns.scatterplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age')\nplt.legend(title='Seniority', loc='lower right', labels=['Undergrad', 'Postgrad', 'PhD', 'Postdoc', 'Professor'])\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 2.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\nSeems Danish people act very informally unaffected by age and seniority.\ninformality_age_cor = df.informality.corr(df.age)\ninformality_age_cor\n\n0.0351023049128157\ninformality_seniority_cor = df.informality.corr(df.seniority)\ninformality_seniority_cor\n\n0.12226864913588426\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.\nsns.lmplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age') ;\n\n\n\n\n\n\n\nFigure 2.2: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
+    "text": "Sampling\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\nradius = 5\nSome number from a python variable: {python} radius\nWorkplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\ndf = pd.DataFrame({'name': danish_people, \n                   'seniority': np.random.randint(0, 5, len(danish_people)), \n                   'age': np.random.randint(22, 67, len(danish_people))})\ndf['informality'] = np.random.normal(loc=10, scale=1, size=len(danish_people))\ndf\n\n\n\n\n\n\n\n\nname\nseniority\nage\ninformality\n\n\n\n\n0\nJulie\n4\n32\n9.058813\n\n\n1\nSofie\n0\n66\n10.935441\n\n\n2\nSara\n2\n55\n9.716871\n\n\n3\nCecilie\n3\n34\n11.144905\n\n\n4\nEmma\n1\n54\n7.898643\n\n\n...\n...\n...\n...\n...\n\n\n95\nJesper\n3\n38\n7.942776\n\n\n96\nDavid\n3\n36\n9.924945\n\n\n97\nAsger\n0\n39\n9.842173\n\n\n98\nMichael\n1\n44\n10.075713\n\n\n99\nJohan\n2\n25\n8.232970\n\n\n\n\n100 rows × 4 columns\nsns.scatterplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age')\nplt.legend(title='Seniority', loc='lower right', labels=['Undergrad', 'Postgrad', 'PhD', 'Postdoc', 'Professor'])\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 2.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\nSeems Danish people act very informally unaffected by age and seniority.\ninformality_age_cor = df.informality.corr(df.age)\ninformality_age_cor\n\n0.0351023049128157\ninformality_seniority_cor = df.informality.corr(df.seniority)\ninformality_seniority_cor\n\n0.12226864913588426\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.\nsns.lmplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age') ;\n\n\n\n\n\n\n\nFigure 2.2: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
     "crumbs": [
       "Notebooks",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workplace interaction</span>"
@@ -83,7 +83,7 @@
     "section": "",
     "text": "Project\nThese pages are generated from a Git repository I made for you. Read more about Git and repositories in the project guide. The repository, with its files and folders, serves as a scaffold for your project, with placeholder files to get you started.\nDuring the project, you will populate it with your code, analysis notebooks, and documentation reporting your work and use Git to track this development. This way your project will end up documented by a set of pages like these.",
     "crumbs": [
-      "Project"
+      "Title of your project"
     ]
   },
   {
@@ -93,7 +93,7 @@
     "section": "Outline",
     "text": "Outline\nIt will help if you write a paragraph here outlining the project to the extent you can. What are the goals of your project? What would you like to find out? What would you like to learn? You should update it along the way.",
     "crumbs": [
-      "Project"
+      "Title of your project"
     ]
   },
   {
@@ -103,7 +103,7 @@
     "section": "Suggested reading",
     "text": "Suggested reading\nIf you need a basic introduction to population genetics, I suggest reading “An introduction to population genetics: Theory and applications” by Rasmus Nielsen and Monty Slatkin (Nielsen and Slatkin 2016). A free alternative is Graham Coop’s Lecture notes, which offer a similar introduction.\n\nI will guide you to additional material once you get started.",
     "crumbs": [
-      "Project"
+      "Title of your project"
     ]
   },
   {
@@ -113,7 +113,7 @@
     "section": "Schedule",
     "text": "Schedule\nOnce you get started, you should make a plan for your project. It will change along the way, but with a plan, you will know when it does.\nYou should outline the project plan and what you intend to do in the weeks/months of your project. Such a plan is tentative and will change along the way when you find such changes are meaningful or necessary.\nAn excellent way to do this is to use the GitHub Project feature on our group GitHub account.\n\n\n\n\nNielsen, Rasmgb, and Montgomery Slatkin. 2016. An Introduction to Population Genetics: Theory and Applications.",
     "crumbs": [
-      "Project"
+      "Title of your project"
     ]
   },
   {
@@ -124,7 +124,7 @@
     "text": "Regression analysis of formality\nBlah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Supplementary info</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title of your project</span>"
     ]
   },
   {
@@ -135,7 +135,7 @@
     "text": "Figure 4.1: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Supplementary info</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title of your project</span>"
     ]
   },
   {
@@ -246,16 +246,6 @@
     "crumbs": [
       "Slides",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Suppl. slides</span>"
-    ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Nielsen, Rasmgb, and Montgomery Slatkin. 2016. An Introduction to\nPopulation Genetics: Theory and Applications.",
-    "crumbs": [
-      "References"
     ]
   }
 ]
