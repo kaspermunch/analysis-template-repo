@@ -19,14 +19,15 @@ format:
 comments:
   hypothesis: true
 
-# project title
-title: "Title of your project"
-# your name
-author: "Joanna Doh"
+
 
 book:
   repo-url: "https://github.com/munch-group/analysis-template"
   repo-actions: [edit, issue, source]  
+  # project title
+  title: "Title of your project"
+  # your name
+  author: "Joanna Doh"  
   chapters:
     # your font page:
     - index.qmd
@@ -42,9 +43,9 @@ book:
       - reports/supplementary.qmd
     - part: "Slides"
       chapters:
-        # markdown slides
-        # (the same files must be listed _quarto-slides.yml to render as slides)
-        - slides/slides.qmd 
-        - slides/suppl_slides.qmd 
+      # markdown slides
+      # (the same files must be listed _quarto-slides.yml to render as slides)
+      - slides/slides.qmd 
+      - slides/suppl_slides.qmd 
 
 bibliography: references.bib
