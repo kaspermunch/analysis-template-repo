@@ -83,7 +83,7 @@
     "section": "",
     "text": "Project\nThese pages are generated from a Git repository I made for you. Read more about Git and repositories in the project guide. The repository, with its files and folders, serves as a scaffold for your project, with placeholder files to get you started.\nDuring the project, you will populate it with your code, analysis notebooks, and documentation reporting your work and use Git to track this development. This way your project will end up documented by a set of pages like these.",
     "crumbs": [
-      "Title of your project"
+      "Project"
     ]
   },
   {
@@ -93,7 +93,7 @@
     "section": "Outline",
     "text": "Outline\nIt will help if you write a paragraph here outlining the project to the extent you can. What are the goals of your project? What would you like to find out? What would you like to learn? You should update it along the way.",
     "crumbs": [
-      "Title of your project"
+      "Project"
     ]
   },
   {
@@ -103,7 +103,7 @@
     "section": "Suggested reading",
     "text": "Suggested reading\nIf you need a basic introduction to population genetics, I suggest reading “An introduction to population genetics: Theory and applications” by Rasmus Nielsen and Monty Slatkin (Nielsen and Slatkin 2016). A free alternative is Graham Coop’s Lecture notes, which offer a similar introduction.\n\nI will guide you to additional material once you get started.",
     "crumbs": [
-      "Title of your project"
+      "Project"
     ]
   },
   {
@@ -113,7 +113,7 @@
     "section": "Schedule",
     "text": "Schedule\nOnce you get started, you should make a plan for your project. It will change along the way, but with a plan, you will know when it does.\nYou should outline the project plan and what you intend to do in the weeks/months of your project. Such a plan is tentative and will change along the way when you find such changes are meaningful or necessary.\nAn excellent way to do this is to use the GitHub Project feature on our group GitHub account.\n\n\n\n\nNielsen, Rasmgb, and Montgomery Slatkin. 2016. An Introduction to Population Genetics: Theory and Applications.",
     "crumbs": [
-      "Title of your project"
+      "Project"
     ]
   },
   {
@@ -124,7 +124,7 @@
     "text": "Regression analysis of formality\nBlah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title of your project</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Supplementary info</span>"
     ]
   },
   {
@@ -135,7 +135,7 @@
     "text": "Figure 4.1: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Title of your project</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Supplementary info</span>"
     ]
   },
   {
