@@ -44,16 +44,16 @@ jobs:
         env:
           QUARTO_PROFILE: default
         with:
-          path: .
-          # to: html
+          # path: content
+          to: html
 
       - name: Render Quarto Project - draft profile
         uses: quarto-dev/quarto-actions/render@v2
         env:
           QUARTO_PROFILE: slides
         with:
-          path: .
-          # to: html
+          # path: content
+          to: html
 
       # - name: Render Quarto Project - ta profile
       #   uses: quarto-dev/quarto-actions/render@v2
@@ -61,8 +61,8 @@ jobs:
       #     QUARTO_PROFILE: ta
       #     # ENCRYPT_PASSPHRASE: ${{ secrets.GITHUB_TOKEN }}
       #   with:
-      #     path: content
-      #     # to: html
+      #     # path: content
+      #     to: html
 
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
