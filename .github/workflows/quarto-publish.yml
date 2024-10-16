@@ -18,21 +18,60 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+      - run: pip install jupyter pycryptodome>3.10 pbkdf2 cryptography
+
+      # - uses: r-lib/actions/setup-r@v2
+      # - uses: r-lib/actions/setup-r-dependencies@v2
+      #   with:
+      #     packages: |
+      #       any::downloadthis
+      #     # extra-packages: |
+      #     #   any::downloadthis
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        # with:
-        #   # To install LaTeX to build PDF book 
-        #   tinytex: true 
-        #   # uncomment below and fill to pin a version
-        #   # version: SPECIFIC-QUARTO-VERSION-HERE
+        with:
+          # To install LaTeX to build PDF book 
+          tinytex: true 
+          # uncomment below and fill to pin a version
+          # version: SPECIFIC-QUARTO-VERSION-HERE
+
+      - name: Render Quarto Project - default profile
+        uses: quarto-dev/quarto-actions/render@v2
+        env:
+          QUARTO_PROFILE: default
+        with:
+          path: .
+          # to: html
+
+      - name: Render Quarto Project - draft profile
+        uses: quarto-dev/quarto-actions/render@v2
+        env:
+          QUARTO_PROFILE: slides
+        with:
+          path: .
+          # to: html
+
+      # - name: Render Quarto Project - ta profile
+      #   uses: quarto-dev/quarto-actions/render@v2
+      #   env:
+      #     QUARTO_PROFILE: ta
+      #     # ENCRYPT_PASSPHRASE: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     path: content
+      #     # to: html
 
       - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
+          path: content
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
 
-    permissions:
+      permissions:
       contents: write        
 #     pages: write

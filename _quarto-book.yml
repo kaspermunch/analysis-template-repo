@@ -1,7 +1,7 @@
 project:
   type: book
-  post-render: 
-    - quarto render --profile slides
+  # post-render: 
+  #   - quarto render --profile slides
 
 execute:
   freeze: auto
@@ -18,8 +18,6 @@ format:
 
 comments:
   hypothesis: true
-
-
 
 book:
   repo-url: "https://github.com/munch-group/analysis-template"
