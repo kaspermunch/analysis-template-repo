@@ -48,7 +48,7 @@
     "href": "reports/manuscript.html#results",
     "title": "My manuscript",
     "section": "Results",
-    "text": "Results\n\nWeather\nAs shown in Figure 3.1, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\n\n\n\nFigure 3.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\n\nSocial norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 5.2).\n\n\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.",
+    "text": "Results\n\nWeather\nAs shown in Figure 3.1, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\n\n\n\nFigure 3.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\n\nSocial norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 6.2).\n\n\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.",
     "crumbs": [
       "Reports",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
@@ -139,6 +139,39 @@
     ]
   },
   {
+    "objectID": "tables/result_tables.html",
+    "href": "tables/result_tables.html",
+    "title": "Tables",
+    "section": "",
+    "text": "Some table",
+    "crumbs": [
+      "Tables",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Tables</span>"
+    ]
+  },
+  {
+    "objectID": "tables/result_tables.html#some-table",
+    "href": "tables/result_tables.html#some-table",
+    "title": "Tables",
+    "section": "",
+    "text": "pos\nwhen_DAF_is_half\nwhen_mutation_has_freq2\npopulation\n\n\n\n\n10122953\n-1.39061\n-6.29509\nCDX\n\n\n11859476\n-2.69332\n-6.64483\nCDX\n\n\n11864438\n-2.69332\n-6.64483\nCDX\n\n\n32635171\n-2.22411\n-6.58804\nCDX\n\n\n105249963\n-1.40614\n-6.1175\nCDX\n\n\n3712725\n-1.08669\n-6.50623\nCHB\n\n\n3713920\n-2.06253\n-9.86443\nCHB\n\n\n3717514\n-2.63504\n-6.90527\nCHB\n\n\n3720564\n-2.39925\n-6.07486\nCHB\n\n\n3720591\n-2.39925\n-6.07486\nCHB\n\n\n3721203\n-2.39925\n-6.07486\nCHB\n\n\n3721452\n-2.39925\n-6.07486\nCHB\n\n\n32812742\n-3.15776\n-6.19174\nCHB\n\n\n47349640\n-1.54411\n-6.06731\nCHB\n\n\n47352820\n-2.05606\n-8.20242\nCHB\n\n\n151669901\n-1.64488\n-8.53576\nCHB\n\n\n3706646\n-2.43612\n-6.34196\nCHS\n\n\n10214581\n-2.5395\n-9.20117\nCHS\n\n\n122431333\n-0.937105\n-6.22082\nCHS\n\n\n141669308\n-1.01917\n-6.1283\nCHS\n\n\n49962327\n-1.7661\n-6.61933\nJPT\n\n\n142111497\n-1.40929\n-6.26781\nJPT\n\n\n20348765\n-2.04252\n-6.05583\nKHV\n\n\n20349644\n-1.7731\n-8.27088\nKHV\n\n\n69126919\n-1.33815\n-6.76224\nKHV\n\n\n151669901\n-2.15558\n-7.15834\nKHV\n\n\n153982797\n-1.28947\n-6.1144\nKHV",
+    "crumbs": [
+      "Tables",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Tables</span>"
+    ]
+  },
+  {
+    "objectID": "tables/result_tables.html#automatically-render-many-tables",
+    "href": "tables/result_tables.html#automatically-render-many-tables",
+    "title": "Tables",
+    "section": "Automatically render many tables",
+    "text": "Automatically render many tables\nResult table ### Result table\n\n\n\n\n\n\n\n\n\npos\nwhen_DAF_is_half\nwhen_mutation_has_freq2\npopulation\n\n\n\n\n10122953\n-1.39061\n-6.29509\nCDX\n\n\n11859476\n-2.69332\n-6.64483\nCDX\n\n\n11864438\n-2.69332\n-6.64483\nCDX\n\n\n32635171\n-2.22411\n-6.58804\nCDX\n\n\n105249963\n-1.40614\n-6.1175\nCDX\n\n\n3712725\n-1.08669\n-6.50623\nCHB\n\n\n3713920\n-2.06253\n-9.86443\nCHB\n\n\n3717514\n-2.63504\n-6.90527\nCHB\n\n\n3720564\n-2.39925\n-6.07486\nCHB\n\n\n3720591\n-2.39925\n-6.07486\nCHB\n\n\n3721203\n-2.39925\n-6.07486\nCHB\n\n\n3721452\n-2.39925\n-6.07486\nCHB\n\n\n32812742\n-3.15776\n-6.19174\nCHB\n\n\n47349640\n-1.54411\n-6.06731\nCHB\n\n\n47352820\n-2.05606\n-8.20242\nCHB\n\n\n151669901\n-1.64488\n-8.53576\nCHB\n\n\n3706646\n-2.43612\n-6.34196\nCHS\n\n\n10214581\n-2.5395\n-9.20117\nCHS\n\n\n122431333\n-0.937105\n-6.22082\nCHS\n\n\n141669308\n-1.01917\n-6.1283\nCHS\n\n\n49962327\n-1.7661\n-6.61933\nJPT\n\n\n142111497\n-1.40929\n-6.26781\nJPT\n\n\n20348765\n-2.04252\n-6.05583\nKHV\n\n\n20349644\n-1.7731\n-8.27088\nKHV\n\n\n69126919\n-1.33815\n-6.76224\nKHV\n\n\n151669901\n-2.15558\n-7.15834\nKHV\n\n\n153982797\n-1.28947\n-6.1144\nKHV",
+    "crumbs": [
+      "Tables",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Tables</span>"
+    ]
+  },
+  {
     "objectID": "slides/slides.html",
     "href": "slides/slides.html",
     "title": "Main talk",
@@ -146,7 +179,7 @@
     "text": "Example slide",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -157,7 +190,7 @@
     "text": "This is a subtitle\nHere we have some text that may run over several lines of the slide frame, depending on how long it is.\n\nfirst item\n\nA sub item\n\n\nNext, we’ll brief review some theme-specific components.\n\nNote that all of the standard Reveal.js features can be used with this theme, even if we don’t highlight them here.",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -168,7 +201,7 @@
     "text": "Additional theme classes\n\nSome extra things you can do with the clean theme\nSpecial classes for emphasis\n\n.alert class for default emphasis, e.g. important note.\n.fg class for custom colour, e.g. important note.\n.bg class for custom background, e.g. important note.\n\nCross-references\n\n.button class provides a Beamer-like button, e.g. Summary",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -179,7 +212,7 @@
     "text": "Social norms\n\nSampling\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nI sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -187,10 +220,10 @@
     "href": "slides/slides.html#social-norms-1",
     "title": "Main talk",
     "section": "Social norms",
-    "text": "Social norms\n\nNeither academic seniority or age affected interaction\n\n\n\n\n\n\n\n\n\nFigure 5.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.",
+    "text": "Social norms\n\nNeither academic seniority or age affected interaction\n\n\n\n\n\n\n\n\n\nFigure 6.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -201,7 +234,7 @@
     "text": "Slide title\n\n\nEat spaghetti\nDrink wine",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -212,7 +245,7 @@
     "text": "Slide title\n\n\nLeft column\n\n\nOne\nTwo\nThree",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -220,10 +253,10 @@
     "href": "slides/slides.html#slide-title-2",
     "title": "Main talk",
     "section": "Slide title",
-    "text": "Slide title\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.",
+    "text": "Slide title\n\n\n\n\n\nThe correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 6.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -234,7 +267,7 @@
     "text": "Slide Title\nSlide content\n\n\n\n\nSchumer et al. (2018)",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -245,7 +278,7 @@
     "text": "Suppl. slides\nSupplementary slides …",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Suppl. slides</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Suppl. slides</span>"
     ]
   }
 ]
