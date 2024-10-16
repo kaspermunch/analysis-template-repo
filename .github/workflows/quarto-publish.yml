@@ -80,6 +80,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
 
-      permissions:
+    permissions:
       contents: write        
 #     pages: write
