@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-      - run: pip install jupyter pycryptodome>3.10 pbkdf2 cryptography
+      - run: pip install jupyter pandas pyyaml tabulate pycryptodome>3.10 pbkdf2 cryptography 
 
       # - uses: r-lib/actions/setup-r@v2
       # - uses: r-lib/actions/setup-r-dependencies@v2

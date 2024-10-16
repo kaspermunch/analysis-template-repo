@@ -39,6 +39,10 @@ book:
       # your memos, reports, manuscripts, documentation:
       - reports/manuscript.ipynb
       - reports/supplementary.qmd
+    - part: "Tables"
+      chapters: 
+      # your csv files rendered as tables
+      - tables/result_tables.qmd
     - part: "Slides"
       chapters:
       # markdown slides
