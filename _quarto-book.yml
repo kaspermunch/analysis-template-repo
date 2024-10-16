@@ -42,7 +42,8 @@ book:
     - part: "Tables"
       chapters: 
       # your csv files rendered as tables
-      - tables/result_tables.qmd
+      - tables/data_table.qmd
+      - tables/result_table.qmd      
     - part: "Slides"
       chapters:
       # markdown slides
