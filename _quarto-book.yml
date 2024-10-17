@@ -37,7 +37,8 @@ book:
     - part: "Reports"
       chapters: 
       # your memos, reports, manuscripts, documentation:
-      - reports/manuscript.ipynb
+      # - reports/manuscript.ipynb
+      - reports/manuscript.qmd
       - reports/supplementary.qmd
     - part: "Tables"
       chapters: 

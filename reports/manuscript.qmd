@@ -1,0 +1,69 @@
+---
+title: My manuscript
+author: My Name
+date: 'April 25nd, 2024'
+format:
+ html:
+  code-fold: true
+---
+
+## Abstract
+
+This is my report about Denmark... blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah
+
+## Introduction
+
+Denmark is .... blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah
+
+## Results
+
+### Weather
+
+As shown in @fig-danish-weather, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.
+
+{{< embed ../notebooks/01_weather.ipynb#fig-danish-weather >}}
+
+### Social norms
+
+In Denmark, the workplace interaction is very informal and largely unaffected by seniority and age. 
+
+{{< embed ../notebooks/02_interaction.ipynb#doc-sampling echo=false >}}
+
+I found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see @fig-danish-interaction). 
+
+{{< embed ../notebooks/02_interaction.ipynb#fig-danish-interaction >}}
+
+<!-- a bug in quarto does not allow successive embeds witout somthing in between (like this) -->
+
+{{< embed ../notebooks/02_interaction.ipynb#doc-formality-correlation echo=false >}}
+
+```{python}
+#| echo: false
+
+# make global parameters available
+import sys
+sys.path.append('..')
+from global_params import load_params
+params = load_params('../global_params.yml')
+```
+
+## Discussion
+
+This this investigation of `{python} params.sample_size` Danes..., blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.
+
+## Methods
+
+### Weather analysis
+
+{{< embed ../notebooks/01_weather.ipynb#doc-weather-data echo=false >}}
+
+{{< embed ../notebooks/01_weather.ipynb#doc-weather-data echo=false >}}
+
+
+### Interaction analysis
+
+@tbl-subjects lists the samples included in the analysis.
+
+{{< embed ../notebooks/02_interaction.ipynb#tbl-subjects echo=false >}}
+
+{{< embed ../notebooks/02_interaction.ipynb#doc-interviews echo=false >}}

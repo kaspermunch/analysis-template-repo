@@ -4,16 +4,10 @@
 This is a table of results from a csv file:
 
 ```{python}
-#| eval: true
 #| echo: false
-#| output: asis
+#| label: tbl-data
+#| tbl-cap: "This could be a table listing samples included in an analysis."
 
-from IPython.display import display, Markdown
 import pandas as pd
-import os.path
-import glob
-
-file_name = '../results/result_table.csv'
-
-Markdown("  \n\n"+pd.read_csv(file_name).to_markdown(index=False)+"  \n\n")
+pd.read_csv('../data/data_table.csv')
 ```

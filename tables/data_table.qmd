@@ -4,33 +4,24 @@
 This is a data table from a csv file:
 
 ```{python}
-#| eval: true
 #| echo: false
-#| output: asis
-from IPython.display import display, Markdown, HTML
+
 import pandas as pd
-import os.path
-import glob
-
-file_name = '../data/data_table.csv'
-
-display(Markdown(pd.read_csv(file_name).to_markdown(index=False)))
-display(HTML("<br><br>"))
+pd.read_csv('../data/data_table.csv')
 ```
 
-The same table again ... (could be some other table)
+<!-- 
+You can also show it as a normal markdown table:
 
 ```{python}
-#| eval: true
 #| echo: false
 #| output: asis
-from IPython.display import display, Markdown, HTML
+
+from IPython.display import display, Markdown
 import pandas as pd
 import os.path
 import glob
 
-file_name = '../data/data_table.csv'
-
-display(Markdown(pd.read_csv(file_name).to_markdown(index=False)))
-display(HTML("<br><br>"))
+Markdown("  \n\n"+pd.read_csv('../data/data_table.csv').to_markdown(index=False)+"  \n\n")
 ```
+ -->
