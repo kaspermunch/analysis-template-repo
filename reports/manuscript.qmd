@@ -39,12 +39,11 @@ I found that neither academic seniority or age of workplace individuals much aff
 
 ```{python}
 #| echo: false
-
-# make global parameters available
+# make global parameters available to embed in text
 import sys
 sys.path.append('..')
 from global_params import load_params
-params = load_params('../global_params.yml')
+params = load_params('../interact_params.yml')
 ```
 
 ## Discussion
