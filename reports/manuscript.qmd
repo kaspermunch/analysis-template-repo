@@ -67,3 +67,7 @@ This this investigation of `{python} params.sample_size` Danes..., blah, blah, b
 {{< embed ../notebooks/02_interaction.ipynb#tbl-subjects echo=false >}}
 
 {{< embed ../notebooks/02_interaction.ipynb#doc-interviews echo=false >}}
+
+## References
+
+
