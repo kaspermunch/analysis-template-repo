@@ -176,6 +176,7 @@
    
   <ul>
   <li><a href="#sampling" id="toc-sampling" class="nav-link active" data-scroll-target="#sampling">Sampling</a></li>
+  <li><a href="#interviews" id="toc-interviews" class="nav-link" data-scroll-target="#interviews">Interviews</a></li>
   </ul>
 </nav>
 </div>
@@ -203,50 +204,332 @@
 <div id="cell-2" class="cell markdown">
 <p>Import some plotting libraries and set some defaults:</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-3" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_formats <span class="op">=</span> [<span class="st">'svg'</span>] </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>random_seed <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [30]:</pre></div><div id="cell-3" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>random_seed <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'..'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> global_params <span class="im">import</span> load_params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-4" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>danish_people <span class="op">=</span> [<span class="st">'Julie'</span>, <span class="st">'Sofie'</span>, <span class="st">'Sara'</span>, <span class="st">'Cecilie'</span>, <span class="st">'Emma'</span>, <span class="st">'Caroline'</span>, <span class="st">'Laura'</span>, <span class="st">'Mathilde'</span>, <span class="st">'Katrine'</span>, <span class="st">'Anna'</span>, <span class="st">'Emilie'</span>, <span class="st">'Ida'</span>, <span class="st">'Freja'</span>, <span class="st">'Maria'</span>, <span class="st">'Amalie'</span>, <span class="st">'Camilla'</span>, <span class="st">'Louise'</span>, <span class="st">'Signe'</span>, <span class="st">'Maja'</span>, <span class="st">'Josefine'</span>, <span class="st">'Line'</span>, <span class="st">'Nanna'</span>, <span class="st">'Anne'</span>, <span class="st">'Nicoline'</span>, <span class="st">'Clara'</span>, <span class="st">'Victoria'</span>, <span class="st">'Marie'</span>, <span class="st">'Natasja'</span>, <span class="st">'Lærke'</span>, <span class="st">'Alberte'</span>, <span class="st">'Frederikke'</span>, <span class="st">'Rebecca'</span>, <span class="st">'Mette'</span>, <span class="st">'Rikke'</span>, <span class="st">'Amanda'</span>, <span class="st">'Mia'</span>, <span class="st">'Kristine'</span>, <span class="st">'Johanne'</span>, <span class="st">'Stine'</span>, <span class="st">'Simone'</span>, <span class="st">'Isabella'</span>, <span class="st">'Jasmin'</span>, <span class="st">'Michelle'</span>, <span class="st">'Pernille'</span>, <span class="st">'Christina'</span>, <span class="st">'Astrid'</span>, <span class="st">'Sille'</span>, <span class="st">'Thea'</span>, <span class="st">'Mie'</span>, <span class="st">'Nadia'</span>, <span class="st">'Mathias'</span>,<span class="st">'Mads'</span>,<span class="st">'Mikkel'</span>,<span class="st">'Rasmus'</span>,<span class="st">'Emil'</span>,<span class="st">'Oliver'</span>,<span class="st">'Frederik'</span>,<span class="st">'Christian'</span>,<span class="st">'Nicolai'</span>,<span class="st">'Jonas'</span>,<span class="st">'Jacob'</span>,<span class="st">'Kasper'</span>,<span class="st">'Magnus'</span>,<span class="st">'Andreas'</span>,<span class="st">'Tobias'</span>,<span class="st">'Simon'</span>,<span class="st">'Lucas'</span>,<span class="st">'Marcus'</span>, <span class="st">'Victor'</span>, <span class="st">'Nicklas'</span>, <span class="st">'Sebastian'</span>, <span class="st">'Daniel'</span>, <span class="st">'Alexander'</span>, <span class="st">'Anders'</span>, <span class="st">'Christoffer'</span>, <span class="st">'Patrick'</span>, <span class="st">'Lasse'</span>, <span class="st">'Benjamin'</span>, <span class="st">'Thomas'</span>, <span class="st">'Martin'</span>, <span class="st">'Jeppe'</span>, <span class="st">'Gustav'</span>, <span class="st">'Peter'</span>, <span class="st">'Philip'</span>, <span class="st">'William'</span>, <span class="st">'Oscar'</span>, <span class="st">'Malthe'</span>, <span class="st">'Jonathan'</span>, <span class="st">'Anton'</span>, <span class="st">'Morten'</span>, <span class="st">'Carl'</span>, <span class="st">'Søren'</span>, <span class="st">'Mohammad'</span>, <span class="st">'Mark'</span>, <span class="st">'Jens'</span>, <span class="st">'Jesper'</span>, <span class="st">'David'</span>, <span class="st">'Asger'</span>, <span class="st">'Michael'</span>, <span class="st">'Johan'</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nr_danes <span class="op">=</span> <span class="bu">len</span>(danish_people)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-4" class="cell markdown">
+<blockquote class="blockquote">
+<p><strong>Tip:</strong><br>
+Producing figures in svg format (scalable vector graphics) makes for sharp plots on webpages. However, if you make plots with thousands of observations you should set this to <code>'png'</code> instead:</p>
+</blockquote>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [31]:</pre></div><div id="cell-5" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_formats <span class="op">=</span> [<span class="st">'svg'</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-5" class="cell markdown">
+<div id="cell-6" class="cell markdown">
+<blockquote class="blockquote">
+<p><strong>Tip:</strong><br>
+Some values apply globally to your analysis. E.g., sample sizes, cutoffs, names, rates, etc. Keeping those in a a yml file like <code>interaction_params.yml</code> and loading them in each notebook avoids the risk of manually adding/updating them in each notebook where they are used. You can use the <code>load_globals</code> function imported above from <code>global_params.py</code> to produce an object holding all the global values:</p>
+</blockquote>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [34]:</pre></div><div id="cell-7" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> load_params(<span class="st">'../interact_params.yml'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>{'questions': ['Blah blah blah',
+               'Blah blah blah',
+               'Blah blah blah',
+               'Blah blah blah'],
+ 'sample_size': 24}</code></pre>
+</div>
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [35]:</pre></div><div id="cell-8" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>params.sample_size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>24</code></pre>
+</div>
+</div></div>
+<div id="cell-9" class="cell markdown">
 <section id="sampling" class="level2">
 <h2 class="anchored" data-anchor-id="sampling">Sampling</h2>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-doc-sampling" class="cell" data-execution_count="3">
-<div id="doc-sampling" class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
-<p>I sampled 100 danaes from workplaces in Denmark. More about the sampling… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="cell-10" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>subjects <span class="op">=</span> pd.read_csv(<span class="st">'../data/data_table.csv'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> subjects.index.size <span class="op">==</span> params.sample_size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div id="cell-11" class="cell markdown">
+<blockquote class="blockquote">
+<p><strong>Tip:</strong><br>
+By adding a label and caption to a cell displaying a table, you can refer to that table elsewhere and insert it in a manuscript.</p>
+</blockquote>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div class="cell" data-execution_count="16">
+
+<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>subjects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div><div id="tbl-subjects" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="16">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-subjects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: People included in the analysis.
+</figcaption>
+<div aria-describedby="tbl-subjects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">position</th>
+<th data-quarto-table-cell-role="th">nationality</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Julie</td>
+<td>27</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>DK</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Thomas</td>
+<td>33</td>
+<td>M</td>
+<td>Postdoc</td>
+<td>GB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Emilie</td>
+<td>23</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>CH</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Sofie</td>
+<td>31</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Sara</td>
+<td>29</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>US</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Cecilie</td>
+<td>34</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Anders</td>
+<td>32</td>
+<td>M</td>
+<td>PhDstudent</td>
+<td>UK</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Emma</td>
+<td>42</td>
+<td>F</td>
+<td>Professor</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Caroline</td>
+<td>31</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>DK</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Laura</td>
+<td>30</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>Mikkel</td>
+<td>33</td>
+<td>M</td>
+<td>Postdoc</td>
+<td>NL</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Jens</td>
+<td>27</td>
+<td>M</td>
+<td>PhDstudent</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Andreas</td>
+<td>29</td>
+<td>M</td>
+<td>PhDstudent</td>
+<td>DK</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Jakob</td>
+<td>28</td>
+<td>M</td>
+<td>PhDstudent</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>Mathilde</td>
+<td>61</td>
+<td>F</td>
+<td>Professor</td>
+<td>DK</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Katrine</td>
+<td>35</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Poul</td>
+<td>30</td>
+<td>M</td>
+<td>Postdoc</td>
+<td>DK</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Anna</td>
+<td>26</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Peter</td>
+<td>42</td>
+<td>M</td>
+<td>Professor</td>
+<td>GB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Ida</td>
+<td>53</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>Freja</td>
+<td>30</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>Maria</td>
+<td>39</td>
+<td>F</td>
+<td>Professor</td>
+<td>UK</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>Amalie</td>
+<td>29</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>DK</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>Camilla</td>
+<td>35</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div></div></div>
+</div></div>
+<div id="cell-13" class="cell markdown">
+<blockquote class="blockquote">
+<p><strong>Tip:</strong><br>
+By generaing markdown for descriptions that will eventually end up in the manuscript, you can imbed python values. It also ensures that the manuscript exactly reflects the notebook.</p>
+</blockquote>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="cell-doc-sampling" class="cell" data-execution_count="17">
+<div id="doc-sampling" class="cell-output cell-output-display cell-output-markdown" data-execution_count="17">
+<p>The 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div id="cell-8" class="cell markdown">
-<p>Some number from a python variable: <code>{python} radius</code></p>
+<div id="cell-15" class="cell markdown">
+<section id="interviews" class="level2">
+<h2 class="anchored" data-anchor-id="interviews">Interviews</h2>
+</section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-doc-interviews" class="cell" data-execution_count="4">
-<div id="doc-interviews" class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
-<p>Workplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="cell-doc-interviews" class="cell" data-execution_count="18">
+<div id="doc-interviews" class="cell-output cell-output-display cell-output-markdown" data-execution_count="18">
+<p>The 24 subjects were asked to score the follow statements:</p>
+<ol type="1">
+<li>Blah blah blah</li>
+<li>Blah blah blah</li>
+<li>Blah blah blah</li>
+<li>Blah blah blah</li>
+</ol>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-10" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>: danish_people, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'seniority'</span>: np.random.randint(<span class="dv">0</span>, <span class="dv">5</span>, <span class="bu">len</span>(danish_people)), </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'age'</span>: np.random.randint(<span class="dv">22</span>, <span class="dv">67</span>, <span class="bu">len</span>(danish_people))})</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'informality'</span>] <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="bu">len</span>(danish_people))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="cell-17" class="cell markdown">
+<p>In interviewed <code>{python} params.sample_size</code> workplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,</p>
+</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="cell-18" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>: subjects.name, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'seniority'</span>: np.random.randint(<span class="dv">0</span>, <span class="dv">5</span>, params.sample_size), </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'age'</span>: subjects.age})</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'informality'</span>] <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span>params.sample_size)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 
 
@@ -264,93 +547,183 @@
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>Julie</td>
-<td>4</td>
-<td>32</td>
-<td>9.058813</td>
+<td>2</td>
+<td>27</td>
+<td>10.061504</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>Sofie</td>
-<td>0</td>
-<td>66</td>
-<td>10.935441</td>
+<td>Thomas</td>
+<td>2</td>
+<td>33</td>
+<td>9.795845</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>Sara</td>
-<td>2</td>
-<td>55</td>
-<td>9.716871</td>
+<td>Emilie</td>
+<td>0</td>
+<td>23</td>
+<td>10.704674</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>Cecilie</td>
-<td>3</td>
-<td>34</td>
-<td>11.144905</td>
+<td>Sofie</td>
+<td>4</td>
+<td>31</td>
+<td>9.995386</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>Emma</td>
+<td>Sara</td>
 <td>1</td>
-<td>54</td>
-<td>7.898643</td>
+<td>29</td>
+<td>9.384324</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
+<td data-quarto-table-cell-role="th">5</td>
+<td>Cecilie</td>
+<td>4</td>
+<td>34</td>
+<td>9.617037</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">95</td>
-<td>Jesper</td>
+<td data-quarto-table-cell-role="th">6</td>
+<td>Anders</td>
 <td>3</td>
-<td>38</td>
-<td>7.942776</td>
+<td>32</td>
+<td>8.822115</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">96</td>
-<td>David</td>
+<td data-quarto-table-cell-role="th">7</td>
+<td>Emma</td>
 <td>3</td>
-<td>36</td>
-<td>9.924945</td>
+<td>42</td>
+<td>8.654268</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">97</td>
-<td>Asger</td>
+<td data-quarto-table-cell-role="th">8</td>
+<td>Caroline</td>
+<td>0</td>
+<td>31</td>
+<td>10.571754</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Laura</td>
+<td>3</td>
+<td>30</td>
+<td>12.278083</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>Mikkel</td>
+<td>2</td>
+<td>33</td>
+<td>10.181373</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Jens</td>
+<td>4</td>
+<td>27</td>
+<td>11.043315</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Andreas</td>
+<td>3</td>
+<td>29</td>
+<td>10.194166</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Jakob</td>
+<td>2</td>
+<td>28</td>
+<td>9.740300</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>Mathilde</td>
+<td>2</td>
+<td>61</td>
+<td>8.671047</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Katrine</td>
+<td>1</td>
+<td>35</td>
+<td>10.177327</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Poul</td>
+<td>4</td>
+<td>30</td>
+<td>9.894090</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Anna</td>
+<td>1</td>
+<td>26</td>
+<td>7.958770</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Peter</td>
+<td>2</td>
+<td>42</td>
+<td>11.287880</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Ida</td>
+<td>0</td>
+<td>53</td>
+<td>10.254190</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>Freja</td>
+<td>0</td>
+<td>30</td>
+<td>11.093569</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>Maria</td>
 <td>0</td>
 <td>39</td>
-<td>9.842173</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">98</td>
-<td>Michael</td>
-<td>1</td>
-<td>44</td>
-<td>10.075713</td>
+<td>10.223915</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">99</td>
-<td>Johan</td>
-<td>2</td>
-<td>25</td>
-<td>8.232970</td>
+<td data-quarto-table-cell-role="th">22</td>
+<td>Amalie</td>
+<td>1</td>
+<td>29</td>
+<td>9.613552</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>Camilla</td>
+<td>0</td>
+<td>35</td>
+<td>9.975990</td>
 </tr>
 </tbody>
 </table>
 
-<p>100 rows × 4 columns</p>
 </div>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-fig-danish-interaction" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'informality'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'seniority'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'How informal you can be'</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Seniority'</span>, loc<span class="op">=</span><span class="st">'lower right'</span>, labels<span class="op">=</span>[<span class="st">'Undergrad'</span>, <span class="st">'Postgrad'</span>, <span class="st">'PhD'</span>, <span class="st">'Postdoc'</span>, <span class="st">'Professor'</span>])</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.ylim(bottom<span class="op">=</span><span class="dv">0</span>) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [21]:</pre></div><div id="cell-fig-danish-interaction" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'informality'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'seniority'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'How informal you can be'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Seniority'</span>, loc<span class="op">=</span><span class="st">'lower right'</span>, labels<span class="op">=</span>[<span class="st">'Undergrad'</span>, <span class="st">'Postgrad'</span>, <span class="st">'PhD'</span>, <span class="st">'Postdoc'</span>, <span class="st">'Professor'</span>])</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.ylim(bottom<span class="op">=</span><span class="dv">0</span>) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-danish-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -364,35 +737,35 @@ Figure&nbsp;1: Interaction among Danes: How Danes interact is has very little to
 </div>
 </div>
 </div></div>
-<div id="cell-12" class="cell markdown">
+<div id="cell-20" class="cell markdown">
 <p>Seems Danish people act very informally unaffected by age and seniority.</p>
 </div>
-<div id="cell-13" class="cell markdown">
+<div id="cell-21" class="cell markdown">
 
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-14" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>informality_age_cor <span class="op">=</span> df.informality.corr(df.age)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>informality_age_cor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>0.0351023049128157</code></pre>
+<div class="cell-container"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="cell-22" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>informality_age_cor <span class="op">=</span> df.informality.corr(df.age)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>informality_age_cor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>-0.1949220780248677</code></pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-15" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>informality_seniority_cor <span class="op">=</span> df.informality.corr(df.seniority)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>informality_seniority_cor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>0.12226864913588426</code></pre>
+<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="cell-23" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>informality_seniority_cor <span class="op">=</span> df.informality.corr(df.seniority)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>informality_seniority_cor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>-0.05515869516915789</code></pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-doc-formality-correlation" class="cell" data-execution_count="9">
-<div id="doc-formality-correlation" class="cell-output cell-output-display cell-output-markdown" data-execution_count="9">
-<p>The correlation between informality and age was 0.035 and the correlation between informality and seniority was 0.122.</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [24]:</pre></div><div id="cell-doc-formality-correlation" class="cell" data-execution_count="24">
+<div id="doc-formality-correlation" class="cell-output cell-output-display cell-output-markdown" data-execution_count="24">
+<p>The correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.</p>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="cell-fig-danish-interaction-regressions" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'informality'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'seniority'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'How informal you can be'</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [25]:</pre></div><div id="cell-fig-danish-interaction-regressions" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'informality'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'seniority'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'How informal you can be'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-danish-interaction-regressions" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

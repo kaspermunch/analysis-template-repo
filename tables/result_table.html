@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -74,6 +74,9 @@ ul.task-list li input[type="checkbox"] {
     document.body.classList.add('hypothesis-enabled');
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -236,186 +239,230 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>This is a table of results from a csv file:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 27%">
-<col style="width: 37%">
-<col style="width: 19%">
-</colgroup>
+<div class="cell" data-execution_count="1">
+<div id="tbl-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: This could be a table listing samples included in an analysis.
+</figcaption>
+<div aria-describedby="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+
+
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th style="text-align: right;">pos</th>
-<th style="text-align: right;">when_DAF_is_half</th>
-<th style="text-align: right;">when_mutation_has_freq2</th>
-<th style="text-align: left;">population</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">position</th>
+<th data-quarto-table-cell-role="th">nationality</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">10122953</td>
-<td style="text-align: right;">-1.39061</td>
-<td style="text-align: right;">-6.29509</td>
-<td style="text-align: left;">CDX</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>Julie</td>
+<td>27</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>DK</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">11859476</td>
-<td style="text-align: right;">-2.69332</td>
-<td style="text-align: right;">-6.64483</td>
-<td style="text-align: left;">CDX</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>Thomas</td>
+<td>33</td>
+<td>M</td>
+<td>Postdoc</td>
+<td>GB</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">11864438</td>
-<td style="text-align: right;">-2.69332</td>
-<td style="text-align: right;">-6.64483</td>
-<td style="text-align: left;">CDX</td>
+<td data-quarto-table-cell-role="th">2</td>
+<td>Emilie</td>
+<td>23</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>CH</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">32635171</td>
-<td style="text-align: right;">-2.22411</td>
-<td style="text-align: right;">-6.58804</td>
-<td style="text-align: left;">CDX</td>
+<td data-quarto-table-cell-role="th">3</td>
+<td>Sofie</td>
+<td>31</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">105249963</td>
-<td style="text-align: right;">-1.40614</td>
-<td style="text-align: right;">-6.1175</td>
-<td style="text-align: left;">CDX</td>
+<td data-quarto-table-cell-role="th">4</td>
+<td>Sara</td>
+<td>29</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>US</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3712725</td>
-<td style="text-align: right;">-1.08669</td>
-<td style="text-align: right;">-6.50623</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">5</td>
+<td>Cecilie</td>
+<td>34</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">3713920</td>
-<td style="text-align: right;">-2.06253</td>
-<td style="text-align: right;">-9.86443</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">6</td>
+<td>Anders</td>
+<td>32</td>
+<td>M</td>
+<td>PhDstudent</td>
+<td>UK</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3717514</td>
-<td style="text-align: right;">-2.63504</td>
-<td style="text-align: right;">-6.90527</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">7</td>
+<td>Emma</td>
+<td>42</td>
+<td>F</td>
+<td>Professor</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">3720564</td>
-<td style="text-align: right;">-2.39925</td>
-<td style="text-align: right;">-6.07486</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">8</td>
+<td>Caroline</td>
+<td>31</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>DK</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3720591</td>
-<td style="text-align: right;">-2.39925</td>
-<td style="text-align: right;">-6.07486</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">9</td>
+<td>Laura</td>
+<td>30</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">3721203</td>
-<td style="text-align: right;">-2.39925</td>
-<td style="text-align: right;">-6.07486</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">10</td>
+<td>Mikkel</td>
+<td>33</td>
+<td>M</td>
+<td>Postdoc</td>
+<td>NL</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3721452</td>
-<td style="text-align: right;">-2.39925</td>
-<td style="text-align: right;">-6.07486</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">11</td>
+<td>Jens</td>
+<td>27</td>
+<td>M</td>
+<td>PhDstudent</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">32812742</td>
-<td style="text-align: right;">-3.15776</td>
-<td style="text-align: right;">-6.19174</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">12</td>
+<td>Andreas</td>
+<td>29</td>
+<td>M</td>
+<td>PhDstudent</td>
+<td>DK</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">47349640</td>
-<td style="text-align: right;">-1.54411</td>
-<td style="text-align: right;">-6.06731</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">13</td>
+<td>Jakob</td>
+<td>28</td>
+<td>M</td>
+<td>PhDstudent</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">47352820</td>
-<td style="text-align: right;">-2.05606</td>
-<td style="text-align: right;">-8.20242</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">14</td>
+<td>Mathilde</td>
+<td>61</td>
+<td>F</td>
+<td>Professor</td>
+<td>DK</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">151669901</td>
-<td style="text-align: right;">-1.64488</td>
-<td style="text-align: right;">-8.53576</td>
-<td style="text-align: left;">CHB</td>
+<td data-quarto-table-cell-role="th">15</td>
+<td>Katrine</td>
+<td>35</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">3706646</td>
-<td style="text-align: right;">-2.43612</td>
-<td style="text-align: right;">-6.34196</td>
-<td style="text-align: left;">CHS</td>
+<td data-quarto-table-cell-role="th">16</td>
+<td>Poul</td>
+<td>30</td>
+<td>M</td>
+<td>Postdoc</td>
+<td>DK</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">10214581</td>
-<td style="text-align: right;">-2.5395</td>
-<td style="text-align: right;">-9.20117</td>
-<td style="text-align: left;">CHS</td>
+<td data-quarto-table-cell-role="th">17</td>
+<td>Anna</td>
+<td>26</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">122431333</td>
-<td style="text-align: right;">-0.937105</td>
-<td style="text-align: right;">-6.22082</td>
-<td style="text-align: left;">CHS</td>
+<td data-quarto-table-cell-role="th">18</td>
+<td>Peter</td>
+<td>42</td>
+<td>M</td>
+<td>Professor</td>
+<td>GB</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">141669308</td>
-<td style="text-align: right;">-1.01917</td>
-<td style="text-align: right;">-6.1283</td>
-<td style="text-align: left;">CHS</td>
+<td data-quarto-table-cell-role="th">19</td>
+<td>Ida</td>
+<td>53</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">49962327</td>
-<td style="text-align: right;">-1.7661</td>
-<td style="text-align: right;">-6.61933</td>
-<td style="text-align: left;">JPT</td>
+<td data-quarto-table-cell-role="th">20</td>
+<td>Freja</td>
+<td>30</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">142111497</td>
-<td style="text-align: right;">-1.40929</td>
-<td style="text-align: right;">-6.26781</td>
-<td style="text-align: left;">JPT</td>
+<td data-quarto-table-cell-role="th">21</td>
+<td>Maria</td>
+<td>39</td>
+<td>F</td>
+<td>Professor</td>
+<td>UK</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">20348765</td>
-<td style="text-align: right;">-2.04252</td>
-<td style="text-align: right;">-6.05583</td>
-<td style="text-align: left;">KHV</td>
+<td data-quarto-table-cell-role="th">22</td>
+<td>Amalie</td>
+<td>29</td>
+<td>F</td>
+<td>PhDstudent</td>
+<td>DK</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">20349644</td>
-<td style="text-align: right;">-1.7731</td>
-<td style="text-align: right;">-8.27088</td>
-<td style="text-align: left;">KHV</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">69126919</td>
-<td style="text-align: right;">-1.33815</td>
-<td style="text-align: right;">-6.76224</td>
-<td style="text-align: left;">KHV</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">151669901</td>
-<td style="text-align: right;">-2.15558</td>
-<td style="text-align: right;">-7.15834</td>
-<td style="text-align: left;">KHV</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">153982797</td>
-<td style="text-align: right;">-1.28947</td>
-<td style="text-align: right;">-6.1144</td>
-<td style="text-align: left;">KHV</td>
+<td data-quarto-table-cell-role="th">23</td>
+<td>Camilla</td>
+<td>35</td>
+<td>F</td>
+<td>Postdoc</td>
+<td>DK</td>
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
 
 
 
