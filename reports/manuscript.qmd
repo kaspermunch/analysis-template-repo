@@ -7,6 +7,16 @@ format:
   code-fold: true
 ---
 
+```{python}
+#| echo: false
+# make global parameters available to embed in text
+import sys
+sys.path.append('..')
+from global_params import load_params
+params = load_params('../interact_params.yml')
+```
+
+
 ## Abstract
 
 This is my report about Denmark... blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah
@@ -36,15 +46,6 @@ I found that neither academic seniority or age of workplace individuals much aff
 <!-- a bug in quarto does not allow successive embeds witout somthing in between (like this) -->
 
 {{< embed ../notebooks/02_interaction.ipynb#doc-formality-correlation echo=false >}}
-
-```{python}
-#| echo: false
-# make global parameters available to embed in text
-import sys
-sys.path.append('..')
-from global_params import load_params
-params = load_params('../interact_params.yml')
-```
 
 ## Discussion
 
