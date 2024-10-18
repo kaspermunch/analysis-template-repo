@@ -1,0 +1,41 @@
+---
+title: Project diary
+author: My Name
+format:
+ html:
+  code-fold: true
+---
+
+```{python}
+#| echo: false
+# make global parameters available to embed in text
+import sys
+sys.path.append('..')
+from global_params import load_params
+params = load_params('../interact_params.yml')
+```
+
+
+## Sept. 20, 2024
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
+
+{{< embed ../notebooks/01_weather.ipynb#fig-danish-weather >}}
+
+## Sept. 21, 2024
+
+<!-- Dummy text -->
+{{< lipsum 2 >}} 
+
+## Sept. 22, 2024
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
+
+{{< embed ../notebooks/02_interaction.ipynb#fig-danish-interaction >}}
+
+## Sept. 23, 2024
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 

@@ -29,15 +29,21 @@ book:
   chapters:
     # your font page:
     - index.qmd
+    - workflow.py
     - part: "Notebooks"
       chapters: 
       # your jupyter notebooks:
       - notebooks/01_weather.ipynb
       - notebooks/02_interaction.ipynb
-    - part: "Reports"
+    - part: "Memos and docs"
       chapters: 
       # your memos, reports, manuscripts, documentation:
-      # - reports/manuscript.ipynb
+      - docs/project_diary.qmd
+      - docs/memo_on_something.qmd
+      - docs/howto_something.qmd
+    - part: "Reports"
+      chapters: 
+      # your reports, manuscripts, documentation:
       - reports/manuscript.qmd
       - reports/supplementary.qmd
     - part: "Tables"
@@ -50,6 +56,6 @@ book:
       # markdown slides
       # (the same files must be listed _quarto-slides.yml to render as slides)
       - slides/slides.qmd 
-      - slides/suppl_slides.qmd 
+      - slides/suppl_slides.qmd
 
 bibliography: references.bib

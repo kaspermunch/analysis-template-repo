@@ -19,19 +19,27 @@ params = load_params('../interact_params.yml')
 
 ## Abstract
 
-This is my report about Denmark... blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah
+<!-- Dummy text -->
+Denmmark ... {{< lipsum 1 >}} 
+
 
 ## Introduction
 
-Denmark is .... blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah
+Denmark is .... {{< lipsum 3 >}} 
 
 ## Results
 
 ### Weather
 
-As shown in @fig-danish-weather, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
+
+As shown in @fig-danish-weather, the Danish weather is  ...
 
 {{< embed ../notebooks/01_weather.ipynb#fig-danish-weather >}}
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
 
 ### Social norms
 
@@ -43,28 +51,44 @@ I found that neither academic seniority or age of workplace individuals much aff
 
 {{< embed ../notebooks/02_interaction.ipynb#fig-danish-interaction >}}
 
-<!-- a bug in quarto does not allow successive embeds witout somthing in between (like this) -->
-
 {{< embed ../notebooks/02_interaction.ipynb#doc-formality-correlation echo=false >}}
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
 
 ## Discussion
 
-This this investigation of `{python} params.sample_size` Danes..., blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.
+This this investigation of `{python} params.sample_size` Danes..., 
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
 
 ## Methods
 
 ### Weather analysis
 
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
+
 {{< embed ../notebooks/01_weather.ipynb#doc-weather-data echo=false >}}
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
 
 {{< embed ../notebooks/01_weather.ipynb#doc-weather-data echo=false >}}
 
 
 ### Interaction analysis
 
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
+
 @tbl-subjects lists the samples included in the analysis.
 
 {{< embed ../notebooks/02_interaction.ipynb#tbl-subjects echo=false >}}
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
 
 {{< embed ../notebooks/02_interaction.ipynb#doc-interviews echo=false >}}
 

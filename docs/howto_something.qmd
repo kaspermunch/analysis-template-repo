@@ -1,0 +1,37 @@
+---
+title: Howto something
+author: My Name
+date: 'April 25nd, 2024'
+format:
+ html:
+  code-fold: true
+---
+
+```{python}
+#| echo: false
+# make global parameters available to embed in text
+import sys
+sys.path.append('..')
+from global_params import load_params
+params = load_params('../interact_params.yml')
+```
+
+
+## Howto begin
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
+
+{{< embed ../notebooks/01_weather.ipynb#fig-danish-weather >}}
+
+## Howto continue
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 
+
+{{< embed ../notebooks/02_interaction.ipynb#fig-danish-interaction >}}
+
+## Howto end
+
+<!-- Dummy text -->
+{{< lipsum 1 >}} 

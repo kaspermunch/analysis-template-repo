@@ -5,7 +5,8 @@ This is a data table from a csv file:
 
 ```{python}
 #| echo: false
-
+#| label: tbl-subjects
+#| tbl-cap: "This could be a table listing samples included in an analysis."
 import pandas as pd
 pd.read_csv('../data/data_table.csv')
 ```

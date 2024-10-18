@@ -1,13 +1,26 @@
 
-# Result table
+# Result tables
 
 This is a table of results from a csv file:
 
 ```{python}
 #| echo: false
-#| label: tbl-data
-#| tbl-cap: "This could be a table listing samples included in an analysis."
+#| label: tbl-results
+#| tbl-cap: "This could be a table listing results of an analysis."
 
 import pandas as pd
-pd.read_csv('../data/data_table.csv')
+pd.read_csv('../results/result_table.csv')
+```
+
+Show more tables (these are the same again):
+
+```{python}
+import pandas as pd
+pd.read_csv('../results/result_table.csv')
+```
+
+
+```{python}
+import pandas as pd
+pd.read_csv('../results/result_table.csv')
 ```

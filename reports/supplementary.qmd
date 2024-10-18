@@ -3,6 +3,22 @@
 
 ## Regression analysis of formality
 
-Blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.
+<!-- Dummy text -->
+{{< lipsum 2 >}} 
 
 {{< embed ../notebooks/02_interaction.ipynb#fig-danish-interaction-regressions >}}
+
+## Survey
+
+<!-- Dummy text -->
+{{< lipsum 2 >}} 
+
+@tbl-subjects lists the samples included in the analysis.
+
+
+## Survey
+
+<!-- Dummy text -->
+{{< lipsum 2 >}} 
+
+@tbl-results lists the samples included in the analysis.
