@@ -1,13 +1,43 @@
 [
   {
+    "objectID": "workflow.html#imports-and-utility-functions",
+    "href": "workflow.html#imports-and-utility-functions",
+    "title": "GWF workflow",
+    "section": "Imports and utility functions:",
+    "text": "Imports and utility functions:\n\nimport os, re\nfrom collections import defaultdict\nfrom pathlib import Path\nimport pandas as pd\n\nfrom gwf import Workflow, AnonymousTarget\nfrom gwf.workflow import collect\n\n# utility function\ndef modify_path(path, **kwargs):\n    \"\"\"\n    Utility function for modifying file paths substituting\n    the directory (dir), base name (base), or file suffix (suffix).\n    \"\"\"\n    for key in ['dir', 'base', 'suffix']:\n        kwargs.setdefault(key, None)\n    assert len(kwargs) == 3\n\n    par, name = os.path.split(path)\n    name_no_suffix, suf = os.path.splitext(name)\n    if type(kwargs['suffix']) is str:\n        suf = kwargs['suffix']\n    if kwargs['dir'] is not None:\n        par = kwargs['dir']\n    if kwargs['base'] is not None:\n        name_no_suffix = kwargs['base']\n\n    new_path = os.path.join(par, name_no_suffix + suf)\n    if type(kwargs['suffix']) is tuple:\n        assert len(kwargs['suffix']) == 2\n        new_path, nsubs = re.subn(r'{}$'.format(kwargs['suffix'][0]), kwargs['suffix'][1], new_path)\n        assert nsubs == 1, nsubs\n    return new_path\n\n\n###############################################################################",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>GWF workflow</span>"
+    ]
+  },
+  {
+    "objectID": "workflow.html#template-functions",
+    "href": "workflow.html#template-functions",
+    "title": "GWF workflow",
+    "section": "Template functions:",
+    "text": "Template functions:\n\n# task template function\ndef uppercase_names(raw_path): \n    \"\"\"\n    Formats names to uppercase.\n    \"\"\"\n    # dir for files produces by task\n    output_dir = 'steps/upper_cased'\n    # path of output file\n    uppercased_path = modify_path(raw_path, dir=output_dir, suffix='_uppercased.txt')\n\n    # input specification\n    inputs = [raw_path]\n    # output specification mapping a label to each file\n    outputs = {'uppercased_path': uppercased_path}\n    # resource specification\n    options = {'memory': '8g', 'walltime': '00:10:00'} \n\n    # tmporary output file path\n    tmp_uppercased_path = modify_path(raw_path, dir='/tmp')\n\n    # commands to run in task (bash script)\n    # we write to a tmp file and move that to the output directory \n    # only if the command succeds (the && takes care of that)\n    spec = f\"\"\"\n    mkdir -p {output_dir}\n    cat {raw_path} | tr [:lower:] [:upper:] &gt; {tmp_uppercased_path} &&\n        mv {tmp_uppercased_path} {uppercased_path}\n    \"\"\"\n    # return target\n    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)\n\n\n# task template function\ndef divide_names(uppercased_path, me=None):\n    \"\"\"\n    Splits names into two files. One with my name and one with other names.\n    \"\"\"\n    # uppercased version of the me argument\n    uppercased_me = me.upper()\n\n    # dir for files produces by task\n    output_dir = 'steps/filtered_names'\n    # path of output file with names matching me\n    filt_me_path = modify_path(uppercased_path, dir=output_dir, suffix=f'_{me}.txt')\n    # path of output file with other names\n    filt_other_path = modify_path(uppercased_path, dir=output_dir, suffix=f'_not_{me}.txt')\n\n    # input specification\n    inputs = [uppercased_path]\n    # output specification mapping a label to each file\n    outputs = {'filt_me_path': filt_me_path, 'filt_other_path': filt_other_path}\n    # resource specification\n    options = {'memory': '8g', 'walltime': '00:10:00'} \n\n    # tmporary output file paths\n    tmp_filt_me_path = modify_path(filt_me_path, dir='/tmp')\n    tmp_filt_other_path = modify_path(filt_other_path, dir='/tmp')\n\n    # commands to run in task (bash script)\n    # we write to tmp files and move them to the output directory \n    # only if the command succeds (the && takes care of that)\n    spec = f\"\"\"\n    mkdir -p {output_dir}    \n    grep {uppercased_me} {uppercased_path} &gt; {tmp_filt_me_path} &&  \n        grep -v {uppercased_me} {uppercased_path} &gt; {tmp_filt_other_path} &&  \n        mv {tmp_filt_me_path} {filt_me_path} &&  \n        mv {tmp_filt_other_path} {filt_other_path}\n    \"\"\"\n    # return target\n    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)\n\n\n# task template function\ndef unique_names(filt_me_path, filt_other_path): \n    \"\"\"\n    Extracts unique names from a file.\n    \"\"\"\n    # dir for files produces by task\n    output_dir = 'steps/unique_names'\n    # path of output file with unique names matching me\n    uniq_me_path = modify_path(filt_me_path, dir=output_dir, suffix='_unique.txt')\n    # path of output file with unique other names\n    uniq_other_path = modify_path(filt_other_path, dir=output_dir, suffix='_unique.txt')\n\n    # input specification\n    inputs = [filt_me_path, filt_other_path]\n    # output specification mapping a label to each file\n    outputs = {'unique_me_path': uniq_me_path, 'unique_other_path': uniq_other_path}\n    # resource specification\n    options = {'memory': '8g', 'walltime': '00:10:00'} \n\n    # tmporary output file paths\n    tmp_uniq_me_path = modify_path(uniq_me_path, dir='/tmp')\n    tmp_uniq_other_path = modify_path(uniq_other_path, dir='/tmp')\n\n    # commands to run in task (bash script)\n    # we write to tmp files and move them to the output directory \n    # only if the command succeds (the && takes care of that)\n    spec = f\"\"\"\n    mkdir -p {output_dir}    \n    sort {filt_me_path} | uniq &gt; {tmp_uniq_me_path} && \n        sort {filt_other_path} | uniq &gt; {tmp_uniq_other_path} && \n        mv {tmp_uniq_me_path} {uniq_me_path} && \n        mv {tmp_uniq_other_path} {uniq_other_path}\n    \"\"\"\n    # return target\n    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)\n\n\n# task template function\ndef merge_names(paths, output_path): \n    \"\"\"\n    Merges names from many files.\n    \"\"\"\n    # dir for files produces by task\n    output_dir = modify_path(output_path, base='', suffix='')\n\n    # input specification\n    inputs = [paths]\n    # output specification mapping a label to the file\n    outputs = {'path': output_path}\n\n    # tmporary output file path\n    tmp_output_path =  modify_path(output_path, dir='/tmp')\n\n    # resource specification\n    options = {'memory': '8g', 'walltime': '00:10:00'} \n\n    # commands to run in task (bash script)\n    # we write to tmp files and move them to the output directory \n    # only if the command succeds (the && takes care of that)\n    spec = f\"\"\"\n    mkdir -p {output_dir}\n    cat {' '.join(paths)} &gt; {tmp_output_path} && \n        mv {tmp_output_path} {output_path}\n    \"\"\"\n    # return target\n    return AnonymousTarget(inputs=inputs, outputs=outputs, options=options, spec=spec)\n\n\n###############################################################################",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>GWF workflow</span>"
+    ]
+  },
+  {
+    "objectID": "workflow.html#workflow",
+    "href": "workflow.html#workflow",
+    "title": "GWF workflow",
+    "section": "Workflow:",
+    "text": "Workflow:\n\n# instantiate the workflow\ngwf = Workflow(defaults={'account': 'ari-intern'})\n\n# input files for workflow\ninput_file_names = ['data/input_file1.txt', 'data/input_file2.txt']\n\n# workflow parameter\nmyname = 'Kasper'\n\n# run an uppercase_names task for each input file\nuppercase_names_targets = gwf.map(uppercase_names, input_file_names)\n\n# run an divide_names task for each output file from uppercase_names\nfilter_names_targets = gwf.map(divide_names, uppercase_names_targets.outputs, extra=dict(me=myname))\n\n# run an unique_names task for each output file from divide_names\nunique_names_targets = gwf.map(unique_names, filter_names_targets.outputs)\n\n# collect the outputs labelled 'unique_me_path' from all the outputs of unique_names \ncollected_outputs = collect(unique_names_targets.outputs, ['unique_me_path'])\n\n# create a single task to merge all those files into one\nmerge_me_target = gwf.target_from_template(\n    'merge_not_me_name_files',\n    merge_names(collected_outputs['unique_me_paths'], \"results/merged_me_names.txt\")\n    )\n\n# collect the outputs labelled 'unique_other_path' from all the outputs of unique_names \ncollected_outputs = collect(unique_names_targets.outputs, ['unique_other_path'])\n\n# create a single task to merge all those files into one\nmerge_other_target = gwf.target_from_template(\n    'merge_me_name_files',\n    merge_names(collected_outputs['unique_other_paths'], \"results/merged_not_me_names.txt\")\n    )",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>GWF workflow</span>"
+    ]
+  },
+  {
     "objectID": "notebooks/01_weather.html",
     "href": "notebooks/01_weather.html",
     "title": "Danish weather",
     "section": "",
-    "text": "Weather data\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\nlong_format = df.melt(id_vars=['day'], value_vars=['wind', 'precipitation'], var_name='weather', value_name='value')\nlong_format\n\n\n\n\n\n\n\n\nday\nweather\nvalue\n\n\n\n\n0\n0\nwind\n1.013950\n\n\n1\n1\nwind\n1.433512\n\n\n2\n2\nwind\n1.465184\n\n\n3\n3\nwind\n1.438446\n\n\n4\n4\nwind\n1.052238\n\n\n...\n...\n...\n...\n\n\n295\n145\nprecipitation\n1.038249\n\n\n296\n146\nprecipitation\n1.853783\n\n\n297\n147\nprecipitation\n1.075927\n\n\n298\n148\nprecipitation\n1.605397\n\n\n299\n149\nprecipitation\n1.681632\n\n\n\n\n300 rows × 3 columns\nsns.lineplot(data=long_format, x='day', y='value', hue='weather')\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 1.1: Danish weather: This is the weather forcast for your project\nFrom this plot, it seems Danish weather is quite unpredictable.",
+    "text": "Weather data\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\nlong_format = df.melt(id_vars=['day'], value_vars=['wind', 'precipitation'], var_name='weather', value_name='value')\nlong_format\n\n\n\n\n\n\n\n\nday\nweather\nvalue\n\n\n\n\n0\n0\nwind\n1.013950\n\n\n1\n1\nwind\n1.433512\n\n\n2\n2\nwind\n1.465184\n\n\n3\n3\nwind\n1.438446\n\n\n4\n4\nwind\n1.052238\n\n\n...\n...\n...\n...\n\n\n295\n145\nprecipitation\n1.038249\n\n\n296\n146\nprecipitation\n1.853783\n\n\n297\n147\nprecipitation\n1.075927\n\n\n298\n148\nprecipitation\n1.605397\n\n\n299\n149\nprecipitation\n1.681632\n\n\n\n\n300 rows × 3 columns\nsns.lineplot(data=long_format, x='day', y='value', hue='weather')\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 2.1: Danish weather: This is the weather forcast for your project\nFrom this plot, it seems Danish weather is quite unpredictable.",
     "crumbs": [
       "Notebooks",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Danish weather</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Danish weather</span>"
     ]
   },
   {
@@ -15,10 +45,10 @@
     "href": "notebooks/02_interaction.html",
     "title": "Workplace interaction",
     "section": "",
-    "text": "Sampling\nsubjects = pd.read_csv('../data/data_table.csv')\nassert subjects.index.size == params.sample_size\nsubjects\n\n\n\nTable 2.1: People included in the analysis.\n\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK\nThe 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+    "text": "Sampling\nsubjects = pd.read_csv('../data/data_table.csv')\nassert subjects.index.size == params.sample_size\nsubjects\n\n\n\nTable 3.1: People included in the analysis.\n\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK\nThe 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
     "crumbs": [
       "Notebooks",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workplace interaction</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Workplace interaction</span>"
     ]
   },
   {
@@ -29,7 +59,7 @@
     "text": "Tip:\nBy adding a label and caption to a cell displaying a table, you can refer to that table elsewhere and insert it in a manuscript.\n\n\n\nTip:\nBy generaing markdown for descriptions that will eventually end up in the manuscript, you can imbed python values. It also ensures that the manuscript exactly reflects the notebook.",
     "crumbs": [
       "Notebooks",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workplace interaction</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Workplace interaction</span>"
     ]
   },
   {
@@ -37,10 +67,10 @@
     "href": "notebooks/02_interaction.html#interviews",
     "title": "Workplace interaction",
     "section": "Interviews",
-    "text": "Interviews\n\n\nThe 24 subjects were asked to score the follow statements:\n\nBlah blah blah\nBlah blah blah\nBlah blah blah\nBlah blah blah\n\n\n\nIn interviewed {python} params.sample_size workplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\ndf = pd.DataFrame({'name': subjects.name, \n                   'seniority': np.random.randint(0, 5, params.sample_size), \n                   'age': subjects.age})\ndf['informality'] = np.random.normal(loc=10, scale=1, size=params.sample_size)\ndf\n\n\n\n\n\n\n\n\nname\nseniority\nage\ninformality\n\n\n\n\n0\nJulie\n2\n27\n10.061504\n\n\n1\nThomas\n2\n33\n9.795845\n\n\n2\nEmilie\n0\n23\n10.704674\n\n\n3\nSofie\n4\n31\n9.995386\n\n\n4\nSara\n1\n29\n9.384324\n\n\n5\nCecilie\n4\n34\n9.617037\n\n\n6\nAnders\n3\n32\n8.822115\n\n\n7\nEmma\n3\n42\n8.654268\n\n\n8\nCaroline\n0\n31\n10.571754\n\n\n9\nLaura\n3\n30\n12.278083\n\n\n10\nMikkel\n2\n33\n10.181373\n\n\n11\nJens\n4\n27\n11.043315\n\n\n12\nAndreas\n3\n29\n10.194166\n\n\n13\nJakob\n2\n28\n9.740300\n\n\n14\nMathilde\n2\n61\n8.671047\n\n\n15\nKatrine\n1\n35\n10.177327\n\n\n16\nPoul\n4\n30\n9.894090\n\n\n17\nAnna\n1\n26\n7.958770\n\n\n18\nPeter\n2\n42\n11.287880\n\n\n19\nIda\n0\n53\n10.254190\n\n\n20\nFreja\n0\n30\n11.093569\n\n\n21\nMaria\n0\n39\n10.223915\n\n\n22\nAmalie\n1\n29\n9.613552\n\n\n23\nCamilla\n0\n35\n9.975990\n\n\n\n\n\n\n\n\nsns.scatterplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age')\nplt.legend(title='Seniority', loc='lower right', labels=['Undergrad', 'Postgrad', 'PhD', 'Postdoc', 'Professor'])\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 2.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\nSeems Danish people act very informally unaffected by age and seniority.\n\ninformality_age_cor = df.informality.corr(df.age)\ninformality_age_cor\n\n-0.1949220780248677\n\n\n\ninformality_seniority_cor = df.informality.corr(df.seniority)\ninformality_seniority_cor\n\n-0.05515869516915789\n\n\n\n\nThe correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.\n\n\n\nsns.lmplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age') ;\n\n\n\n\n\n\n\nFigure 2.2: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
+    "text": "Interviews\n\n\nThe 24 subjects were asked to score the follow statements:\n\nBlah blah blah\nBlah blah blah\nBlah blah blah\nBlah blah blah\n\n\n\nIn interviewed {python} params.sample_size workplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,\n\n\ndf = pd.DataFrame({'name': subjects.name, \n                   'seniority': np.random.randint(0, 5, params.sample_size), \n                   'age': subjects.age})\ndf['informality'] = np.random.normal(loc=10, scale=1, size=params.sample_size)\ndf\n\n\n\n\n\n\n\n\nname\nseniority\nage\ninformality\n\n\n\n\n0\nJulie\n2\n27\n10.061504\n\n\n1\nThomas\n2\n33\n9.795845\n\n\n2\nEmilie\n0\n23\n10.704674\n\n\n3\nSofie\n4\n31\n9.995386\n\n\n4\nSara\n1\n29\n9.384324\n\n\n5\nCecilie\n4\n34\n9.617037\n\n\n6\nAnders\n3\n32\n8.822115\n\n\n7\nEmma\n3\n42\n8.654268\n\n\n8\nCaroline\n0\n31\n10.571754\n\n\n9\nLaura\n3\n30\n12.278083\n\n\n10\nMikkel\n2\n33\n10.181373\n\n\n11\nJens\n4\n27\n11.043315\n\n\n12\nAndreas\n3\n29\n10.194166\n\n\n13\nJakob\n2\n28\n9.740300\n\n\n14\nMathilde\n2\n61\n8.671047\n\n\n15\nKatrine\n1\n35\n10.177327\n\n\n16\nPoul\n4\n30\n9.894090\n\n\n17\nAnna\n1\n26\n7.958770\n\n\n18\nPeter\n2\n42\n11.287880\n\n\n19\nIda\n0\n53\n10.254190\n\n\n20\nFreja\n0\n30\n11.093569\n\n\n21\nMaria\n0\n39\n10.223915\n\n\n22\nAmalie\n1\n29\n9.613552\n\n\n23\nCamilla\n0\n35\n9.975990\n\n\n\n\n\n\n\n\nsns.scatterplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age')\nplt.legend(title='Seniority', loc='lower right', labels=['Undergrad', 'Postgrad', 'PhD', 'Postdoc', 'Professor'])\nplt.ylim(bottom=0) ;\n\n\n\n\n\n\n\nFigure 3.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\nSeems Danish people act very informally unaffected by age and seniority.\n\ninformality_age_cor = df.informality.corr(df.age)\ninformality_age_cor\n\n-0.1949220780248677\n\n\n\ninformality_seniority_cor = df.informality.corr(df.seniority)\ninformality_seniority_cor\n\n-0.05515869516915789\n\n\n\n\nThe correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.\n\n\n\nsns.lmplot(x='age', y='informality', data=df, hue='seniority', palette='viridis')\nplt.ylabel('How informal you can be')\nplt.xlabel('Age') ;\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
     "crumbs": [
       "Notebooks",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Workplace interaction</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Workplace interaction</span>"
     ]
   },
   {
@@ -94,14 +124,157 @@
     ]
   },
   {
+    "objectID": "docs/project_diary.html",
+    "href": "docs/project_diary.html",
+    "title": "Project diary",
+    "section": "",
+    "text": "Sept. 20, 2024\nAenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Project diary</span>"
+    ]
+  },
+  {
+    "objectID": "docs/project_diary.html#sept.-20-2024",
+    "href": "docs/project_diary.html#sept.-20-2024",
+    "title": "Project diary",
+    "section": "",
+    "text": "Figure 4.1: Danish weather: This is the weather forcast for your project",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Project diary</span>"
+    ]
+  },
+  {
+    "objectID": "docs/project_diary.html#sept.-21-2024",
+    "href": "docs/project_diary.html#sept.-21-2024",
+    "title": "Project diary",
+    "section": "Sept. 21, 2024",
+    "text": "Sept. 21, 2024\n\nNullam dapibus cursus dolor sit amet consequat. Nulla facilisi. Curabitur vel nulla non magna lacinia tincidunt. Duis porttitor quam leo, et blandit velit efficitur ut. Etiam auctor tincidunt porttitor. Phasellus sed accumsan mi. Fusce ut erat dui. Suspendisse eu augue eget turpis condimentum finibus eu non lorem. Donec finibus eros eu ante condimentum, sed pharetra sapien sagittis. Phasellus non dolor ac ante mollis auctor nec et sapien. Pellentesque vulputate at nisi eu tincidunt. Vestibulum at dolor aliquam, hendrerit purus eu, eleifend massa. Morbi consectetur eros id tincidunt gravida. Fusce ut enim quis orci hendrerit lacinia sed vitae enim.\nNulla eget cursus ipsum. Vivamus porttitor leo diam, sed volutpat lectus facilisis sit amet. Maecenas et pulvinar metus. Ut at dignissim tellus. In in tincidunt elit. Etiam vulputate lobortis arcu, vel faucibus leo lobortis ac. Aliquam erat volutpat. In interdum orci ac est euismod euismod. Nunc eleifend tristique risus, at lacinia odio commodo in. Sed aliquet ligula odio, sed tempor neque ultricies sit amet.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Project diary</span>"
+    ]
+  },
+  {
+    "objectID": "docs/project_diary.html#sept.-22-2024",
+    "href": "docs/project_diary.html#sept.-22-2024",
+    "title": "Project diary",
+    "section": "Sept. 22, 2024",
+    "text": "Sept. 22, 2024\n\nEtiam quis tortor luctus, pellentesque ante a, finibus dolor. Phasellus in nibh et magna pulvinar malesuada. Ut nisl ex, sagittis at sollicitudin et, sollicitudin id nunc. In id porta urna. Proin porta dolor dolor, vel dapibus nisi lacinia in. Pellentesque ante mauris, ornare non euismod a, fermentum ut sapien. Proin sed vehicula enim. Aliquam tortor odio, vestibulum vitae odio in, tempor molestie justo. Praesent maximus lacus nec leo maximus blandit.\n\n\n\n\n\n\n\n\n\nFigure 4.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Project diary</span>"
+    ]
+  },
+  {
+    "objectID": "docs/project_diary.html#sept.-23-2024",
+    "href": "docs/project_diary.html#sept.-23-2024",
+    "title": "Project diary",
+    "section": "Sept. 23, 2024",
+    "text": "Sept. 23, 2024\n\nDuis ornare ex ac iaculis pretium. Maecenas sagittis odio id erat pharetra, sit amet consectetur quam sollicitudin. Vivamus pharetra quam purus, nec sagittis risus pretium at. Nullam feugiat, turpis ac accumsan interdum, sem tellus blandit neque, id vulputate diam quam semper nisl. Donec sit amet enim at neque porttitor aliquet. Phasellus facilisis nulla eget placerat eleifend. Vestibulum non egestas eros, eget lobortis ipsum. Nulla rutrum massa eget enim aliquam, id porttitor erat luctus. Nunc sagittis quis eros eu sagittis. Pellentesque dictum, erat at pellentesque sollicitudin, justo augue pulvinar metus, quis rutrum est mi nec felis. Vestibulum efficitur mi lorem, at elementum purus tincidunt a. Aliquam finibus enim magna, vitae pellentesque erat faucibus at. Nulla mauris tellus, imperdiet id lobortis et, dignissim condimentum ipsum. Morbi nulla orci, varius at aliquet sed, facilisis id tortor. Donec ut urna nisi.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Project diary</span>"
+    ]
+  },
+  {
+    "objectID": "docs/memo_on_something.html",
+    "href": "docs/memo_on_something.html",
+    "title": "Memo on some topic",
+    "section": "",
+    "text": "Progress report\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Memo on some topic</span>"
+    ]
+  },
+  {
+    "objectID": "docs/memo_on_something.html#progress-report",
+    "href": "docs/memo_on_something.html#progress-report",
+    "title": "Memo on some topic",
+    "section": "",
+    "text": "Figure 5.1: Danish weather: This is the weather forcast for your project",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Memo on some topic</span>"
+    ]
+  },
+  {
+    "objectID": "docs/memo_on_something.html#issues-to-consider",
+    "href": "docs/memo_on_something.html#issues-to-consider",
+    "title": "Memo on some topic",
+    "section": "Issues to consider",
+    "text": "Issues to consider\n\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti.\n\n\n\n\n\n\n\n\n\nFigure 5.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Memo on some topic</span>"
+    ]
+  },
+  {
+    "objectID": "docs/memo_on_something.html#where-to-next",
+    "href": "docs/memo_on_something.html#where-to-next",
+    "title": "Memo on some topic",
+    "section": "Where to next",
+    "text": "Where to next\n\nAenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Memo on some topic</span>"
+    ]
+  },
+  {
+    "objectID": "docs/howto_something.html",
+    "href": "docs/howto_something.html",
+    "title": "Howto something",
+    "section": "",
+    "text": "Howto begin\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Howto something</span>"
+    ]
+  },
+  {
+    "objectID": "docs/howto_something.html#howto-begin",
+    "href": "docs/howto_something.html#howto-begin",
+    "title": "Howto something",
+    "section": "",
+    "text": "Figure 6.1: Danish weather: This is the weather forcast for your project",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Howto something</span>"
+    ]
+  },
+  {
+    "objectID": "docs/howto_something.html#howto-continue",
+    "href": "docs/howto_something.html#howto-continue",
+    "title": "Howto something",
+    "section": "Howto continue",
+    "text": "Howto continue\n\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti.\n\n\n\n\n\n\n\n\n\nFigure 6.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Howto something</span>"
+    ]
+  },
+  {
+    "objectID": "docs/howto_something.html#howto-end",
+    "href": "docs/howto_something.html#howto-end",
+    "title": "Howto something",
+    "section": "Howto end",
+    "text": "Howto end\n\nAenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.",
+    "crumbs": [
+      "Memos and docs",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Howto something</span>"
+    ]
+  },
+  {
     "objectID": "reports/manuscript.html",
     "href": "reports/manuscript.html",
     "title": "My manuscript",
     "section": "",
-    "text": "Abstract\nThis is my report about Denmark… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah",
+    "text": "Abstract\nDenmmark … Nulla eget cursus ipsum. Vivamus porttitor leo diam, sed volutpat lectus facilisis sit amet. Maecenas et pulvinar metus. Ut at dignissim tellus. In in tincidunt elit. Etiam vulputate lobortis arcu, vel faucibus leo lobortis ac. Aliquam erat volutpat. In interdum orci ac est euismod euismod. Nunc eleifend tristique risus, at lacinia odio commodo in. Sed aliquet ligula odio, sed tempor neque ultricies sit amet.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
@@ -109,10 +282,10 @@
     "href": "reports/manuscript.html#introduction",
     "title": "My manuscript",
     "section": "Introduction",
-    "text": "Introduction\nDenmark is …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah",
+    "text": "Introduction\nDenmark is …. Praesent ornare dolor turpis, sed tincidunt nisl pretium eget. Curabitur sed iaculis ex, vitae tristique sapien. Quisque nec ex dolor. Quisque ut nisl a libero egestas molestie. Nulla vel porta nulla. Phasellus id pretium arcu. Etiam sed mi pellentesque nibh scelerisque elementum sed at urna. Ut congue molestie nibh, sit amet pretium ligula consectetur eu. Integer consectetur augue justo, at placerat erat posuere at. Ut elementum urna lectus, vitae bibendum neque pulvinar quis. Suspendisse vulputate cursus eros id maximus. Duis pulvinar facilisis massa, et condimentum est viverra congue. Curabitur ornare convallis nisl. Morbi dictum scelerisque turpis quis pellentesque. Etiam lectus risus, luctus lobortis risus ut, rutrum vulputate justo. Nulla facilisi. Proin sodales neque erat, varius cursus diam tincidunt sit amet. Etiam scelerisque fringilla nisl eu venenatis. Donec sem ipsum, scelerisque ac venenatis quis, hendrerit vel mauris. Praesent semper erat sit amet purus condimentum, sit amet auctor mi feugiat. In hac habitasse platea dictumst. Nunc ac mauris in massa feugiat bibendum id in dui. Praesent accumsan urna at lacinia aliquet. Proin ultricies eu est quis pellentesque. In vel lorem at nisl rhoncus cursus eu quis mi. In eu rutrum ante, quis placerat justo. Etiam euismod nibh nibh, sed elementum nunc imperdiet in. Praesent gravida nunc vel odio lacinia, at tempus nisl placerat. Aenean id ipsum sed est sagittis hendrerit non in tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
@@ -120,10 +293,10 @@
     "href": "reports/manuscript.html#results",
     "title": "My manuscript",
     "section": "Results",
-    "text": "Results\n\nWeather\nAs shown in Figure 3.1, the Danish weather is blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.\n\n\n\n\n\n\n\n\n\nFigure 3.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\n\nSocial norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nThe 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 7.2).\n\n\n\n\n\n\n\n\n\nFigure 3.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.",
+    "text": "Results\n\nWeather\n\nDuis urna urna, pellentesque eu urna ut, malesuada bibendum dolor. Suspendisse potenti. Vivamus ornare, arcu quis molestie ultrices, magna est accumsan augue, auctor vulputate erat quam quis neque. Nullam scelerisque odio vel ultricies facilisis. Ut porta arcu non magna sagittis lacinia. Cras ornare vulputate lectus a tristique. Pellentesque ac arcu congue, rhoncus mi id, dignissim ligula.\nAs shown in Figure 7.1, the Danish weather is …\n\n\n\n\n\n\n\n\n\nFigure 7.1: Danish weather: This is the weather forcast for your project\n\n\n\n\n\n\n\nNullam dapibus cursus dolor sit amet consequat. Nulla facilisi. Curabitur vel nulla non magna lacinia tincidunt. Duis porttitor quam leo, et blandit velit efficitur ut. Etiam auctor tincidunt porttitor. Phasellus sed accumsan mi. Fusce ut erat dui. Suspendisse eu augue eget turpis condimentum finibus eu non lorem. Donec finibus eros eu ante condimentum, sed pharetra sapien sagittis. Phasellus non dolor ac ante mollis auctor nec et sapien. Pellentesque vulputate at nisi eu tincidunt. Vestibulum at dolor aliquam, hendrerit purus eu, eleifend massa. Morbi consectetur eros id tincidunt gravida. Fusce ut enim quis orci hendrerit lacinia sed vitae enim.\n\n\nSocial norms\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nThe 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah\n\n\n\nI found that neither academic seniority or age of workplace individuals much affected how informal our interaction was (see Figure 11.2).\n\n\n\n\n\n\n\n\n\nFigure 7.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.\n\n\n\n\nPraesent ornare dolor turpis, sed tincidunt nisl pretium eget. Curabitur sed iaculis ex, vitae tristique sapien. Quisque nec ex dolor. Quisque ut nisl a libero egestas molestie. Nulla vel porta nulla. Phasellus id pretium arcu. Etiam sed mi pellentesque nibh scelerisque elementum sed at urna. Ut congue molestie nibh, sit amet pretium ligula consectetur eu. Integer consectetur augue justo, at placerat erat posuere at. Ut elementum urna lectus, vitae bibendum neque pulvinar quis. Suspendisse vulputate cursus eros id maximus. Duis pulvinar facilisis massa, et condimentum est viverra congue. Curabitur ornare convallis nisl. Morbi dictum scelerisque turpis quis pellentesque. Etiam lectus risus, luctus lobortis risus ut, rutrum vulputate justo. Nulla facilisi.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
@@ -131,10 +304,10 @@
     "href": "reports/manuscript.html#discussion",
     "title": "My manuscript",
     "section": "Discussion",
-    "text": "Discussion\nThis this investigation of 24 Danes…, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
+    "text": "Discussion\nThis this investigation of 24 Danes…,\n\nDuis ornare ex ac iaculis pretium. Maecenas sagittis odio id erat pharetra, sit amet consectetur quam sollicitudin. Vivamus pharetra quam purus, nec sagittis risus pretium at. Nullam feugiat, turpis ac accumsan interdum, sem tellus blandit neque, id vulputate diam quam semper nisl. Donec sit amet enim at neque porttitor aliquet. Phasellus facilisis nulla eget placerat eleifend. Vestibulum non egestas eros, eget lobortis ipsum. Nulla rutrum massa eget enim aliquam, id porttitor erat luctus. Nunc sagittis quis eros eu sagittis. Pellentesque dictum, erat at pellentesque sollicitudin, justo augue pulvinar metus, quis rutrum est mi nec felis. Vestibulum efficitur mi lorem, at elementum purus tincidunt a. Aliquam finibus enim magna, vitae pellentesque erat faucibus at. Nulla mauris tellus, imperdiet id lobortis et, dignissim condimentum ipsum. Morbi nulla orci, varius at aliquet sed, facilisis id tortor. Donec ut urna nisi.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
@@ -142,10 +315,10 @@
     "href": "reports/manuscript.html#methods",
     "title": "My manuscript",
     "section": "Methods",
-    "text": "Methods\n\nWeather analysis\n\n\n\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\n\n\n\n\n\n\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\n\n\n\n\n\nInteraction analysis\nTable 3.1 lists the samples included in the analysis.\n\n\n\n\n\nTable 3.1: People included in the analysis.\n\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe 24 subjects were asked to score the follow statements:\n\nBlah blah blah\nBlah blah blah\nBlah blah blah\nBlah blah blah",
+    "text": "Methods\n\nWeather analysis\n\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti.\n\n\n\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\n\n\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\n\n\nWeather data was collected… blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah\n\n\n\n\n\nInteraction analysis\n\nEtiam quis tortor luctus, pellentesque ante a, finibus dolor. Phasellus in nibh et magna pulvinar malesuada. Ut nisl ex, sagittis at sollicitudin et, sollicitudin id nunc. In id porta urna. Proin porta dolor dolor, vel dapibus nisi lacinia in. Pellentesque ante mauris, ornare non euismod a, fermentum ut sapien. Proin sed vehicula enim. Aliquam tortor odio, vestibulum vitae odio in, tempor molestie justo. Praesent maximus lacus nec leo maximus blandit.\nTable 9.1 lists the samples included in the analysis.\n\n\n\n\n\nTable 7.1: People included in the analysis.\n\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK\n\n\n\n\n\n\n\n\n\n\n\n\nEtiam maximus accumsan gravida. Maecenas at nunc dignissim, euismod enim ac, bibendum ipsum. Maecenas vehicula velit in nisl aliquet ultricies. Nam eget massa interdum, maximus arcu vel, pretium erat. Maecenas sit amet tempor purus, vitae aliquet nunc. Vivamus cursus urna velit, eleifend dictum magna laoreet ut. Duis eu erat mollis, blandit magna id, tincidunt ipsum. Integer massa nibh, commodo eu ex vel, venenatis efficitur ligula. Integer convallis lacus elit, maximus eleifend lacus ornare ac. Vestibulum scelerisque viverra urna id lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean eget enim at diam bibendum tincidunt eu non purus. Nullam id magna ultrices, sodales metus viverra, tempus turpis.\n\n\n\nThe 24 subjects were asked to score the follow statements:\n\nBlah blah blah\nBlah blah blah\nBlah blah blah\nBlah blah blah",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
@@ -156,7 +329,7 @@
     "text": "References",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My manuscript</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>My manuscript</span>"
     ]
   },
   {
@@ -164,10 +337,10 @@
     "href": "reports/supplementary.html",
     "title": "Supplementary info",
     "section": "",
-    "text": "Regression analysis of formality\nBlah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah.",
+    "text": "Regression analysis of formality\nProin sodales neque erat, varius cursus diam tincidunt sit amet. Etiam scelerisque fringilla nisl eu venenatis. Donec sem ipsum, scelerisque ac venenatis quis, hendrerit vel mauris. Praesent semper erat sit amet purus condimentum, sit amet auctor mi feugiat. In hac habitasse platea dictumst. Nunc ac mauris in massa feugiat bibendum id in dui. Praesent accumsan urna at lacinia aliquet. Proin ultricies eu est quis pellentesque. In vel lorem at nisl rhoncus cursus eu quis mi. In eu rutrum ante, quis placerat justo. Etiam euismod nibh nibh, sed elementum nunc imperdiet in. Praesent gravida nunc vel odio lacinia, at tempus nisl placerat. Aenean id ipsum sed est sagittis hendrerit non in tortor.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Supplementary info</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Supplementary info</span>"
     ]
   },
   {
@@ -175,10 +348,32 @@
     "href": "reports/supplementary.html#regression-analysis-of-formality",
     "title": "Supplementary info",
     "section": "",
-    "text": "Figure 4.1: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
+    "text": "Figure 8.1: Interaction among Danes: Regressions of informality against age for five levels of seniority.",
     "crumbs": [
       "Reports",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Supplementary info</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Supplementary info</span>"
+    ]
+  },
+  {
+    "objectID": "reports/supplementary.html#survey",
+    "href": "reports/supplementary.html#survey",
+    "title": "Supplementary info",
+    "section": "Survey",
+    "text": "Survey\n\nDuis ornare ex ac iaculis pretium. Maecenas sagittis odio id erat pharetra, sit amet consectetur quam sollicitudin. Vivamus pharetra quam purus, nec sagittis risus pretium at. Nullam feugiat, turpis ac accumsan interdum, sem tellus blandit neque, id vulputate diam quam semper nisl. Donec sit amet enim at neque porttitor aliquet. Phasellus facilisis nulla eget placerat eleifend. Vestibulum non egestas eros, eget lobortis ipsum. Nulla rutrum massa eget enim aliquam, id porttitor erat luctus. Nunc sagittis quis eros eu sagittis. Pellentesque dictum, erat at pellentesque sollicitudin, justo augue pulvinar metus, quis rutrum est mi nec felis. Vestibulum efficitur mi lorem, at elementum purus tincidunt a. Aliquam finibus enim magna, vitae pellentesque erat faucibus at. Nulla mauris tellus, imperdiet id lobortis et, dignissim condimentum ipsum. Morbi nulla orci, varius at aliquet sed, facilisis id tortor. Donec ut urna nisi.\nAenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.\nTable 9.1 lists the samples included in the analysis.",
+    "crumbs": [
+      "Reports",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Supplementary info</span>"
+    ]
+  },
+  {
+    "objectID": "reports/supplementary.html#survey-1",
+    "href": "reports/supplementary.html#survey-1",
+    "title": "Supplementary info",
+    "section": "Survey",
+    "text": "Survey\n\nMaecenas turpis velit, ultricies non elementum vel, luctus nec nunc. Nulla a diam interdum, faucibus sapien viverra, finibus metus. Donec non tortor diam. In ut elit aliquet, bibendum sem et, aliquam tortor. Donec congue, sem at rhoncus ultrices, nunc augue cursus erat, quis porttitor mauris libero ut ex. Nullam quis leo urna. Donec faucibus ligula eget pellentesque interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus interdum erat ut ultricies. Aenean tempus ex non elit suscipit, quis dignissim enim efficitur. Proin laoreet enim massa, vitae laoreet nulla mollis quis.\nVestibulum ultrices, tortor at mattis porta, odio nisi rutrum nulla, sit amet tincidunt eros quam facilisis tellus. Fusce eleifend lectus in elementum lacinia. Nam auctor nunc in massa ullamcorper, sit amet auctor ante accumsan. Nam ut varius metus. Curabitur eget tristique leo. Cras finibus euismod erat eget elementum. Integer vel placerat ex. Ut id eros quis lectus lacinia venenatis hendrerit vel ante.\nTable 10.1 lists the samples included in the analysis.",
+    "crumbs": [
+      "Reports",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Supplementary info</span>"
     ]
   },
   {
@@ -186,21 +381,21 @@
     "href": "tables/data_table.html",
     "title": "Data tables",
     "section": "",
-    "text": "This is a data table from a csv file:\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK",
+    "text": "This is a data table from a csv file:\n\n\n\n\nTable 9.1: This could be a table listing samples included in an analysis.\n\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK",
     "crumbs": [
       "Tables",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data tables</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Data tables</span>"
     ]
   },
   {
     "objectID": "tables/result_table.html",
     "href": "tables/result_table.html",
-    "title": "Result table",
+    "title": "Result tables",
     "section": "",
-    "text": "This is a table of results from a csv file:\n\n\n\n\nTable 6.1: This could be a table listing samples included in an analysis.\n\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK",
+    "text": "This is a table of results from a csv file:\n\n\n\n\nTable 10.1: This could be a table listing results of an analysis.\n\n\n\n\n\n\n\n\n\n\npos\nwhen_DAF_is_half\nwhen_mutation_has_freq2\npopulation\n\n\n\n\n0\n10122953\n-1.390610\n-6.29509\nCDX\n\n\n1\n11859476\n-2.693320\n-6.64483\nCDX\n\n\n2\n11864438\n-2.693320\n-6.64483\nCDX\n\n\n3\n32635171\n-2.224110\n-6.58804\nCDX\n\n\n4\n105249963\n-1.406140\n-6.11750\nCDX\n\n\n5\n3712725\n-1.086690\n-6.50623\nCHB\n\n\n6\n3713920\n-2.062530\n-9.86443\nCHB\n\n\n7\n3717514\n-2.635040\n-6.90527\nCHB\n\n\n8\n3720564\n-2.399250\n-6.07486\nCHB\n\n\n9\n3720591\n-2.399250\n-6.07486\nCHB\n\n\n10\n3721203\n-2.399250\n-6.07486\nCHB\n\n\n11\n3721452\n-2.399250\n-6.07486\nCHB\n\n\n12\n32812742\n-3.157760\n-6.19174\nCHB\n\n\n13\n47349640\n-1.544110\n-6.06731\nCHB\n\n\n14\n47352820\n-2.056060\n-8.20242\nCHB\n\n\n15\n151669901\n-1.644880\n-8.53576\nCHB\n\n\n16\n3706646\n-2.436120\n-6.34196\nCHS\n\n\n17\n10214581\n-2.539500\n-9.20117\nCHS\n\n\n18\n122431333\n-0.937105\n-6.22082\nCHS\n\n\n19\n141669308\n-1.019170\n-6.12830\nCHS\n\n\n20\n49962327\n-1.766100\n-6.61933\nJPT\n\n\n21\n142111497\n-1.409290\n-6.26781\nJPT\n\n\n22\n20348765\n-2.042520\n-6.05583\nKHV\n\n\n23\n20349644\n-1.773100\n-8.27088\nKHV\n\n\n24\n69126919\n-1.338150\n-6.76224\nKHV\n\n\n25\n151669901\n-2.155580\n-7.15834\nKHV\n\n\n26\n153982797\n-1.289470\n-6.11440\nKHV\n\n\n\n\n\n\n\n\n\n\nShow more tables (these are the same again):\n\nimport pandas as pd\npd.read_csv('../results/result_table.csv')\n\n\n\n\n\n\n\n\npos\nwhen_DAF_is_half\nwhen_mutation_has_freq2\npopulation\n\n\n\n\n0\n10122953\n-1.390610\n-6.29509\nCDX\n\n\n1\n11859476\n-2.693320\n-6.64483\nCDX\n\n\n2\n11864438\n-2.693320\n-6.64483\nCDX\n\n\n3\n32635171\n-2.224110\n-6.58804\nCDX\n\n\n4\n105249963\n-1.406140\n-6.11750\nCDX\n\n\n5\n3712725\n-1.086690\n-6.50623\nCHB\n\n\n6\n3713920\n-2.062530\n-9.86443\nCHB\n\n\n7\n3717514\n-2.635040\n-6.90527\nCHB\n\n\n8\n3720564\n-2.399250\n-6.07486\nCHB\n\n\n9\n3720591\n-2.399250\n-6.07486\nCHB\n\n\n10\n3721203\n-2.399250\n-6.07486\nCHB\n\n\n11\n3721452\n-2.399250\n-6.07486\nCHB\n\n\n12\n32812742\n-3.157760\n-6.19174\nCHB\n\n\n13\n47349640\n-1.544110\n-6.06731\nCHB\n\n\n14\n47352820\n-2.056060\n-8.20242\nCHB\n\n\n15\n151669901\n-1.644880\n-8.53576\nCHB\n\n\n16\n3706646\n-2.436120\n-6.34196\nCHS\n\n\n17\n10214581\n-2.539500\n-9.20117\nCHS\n\n\n18\n122431333\n-0.937105\n-6.22082\nCHS\n\n\n19\n141669308\n-1.019170\n-6.12830\nCHS\n\n\n20\n49962327\n-1.766100\n-6.61933\nJPT\n\n\n21\n142111497\n-1.409290\n-6.26781\nJPT\n\n\n22\n20348765\n-2.042520\n-6.05583\nKHV\n\n\n23\n20349644\n-1.773100\n-8.27088\nKHV\n\n\n24\n69126919\n-1.338150\n-6.76224\nKHV\n\n\n25\n151669901\n-2.155580\n-7.15834\nKHV\n\n\n26\n153982797\n-1.289470\n-6.11440\nKHV\n\n\n\n\n\n\n\n\nimport pandas as pd\npd.read_csv('../results/result_table.csv')\n\n\n\n\n\n\n\n\npos\nwhen_DAF_is_half\nwhen_mutation_has_freq2\npopulation\n\n\n\n\n0\n10122953\n-1.390610\n-6.29509\nCDX\n\n\n1\n11859476\n-2.693320\n-6.64483\nCDX\n\n\n2\n11864438\n-2.693320\n-6.64483\nCDX\n\n\n3\n32635171\n-2.224110\n-6.58804\nCDX\n\n\n4\n105249963\n-1.406140\n-6.11750\nCDX\n\n\n5\n3712725\n-1.086690\n-6.50623\nCHB\n\n\n6\n3713920\n-2.062530\n-9.86443\nCHB\n\n\n7\n3717514\n-2.635040\n-6.90527\nCHB\n\n\n8\n3720564\n-2.399250\n-6.07486\nCHB\n\n\n9\n3720591\n-2.399250\n-6.07486\nCHB\n\n\n10\n3721203\n-2.399250\n-6.07486\nCHB\n\n\n11\n3721452\n-2.399250\n-6.07486\nCHB\n\n\n12\n32812742\n-3.157760\n-6.19174\nCHB\n\n\n13\n47349640\n-1.544110\n-6.06731\nCHB\n\n\n14\n47352820\n-2.056060\n-8.20242\nCHB\n\n\n15\n151669901\n-1.644880\n-8.53576\nCHB\n\n\n16\n3706646\n-2.436120\n-6.34196\nCHS\n\n\n17\n10214581\n-2.539500\n-9.20117\nCHS\n\n\n18\n122431333\n-0.937105\n-6.22082\nCHS\n\n\n19\n141669308\n-1.019170\n-6.12830\nCHS\n\n\n20\n49962327\n-1.766100\n-6.61933\nJPT\n\n\n21\n142111497\n-1.409290\n-6.26781\nJPT\n\n\n22\n20348765\n-2.042520\n-6.05583\nKHV\n\n\n23\n20349644\n-1.773100\n-8.27088\nKHV\n\n\n24\n69126919\n-1.338150\n-6.76224\nKHV\n\n\n25\n151669901\n-2.155580\n-7.15834\nKHV\n\n\n26\n153982797\n-1.289470\n-6.11440\nKHV",
     "crumbs": [
       "Tables",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Result table</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Result tables</span>"
     ]
   },
   {
@@ -211,7 +406,7 @@
     "text": "Example slide",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -222,7 +417,7 @@
     "text": "This is a subtitle\nHere we have some text that may run over several lines of the slide frame, depending on how long it is.\n\nfirst item\n\nA sub item\n\n\nNext, we’ll brief review some theme-specific components.\n\nNote that all of the standard Reveal.js features can be used with this theme, even if we don’t highlight them here.",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -233,7 +428,7 @@
     "text": "Additional theme classes\n\nSome extra things you can do with the clean theme\nSpecial classes for emphasis\n\n.alert class for default emphasis, e.g. important note.\n.fg class for custom colour, e.g. important note.\n.bg class for custom background, e.g. important note.\n\nCross-references\n\n.button class provides a Beamer-like button, e.g. Summary",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -244,7 +439,7 @@
     "text": "Social norms\n\nSampling\nIn Denmark, the workplace interaction is very informal and largely unaffected by seniority and age.\n\n\n\nThe 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -252,10 +447,10 @@
     "href": "slides/slides.html#social-norms-1",
     "title": "Main talk",
     "section": "Social norms",
-    "text": "Social norms\n\nNeither academic seniority or age affected interaction\n\n\n\n\n\n\n\n\n\nFigure 7.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.",
+    "text": "Social norms\n\nNeither academic seniority or age affected interaction\n\n\n\n\n\n\n\n\n\nFigure 11.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.\n\n\n\n\n\n\n\n\n\n\nThe correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -266,7 +461,7 @@
     "text": "Slide title\n\n\nEat spaghetti\nDrink wine",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -277,7 +472,7 @@
     "text": "Slide title\n\n\nLeft column\n\n\nOne\nTwo\nThree",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -285,10 +480,10 @@
     "href": "slides/slides.html#slide-title-2",
     "title": "Main talk",
     "section": "Slide title",
-    "text": "Slide title\n\n\n\n\n\nThe correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 7.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.",
+    "text": "Slide title\n\n\n\n\n\nThe correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 11.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -299,7 +494,7 @@
     "text": "Slide Title\nSlide content\n\n\n\n\nSchumer et al. (2018)",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Main talk</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Main talk</span>"
     ]
   },
   {
@@ -310,7 +505,7 @@
     "text": "Suppl. slides\nSupplementary slides …",
     "crumbs": [
       "Slides",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Suppl. slides</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Suppl. slides</span>"
     ]
   }
 ]

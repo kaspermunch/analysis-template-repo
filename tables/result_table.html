@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Result table – Title of your project</title>
+<title>Result tables – Title of your project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -90,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tables/data_table.html">Tables</a></li><li class="breadcrumb-item"><a href="../tables/result_table.html"><span class="chapter-title">Result table</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tables/data_table.html">Tables</a></li><li class="breadcrumb-item"><a href="../tables/result_table.html"><span class="chapter-title">Result tables</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -124,6 +158,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Project</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workflow.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">GWF workflow</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
@@ -148,12 +187,38 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Reports</span></a>
+ <span class="menu-text">Memos and docs</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/project_diary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Project diary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/memo_on_something.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Memo on some topic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../docs/howto_something.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Howto something</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Reports</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reports/manuscript.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">My manuscript</span></a>
@@ -168,13 +233,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Tables</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tables/data_table.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Data tables</span></a>
@@ -182,20 +247,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tables/result_table.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Result table</span></a>
+  <a href="../tables/result_table.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Result tables</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Slides</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../slides/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Main talk</span></a>
@@ -219,9 +284,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tables/data_table.html">Tables</a></li><li class="breadcrumb-item"><a href="../tables/result_table.html"><span class="chapter-title">Result table</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tables/data_table.html">Tables</a></li><li class="breadcrumb-item"><a href="../tables/result_table.html"><span class="chapter-title">Result tables</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Result table</span></h1>
+<h1 class="title"><span class="chapter-title">Result tables</span></h1>
 </div>
 
 
@@ -240,12 +305,12 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This is a table of results from a csv file:</p>
 <div class="cell" data-execution_count="1">
-<div id="tbl-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
+<div id="tbl-results" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.1: This could be a table listing samples included in an analysis.
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10.1: This could be a table listing results of an analysis.
 </figcaption>
-<div aria-describedby="tbl-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="tbl-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -254,205 +319,201 @@ Table&nbsp;6.1: This could be a table listing samples included in an analysis.
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">name</th>
-<th data-quarto-table-cell-role="th">age</th>
-<th data-quarto-table-cell-role="th">sex</th>
-<th data-quarto-table-cell-role="th">position</th>
-<th data-quarto-table-cell-role="th">nationality</th>
+<th data-quarto-table-cell-role="th">pos</th>
+<th data-quarto-table-cell-role="th">when_DAF_is_half</th>
+<th data-quarto-table-cell-role="th">when_mutation_has_freq2</th>
+<th data-quarto-table-cell-role="th">population</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>Julie</td>
-<td>27</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>DK</td>
+<td>10122953</td>
+<td>-1.390610</td>
+<td>-6.29509</td>
+<td>CDX</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>Thomas</td>
-<td>33</td>
-<td>M</td>
-<td>Postdoc</td>
-<td>GB</td>
+<td>11859476</td>
+<td>-2.693320</td>
+<td>-6.64483</td>
+<td>CDX</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>Emilie</td>
-<td>23</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>CH</td>
+<td>11864438</td>
+<td>-2.693320</td>
+<td>-6.64483</td>
+<td>CDX</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>Sofie</td>
-<td>31</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
+<td>32635171</td>
+<td>-2.224110</td>
+<td>-6.58804</td>
+<td>CDX</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>Sara</td>
-<td>29</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>US</td>
+<td>105249963</td>
+<td>-1.406140</td>
+<td>-6.11750</td>
+<td>CDX</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
-<td>Cecilie</td>
-<td>34</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
+<td>3712725</td>
+<td>-1.086690</td>
+<td>-6.50623</td>
+<td>CHB</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
-<td>Anders</td>
-<td>32</td>
-<td>M</td>
-<td>PhDstudent</td>
-<td>UK</td>
+<td>3713920</td>
+<td>-2.062530</td>
+<td>-9.86443</td>
+<td>CHB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
-<td>Emma</td>
-<td>42</td>
-<td>F</td>
-<td>Professor</td>
-<td>DK</td>
+<td>3717514</td>
+<td>-2.635040</td>
+<td>-6.90527</td>
+<td>CHB</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
-<td>Caroline</td>
-<td>31</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>DK</td>
+<td>3720564</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
-<td>Laura</td>
-<td>30</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
+<td>3720591</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
-<td>Mikkel</td>
-<td>33</td>
-<td>M</td>
-<td>Postdoc</td>
-<td>NL</td>
+<td>3721203</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
-<td>Jens</td>
-<td>27</td>
-<td>M</td>
-<td>PhDstudent</td>
-<td>DK</td>
+<td>3721452</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
-<td>Andreas</td>
-<td>29</td>
-<td>M</td>
-<td>PhDstudent</td>
-<td>DK</td>
+<td>32812742</td>
+<td>-3.157760</td>
+<td>-6.19174</td>
+<td>CHB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">13</td>
-<td>Jakob</td>
-<td>28</td>
-<td>M</td>
-<td>PhDstudent</td>
-<td>DK</td>
+<td>47349640</td>
+<td>-1.544110</td>
+<td>-6.06731</td>
+<td>CHB</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
-<td>Mathilde</td>
-<td>61</td>
-<td>F</td>
-<td>Professor</td>
-<td>DK</td>
+<td>47352820</td>
+<td>-2.056060</td>
+<td>-8.20242</td>
+<td>CHB</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">15</td>
-<td>Katrine</td>
-<td>35</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
+<td>151669901</td>
+<td>-1.644880</td>
+<td>-8.53576</td>
+<td>CHB</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">16</td>
-<td>Poul</td>
-<td>30</td>
-<td>M</td>
-<td>Postdoc</td>
-<td>DK</td>
+<td>3706646</td>
+<td>-2.436120</td>
+<td>-6.34196</td>
+<td>CHS</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">17</td>
-<td>Anna</td>
-<td>26</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>DK</td>
+<td>10214581</td>
+<td>-2.539500</td>
+<td>-9.20117</td>
+<td>CHS</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">18</td>
-<td>Peter</td>
-<td>42</td>
-<td>M</td>
-<td>Professor</td>
-<td>GB</td>
+<td>122431333</td>
+<td>-0.937105</td>
+<td>-6.22082</td>
+<td>CHS</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">19</td>
-<td>Ida</td>
-<td>53</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
+<td>141669308</td>
+<td>-1.019170</td>
+<td>-6.12830</td>
+<td>CHS</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
-<td>Freja</td>
-<td>30</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
+<td>49962327</td>
+<td>-1.766100</td>
+<td>-6.61933</td>
+<td>JPT</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">21</td>
-<td>Maria</td>
-<td>39</td>
-<td>F</td>
-<td>Professor</td>
-<td>UK</td>
+<td>142111497</td>
+<td>-1.409290</td>
+<td>-6.26781</td>
+<td>JPT</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">22</td>
-<td>Amalie</td>
-<td>29</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>DK</td>
+<td>20348765</td>
+<td>-2.042520</td>
+<td>-6.05583</td>
+<td>KHV</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">23</td>
-<td>Camilla</td>
-<td>35</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
+<td>20349644</td>
+<td>-1.773100</td>
+<td>-8.27088</td>
+<td>KHV</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>69126919</td>
+<td>-1.338150</td>
+<td>-6.76224</td>
+<td>KHV</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>151669901</td>
+<td>-2.155580</td>
+<td>-7.15834</td>
+<td>KHV</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>153982797</td>
+<td>-1.289470</td>
+<td>-6.11440</td>
+<td>KHV</td>
 </tr>
 </tbody>
 </table>
@@ -461,6 +522,433 @@ Table&nbsp;6.1: This could be a table listing samples included in an analysis.
 </div>
 </div>
 </figure>
+</div>
+</div>
+<p>Show more tables (these are the same again):</p>
+<div id="86fb8f49" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'../results/result_table.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pos</th>
+<th data-quarto-table-cell-role="th">when_DAF_is_half</th>
+<th data-quarto-table-cell-role="th">when_mutation_has_freq2</th>
+<th data-quarto-table-cell-role="th">population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>10122953</td>
+<td>-1.390610</td>
+<td>-6.29509</td>
+<td>CDX</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>11859476</td>
+<td>-2.693320</td>
+<td>-6.64483</td>
+<td>CDX</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>11864438</td>
+<td>-2.693320</td>
+<td>-6.64483</td>
+<td>CDX</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>32635171</td>
+<td>-2.224110</td>
+<td>-6.58804</td>
+<td>CDX</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>105249963</td>
+<td>-1.406140</td>
+<td>-6.11750</td>
+<td>CDX</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>3712725</td>
+<td>-1.086690</td>
+<td>-6.50623</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>3713920</td>
+<td>-2.062530</td>
+<td>-9.86443</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>3717514</td>
+<td>-2.635040</td>
+<td>-6.90527</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>3720564</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>3720591</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>3721203</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>3721452</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>32812742</td>
+<td>-3.157760</td>
+<td>-6.19174</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>47349640</td>
+<td>-1.544110</td>
+<td>-6.06731</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>47352820</td>
+<td>-2.056060</td>
+<td>-8.20242</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>151669901</td>
+<td>-1.644880</td>
+<td>-8.53576</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>3706646</td>
+<td>-2.436120</td>
+<td>-6.34196</td>
+<td>CHS</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>10214581</td>
+<td>-2.539500</td>
+<td>-9.20117</td>
+<td>CHS</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>122431333</td>
+<td>-0.937105</td>
+<td>-6.22082</td>
+<td>CHS</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>141669308</td>
+<td>-1.019170</td>
+<td>-6.12830</td>
+<td>CHS</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>49962327</td>
+<td>-1.766100</td>
+<td>-6.61933</td>
+<td>JPT</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>142111497</td>
+<td>-1.409290</td>
+<td>-6.26781</td>
+<td>JPT</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>20348765</td>
+<td>-2.042520</td>
+<td>-6.05583</td>
+<td>KHV</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>20349644</td>
+<td>-1.773100</td>
+<td>-8.27088</td>
+<td>KHV</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>69126919</td>
+<td>-1.338150</td>
+<td>-6.76224</td>
+<td>KHV</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>151669901</td>
+<td>-2.155580</td>
+<td>-7.15834</td>
+<td>KHV</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>153982797</td>
+<td>-1.289470</td>
+<td>-6.11440</td>
+<td>KHV</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="539be7df" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pd.read_csv(<span class="st">'../results/result_table.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">pos</th>
+<th data-quarto-table-cell-role="th">when_DAF_is_half</th>
+<th data-quarto-table-cell-role="th">when_mutation_has_freq2</th>
+<th data-quarto-table-cell-role="th">population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>10122953</td>
+<td>-1.390610</td>
+<td>-6.29509</td>
+<td>CDX</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>11859476</td>
+<td>-2.693320</td>
+<td>-6.64483</td>
+<td>CDX</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>11864438</td>
+<td>-2.693320</td>
+<td>-6.64483</td>
+<td>CDX</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>32635171</td>
+<td>-2.224110</td>
+<td>-6.58804</td>
+<td>CDX</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>105249963</td>
+<td>-1.406140</td>
+<td>-6.11750</td>
+<td>CDX</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>3712725</td>
+<td>-1.086690</td>
+<td>-6.50623</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>3713920</td>
+<td>-2.062530</td>
+<td>-9.86443</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>3717514</td>
+<td>-2.635040</td>
+<td>-6.90527</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>3720564</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>3720591</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>3721203</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>3721452</td>
+<td>-2.399250</td>
+<td>-6.07486</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>32812742</td>
+<td>-3.157760</td>
+<td>-6.19174</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>47349640</td>
+<td>-1.544110</td>
+<td>-6.06731</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>47352820</td>
+<td>-2.056060</td>
+<td>-8.20242</td>
+<td>CHB</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>151669901</td>
+<td>-1.644880</td>
+<td>-8.53576</td>
+<td>CHB</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>3706646</td>
+<td>-2.436120</td>
+<td>-6.34196</td>
+<td>CHS</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>10214581</td>
+<td>-2.539500</td>
+<td>-9.20117</td>
+<td>CHS</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>122431333</td>
+<td>-0.937105</td>
+<td>-6.22082</td>
+<td>CHS</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>141669308</td>
+<td>-1.019170</td>
+<td>-6.12830</td>
+<td>CHS</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>49962327</td>
+<td>-1.766100</td>
+<td>-6.61933</td>
+<td>JPT</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>142111497</td>
+<td>-1.409290</td>
+<td>-6.26781</td>
+<td>JPT</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>20348765</td>
+<td>-2.042520</td>
+<td>-6.05583</td>
+<td>KHV</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>20349644</td>
+<td>-1.773100</td>
+<td>-8.27088</td>
+<td>KHV</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>69126919</td>
+<td>-1.338150</td>
+<td>-6.76224</td>
+<td>KHV</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>151669901</td>
+<td>-2.155580</td>
+<td>-7.15834</td>
+<td>KHV</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>153982797</td>
+<td>-1.289470</td>
+<td>-6.11440</td>
+<td>KHV</td>
+</tr>
+</tbody>
+</table>
+
+</div>
 </div>
 </div>
 

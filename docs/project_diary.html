@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="My Name">
 
-<title>Workplace interaction – Title of your project</title>
+<title>Project diary – Title of your project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +31,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../docs/project_diary.html" rel="next">
-<link href="../notebooks/01_weather.html" rel="prev">
+<link href="../docs/memo_on_something.html" rel="next">
+<link href="../notebooks/02_interaction.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -124,7 +91,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01_weather.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/02_interaction.html"><span class="chapter-title">Workplace interaction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/project_diary.html">Memos and docs</a></li><li class="breadcrumb-item"><a href="../docs/project_diary.html"><span class="chapter-title">Project diary</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -179,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/02_interaction.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Workplace interaction</span></a>
+  <a href="../notebooks/02_interaction.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Workplace interaction</span></a>
   </div>
 </li>
       </ul>
@@ -195,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../docs/project_diary.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Project diary</span></a>
+  <a href="../docs/project_diary.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Project diary</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -283,23 +250,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#sampling" id="toc-sampling" class="nav-link active" data-scroll-target="#sampling">Sampling</a></li>
-  <li><a href="#interviews" id="toc-interviews" class="nav-link" data-scroll-target="#interviews">Interviews</a></li>
+  <li><a href="#sept.-20-2024" id="toc-sept.-20-2024" class="nav-link active" data-scroll-target="#sept.-20-2024">Sept.&nbsp;20, 2024</a></li>
+  <li><a href="#sept.-21-2024" id="toc-sept.-21-2024" class="nav-link" data-scroll-target="#sept.-21-2024">Sept.&nbsp;21, 2024</a></li>
+  <li><a href="#sept.-22-2024" id="toc-sept.-22-2024" class="nav-link" data-scroll-target="#sept.-22-2024">Sept.&nbsp;22, 2024</a></li>
+  <li><a href="#sept.-23-2024" id="toc-sept.-23-2024" class="nav-link" data-scroll-target="#sept.-23-2024">Sept.&nbsp;23, 2024</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.dev/munch-group/analysis-template/blob/main/notebooks/02_interaction.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/munch-group/analysis-template/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/munch-group/analysis-template/blob/main/notebooks/02_interaction.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/munch-group/analysis-template/edit/main/docs/project_diary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/munch-group/analysis-template/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/munch-group/analysis-template/blob/main/docs/project_diary.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../notebooks/01_weather.html">Notebooks</a></li><li class="breadcrumb-item"><a href="../notebooks/02_interaction.html"><span class="chapter-title">Workplace interaction</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../docs/project_diary.html">Memos and docs</a></li><li class="breadcrumb-item"><a href="../docs/project_diary.html"><span class="chapter-title">Project diary</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Workplace interaction</span></h1>
+<h1 class="title"><span class="chapter-title">Project diary</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>My Name </p>
+          </div>
+  </div>
     
   
     
@@ -310,562 +285,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Import some plotting libraries and set some defaults:</p>
-<div id="cell-2" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sns.<span class="bu">set</span>()</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>random_seed <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'..'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> global_params <span class="im">import</span> load_params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="sept.-20-2024" class="level2">
+<h2 class="anchored" data-anchor-id="sept.-20-2024">Sept.&nbsp;20, 2024</h2>
+<!-- Dummy text -->
+<p>Aenean placerat luctus tortor vitae molestie. Nulla at aliquet nulla. Sed efficitur tellus orci, sed fringilla lectus laoreet eget. Vivamus maximus quam sit amet arcu dignissim, sed accumsan massa ullamcorper. Sed iaculis tincidunt feugiat. Nulla in est at nunc ultricies dictum ut vitae nunc. Aenean convallis vel diam at malesuada. Suspendisse arcu libero, vehicula tempus ultrices a, placerat sit amet tortor. Sed dictum id nulla commodo mattis. Aliquam mollis, nunc eu tristique faucibus, purus lacus tincidunt nulla, ac pretium lorem nunc ut enim. Curabitur eget mattis nisl, vitae sodales augue. Nam felis massa, bibendum sit amet nulla vel, vulputate rutrum lacus. Aenean convallis odio pharetra nulla mattis consequat.</p>
+<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/analysis-template/analysis-template/notebooks/01_weather.ipynb" data-notebook-title="Danish weather" data-notebook-cellid="cell-fig-danish-weather">
+<div id="cell-fig-danish-weather" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<div id="fig-danish-weather" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-danish-weather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="project_diary_files/figure-html/..-notebooks-01_weather-fig-danish-weather-output-1.svg" class="img-fluid figure-img">
 </div>
-<blockquote class="blockquote">
-<p><strong>Tip:</strong><br>
-Producing figures in svg format (scalable vector graphics) makes for sharp plots on webpages. However, if you make plots with thousands of observations you should set this to <code>'png'</code> instead:</p>
-</blockquote>
-<div id="cell-4" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_formats <span class="op">=</span> [<span class="st">'svg'</span>] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<blockquote class="blockquote">
-<p><strong>Tip:</strong><br>
-Some values apply globally to your analysis. E.g., sample sizes, cutoffs, names, rates, etc. Keeping those in a a yml file like <code>interaction_params.yml</code> and loading them in each notebook avoids the risk of manually adding/updating them in each notebook where they are used. You can use the <code>load_globals</code> function imported above from <code>global_params.py</code> to produce an object holding all the global values:</p>
-</blockquote>
-<div id="cell-6" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> load_params(<span class="st">'../interact_params.yml'</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>params</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
-<pre><code>{'questions': ['Blah blah blah',
-               'Blah blah blah',
-               'Blah blah blah',
-               'Blah blah blah'],
- 'sample_size': 24}</code></pre>
-</div>
-</div>
-<div id="cell-7" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>params.sample_size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>24</code></pre>
-</div>
-</div>
-<section id="sampling" class="level2">
-<h2 class="anchored" data-anchor-id="sampling">Sampling</h2>
-<div id="cell-9" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>subjects <span class="op">=</span> pd.read_csv(<span class="st">'../data/data_table.csv'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> subjects.index.size <span class="op">==</span> params.sample_size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<blockquote class="blockquote">
-<p><strong>Tip:</strong><br>
-By adding a label and caption to a cell displaying a table, you can refer to that table elsewhere and insert it in a manuscript.</p>
-</blockquote>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>subjects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-subjects" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="16">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-subjects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3.1: People included in the analysis.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-danish-weather-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Danish weather: This is the weather forcast for your project
 </figcaption>
-<div aria-describedby="tbl-subjects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="16">
-<div>
-
-
-<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">name</th>
-<th data-quarto-table-cell-role="th">age</th>
-<th data-quarto-table-cell-role="th">sex</th>
-<th data-quarto-table-cell-role="th">position</th>
-<th data-quarto-table-cell-role="th">nationality</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>Julie</td>
-<td>27</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>DK</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Thomas</td>
-<td>33</td>
-<td>M</td>
-<td>Postdoc</td>
-<td>GB</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Emilie</td>
-<td>23</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>CH</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Sofie</td>
-<td>31</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Sara</td>
-<td>29</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>US</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>Cecilie</td>
-<td>34</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>Anders</td>
-<td>32</td>
-<td>M</td>
-<td>PhDstudent</td>
-<td>UK</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>Emma</td>
-<td>42</td>
-<td>F</td>
-<td>Professor</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>Caroline</td>
-<td>31</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>DK</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>Laura</td>
-<td>30</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>Mikkel</td>
-<td>33</td>
-<td>M</td>
-<td>Postdoc</td>
-<td>NL</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>Jens</td>
-<td>27</td>
-<td>M</td>
-<td>PhDstudent</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
-<td>Andreas</td>
-<td>29</td>
-<td>M</td>
-<td>PhDstudent</td>
-<td>DK</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>Jakob</td>
-<td>28</td>
-<td>M</td>
-<td>PhDstudent</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
-<td>Mathilde</td>
-<td>61</td>
-<td>F</td>
-<td>Professor</td>
-<td>DK</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
-<td>Katrine</td>
-<td>35</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>Poul</td>
-<td>30</td>
-<td>M</td>
-<td>Postdoc</td>
-<td>DK</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>Anna</td>
-<td>26</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>Peter</td>
-<td>42</td>
-<td>M</td>
-<td>Professor</td>
-<td>GB</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>Ida</td>
-<td>53</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>Freja</td>
-<td>30</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>Maria</td>
-<td>39</td>
-<td>F</td>
-<td>Professor</td>
-<td>UK</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>Amalie</td>
-<td>29</td>
-<td>F</td>
-<td>PhDstudent</td>
-<td>DK</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>Camilla</td>
-<td>35</td>
-<td>F</td>
-<td>Postdoc</td>
-<td>DK</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
 </figure>
 </div>
 </div>
-<blockquote class="blockquote">
-<p><strong>Tip:</strong><br>
-By generaing markdown for descriptions that will eventually end up in the manuscript, you can imbed python values. It also ensures that the manuscript exactly reflects the notebook.</p>
-</blockquote>
-<div id="cell-doc-sampling" class="cell" data-execution_count="17">
-<div id="doc-sampling" class="cell-output cell-output-display cell-output-markdown" data-execution_count="17">
-<p>The 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
 </div>
 </div>
 </section>
-<section id="interviews" class="level2">
-<h2 class="anchored" data-anchor-id="interviews">Interviews</h2>
-<div id="cell-doc-interviews" class="cell" data-execution_count="18">
-<div id="doc-interviews" class="cell-output cell-output-display cell-output-markdown" data-execution_count="18">
-<p>The 24 subjects were asked to score the follow statements:</p>
-<ol type="1">
-<li>Blah blah blah</li>
-<li>Blah blah blah</li>
-<li>Blah blah blah</li>
-<li>Blah blah blah</li>
-</ol>
-</div>
-</div>
-<p>In interviewed <code>{python} params.sample_size</code> workplace individuals were interviewed by …. blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah, blah,</p>
-<div id="cell-17" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'name'</span>: subjects.name, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'seniority'</span>: np.random.randint(<span class="dv">0</span>, <span class="dv">5</span>, params.sample_size), </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'age'</span>: subjects.age})</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'informality'</span>] <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span>params.sample_size)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">name</th>
-<th data-quarto-table-cell-role="th">seniority</th>
-<th data-quarto-table-cell-role="th">age</th>
-<th data-quarto-table-cell-role="th">informality</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>Julie</td>
-<td>2</td>
-<td>27</td>
-<td>10.061504</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Thomas</td>
-<td>2</td>
-<td>33</td>
-<td>9.795845</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Emilie</td>
-<td>0</td>
-<td>23</td>
-<td>10.704674</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Sofie</td>
-<td>4</td>
-<td>31</td>
-<td>9.995386</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Sara</td>
-<td>1</td>
-<td>29</td>
-<td>9.384324</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>Cecilie</td>
-<td>4</td>
-<td>34</td>
-<td>9.617037</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>Anders</td>
-<td>3</td>
-<td>32</td>
-<td>8.822115</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>Emma</td>
-<td>3</td>
-<td>42</td>
-<td>8.654268</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>Caroline</td>
-<td>0</td>
-<td>31</td>
-<td>10.571754</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>Laura</td>
-<td>3</td>
-<td>30</td>
-<td>12.278083</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>Mikkel</td>
-<td>2</td>
-<td>33</td>
-<td>10.181373</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>Jens</td>
-<td>4</td>
-<td>27</td>
-<td>11.043315</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
-<td>Andreas</td>
-<td>3</td>
-<td>29</td>
-<td>10.194166</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>Jakob</td>
-<td>2</td>
-<td>28</td>
-<td>9.740300</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
-<td>Mathilde</td>
-<td>2</td>
-<td>61</td>
-<td>8.671047</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
-<td>Katrine</td>
-<td>1</td>
-<td>35</td>
-<td>10.177327</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>Poul</td>
-<td>4</td>
-<td>30</td>
-<td>9.894090</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>Anna</td>
-<td>1</td>
-<td>26</td>
-<td>7.958770</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>Peter</td>
-<td>2</td>
-<td>42</td>
-<td>11.287880</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>Ida</td>
-<td>0</td>
-<td>53</td>
-<td>10.254190</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>Freja</td>
-<td>0</td>
-<td>30</td>
-<td>11.093569</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>Maria</td>
-<td>0</td>
-<td>39</td>
-<td>10.223915</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>Amalie</td>
-<td>1</td>
-<td>29</td>
-<td>9.613552</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>Camilla</td>
-<td>0</td>
-<td>35</td>
-<td>9.975990</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
+<section id="sept.-21-2024" class="level2">
+<h2 class="anchored" data-anchor-id="sept.-21-2024">Sept.&nbsp;21, 2024</h2>
+<!-- Dummy text -->
+<p>Nullam dapibus cursus dolor sit amet consequat. Nulla facilisi. Curabitur vel nulla non magna lacinia tincidunt. Duis porttitor quam leo, et blandit velit efficitur ut. Etiam auctor tincidunt porttitor. Phasellus sed accumsan mi. Fusce ut erat dui. Suspendisse eu augue eget turpis condimentum finibus eu non lorem. Donec finibus eros eu ante condimentum, sed pharetra sapien sagittis. Phasellus non dolor ac ante mollis auctor nec et sapien. Pellentesque vulputate at nisi eu tincidunt. Vestibulum at dolor aliquam, hendrerit purus eu, eleifend massa. Morbi consectetur eros id tincidunt gravida. Fusce ut enim quis orci hendrerit lacinia sed vitae enim.</p>
+<p>Nulla eget cursus ipsum. Vivamus porttitor leo diam, sed volutpat lectus facilisis sit amet. Maecenas et pulvinar metus. Ut at dignissim tellus. In in tincidunt elit. Etiam vulputate lobortis arcu, vel faucibus leo lobortis ac. Aliquam erat volutpat. In interdum orci ac est euismod euismod. Nunc eleifend tristique risus, at lacinia odio commodo in. Sed aliquet ligula odio, sed tempor neque ultricies sit amet.</p>
+</section>
+<section id="sept.-22-2024" class="level2">
+<h2 class="anchored" data-anchor-id="sept.-22-2024">Sept.&nbsp;22, 2024</h2>
+<!-- Dummy text -->
+<p>Etiam quis tortor luctus, pellentesque ante a, finibus dolor. Phasellus in nibh et magna pulvinar malesuada. Ut nisl ex, sagittis at sollicitudin et, sollicitudin id nunc. In id porta urna. Proin porta dolor dolor, vel dapibus nisi lacinia in. Pellentesque ante mauris, ornare non euismod a, fermentum ut sapien. Proin sed vehicula enim. Aliquam tortor odio, vestibulum vitae odio in, tempor molestie justo. Praesent maximus lacus nec leo maximus blandit.</p>
+<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/analysis-template/analysis-template/notebooks/02_interaction.ipynb" data-notebook-title="Workplace interaction" data-notebook-cellid="cell-fig-danish-interaction">
 <div id="cell-fig-danish-interaction" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'informality'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'seniority'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'How informal you can be'</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Seniority'</span>, loc<span class="op">=</span><span class="st">'lower right'</span>, labels<span class="op">=</span>[<span class="st">'Undergrad'</span>, <span class="st">'Postgrad'</span>, <span class="st">'PhD'</span>, <span class="st">'Postdoc'</span>, <span class="st">'Professor'</span>])</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.ylim(bottom<span class="op">=</span><span class="dv">0</span>) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-danish-interaction" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-danish-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02_interaction_files/figure-html/fig-danish-interaction-output-1.svg" class="img-fluid figure-img">
+<img src="project_diary_files/figure-html/..-notebooks-02_interaction-fig-danish-interaction-output-1.svg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-danish-interaction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.
+Figure&nbsp;4.2: Interaction among Danes: How Danes interact is has very little to do with age and seniority, compared to most other contries.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Seems Danish people act very informally unaffected by age and seniority.</p>
-<div id="cell-21" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>informality_age_cor <span class="op">=</span> df.informality.corr(df.age)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>informality_age_cor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>-0.1949220780248677</code></pre>
 </div>
-</div>
-<div id="cell-22" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>informality_seniority_cor <span class="op">=</span> df.informality.corr(df.seniority)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>informality_seniority_cor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>-0.05515869516915789</code></pre>
-</div>
-</div>
-<div id="cell-doc-formality-correlation" class="cell" data-execution_count="24">
-<div id="doc-formality-correlation" class="cell-output cell-output-display cell-output-markdown" data-execution_count="24">
-<p>The correlation between informality and age was -0.195 and the correlation between informality and seniority was -0.055.</p>
-</div>
-</div>
-<div id="cell-fig-danish-interaction-regressions" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'age'</span>, y<span class="op">=</span><span class="st">'informality'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">'seniority'</span>, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'How informal you can be'</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>) <span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-danish-interaction-regressions" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-danish-interaction-regressions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="02_interaction_files/figure-html/fig-danish-interaction-regressions-output-1.svg" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-danish-interaction-regressions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: Interaction among Danes: Regressions of informality against age for five levels of seniority.
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
+</section>
+<section id="sept.-23-2024" class="level2">
+<h2 class="anchored" data-anchor-id="sept.-23-2024">Sept.&nbsp;23, 2024</h2>
+<!-- Dummy text -->
+<p>Duis ornare ex ac iaculis pretium. Maecenas sagittis odio id erat pharetra, sit amet consectetur quam sollicitudin. Vivamus pharetra quam purus, nec sagittis risus pretium at. Nullam feugiat, turpis ac accumsan interdum, sem tellus blandit neque, id vulputate diam quam semper nisl. Donec sit amet enim at neque porttitor aliquet. Phasellus facilisis nulla eget placerat eleifend. Vestibulum non egestas eros, eget lobortis ipsum. Nulla rutrum massa eget enim aliquam, id porttitor erat luctus. Nunc sagittis quis eros eu sagittis. Pellentesque dictum, erat at pellentesque sollicitudin, justo augue pulvinar metus, quis rutrum est mi nec felis. Vestibulum efficitur mi lorem, at elementum purus tincidunt a. Aliquam finibus enim magna, vitae pellentesque erat faucibus at. Nulla mauris tellus, imperdiet id lobortis et, dignissim condimentum ipsum. Morbi nulla orci, varius at aliquet sed, facilisis id tortor. Donec ut urna nisi.</p>
 
 
 </section>
@@ -1293,13 +764,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../notebooks/01_weather.html" class="pagination-link" aria-label="Danish weather">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Danish weather</span></span>
+      <a href="../notebooks/02_interaction.html" class="pagination-link" aria-label="Workplace interaction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Workplace interaction</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../docs/project_diary.html" class="pagination-link" aria-label="Project diary">
-        <span class="nav-page-text"><span class="chapter-title">Project diary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../docs/memo_on_something.html" class="pagination-link" aria-label="Memo on some topic">
+        <span class="nav-page-text"><span class="chapter-title">Memo on some topic</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1308,4 +779,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/munch-group/analysis-template/blob/main/notebooks/02_interaction.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/munch-group/analysis-template/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/munch-group/analysis-template/blob/main/notebooks/02_interaction.ipynb" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/munch-group/analysis-template/edit/main/docs/project_diary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/munch-group/analysis-template/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/munch-group/analysis-template/blob/main/docs/project_diary.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div></div></footer></body></html>
