@@ -7,16 +7,6 @@ format:
   code-fold: true
 ---
 
-```{python}
-#| echo: false
-# make global parameters available to embed in text
-import sys
-sys.path.append('..')
-from global_params import load_params
-params = load_params('../interact_params.yml')
-```
-
-
 ## Abstract
 
 <!-- Dummy text -->
@@ -57,8 +47,6 @@ I found that neither academic seniority or age of workplace individuals much aff
 {{< lipsum 1 >}} 
 
 ## Discussion
-
-This this investigation of `{python} params.sample_size` Danes..., 
 
 <!-- Dummy text -->
 {{< lipsum 1 >}} 

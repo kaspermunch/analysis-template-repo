@@ -1,6 +1,12 @@
 
 # Conda environment
 
+Create environment like this:
+
+```txt
+conda env create -n <environment_name> -f environment.yml
+```
+
 Activate your environment and export the names of its packages like this:
 
 ```txt

@@ -1,23 +1,26 @@
-name: birc-project
 channels:
   - conda-forge
   - kaspermunch
   - gwforg
+  - micknudsen
+  - r  
   - defaults
 dependencies:
-  - geneinfo
-  - ipython
-  - ipywidgets
   - jupyterlab
-  - msprime
   - nodejs
-  - pyslim
   - pytables
   - scipy
   - seaborn
   - slurm-jupyter
   - statsmodels
-  - tskit
+  - geneinfo
   - git
+  - nbdime
   - gwf
-prefix: /Users/kmt/miniconda3/envs/birc-project
+  - gwf-utilization
+  - r-essentials
+  - pyyaml
+  - tabulate
+  - pycryptodome>3.10
+  - pbkdf2
+  - cryptography 
